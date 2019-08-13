@@ -6,7 +6,7 @@ The Untitled Audio Visualization Project (TUAVP) is an audio visualizer program 
 
 The program contains a limited – yet varied – collection of built-in sounds.  Users can also input their own sounds through utilizing SoundCloud’s audio API, directly uploading from their own computer, or utilizing a microphone on their own device.
 
-TUAVP aims to create a polished visual experience influenced by the graph seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
+TUAVP aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
 
 ## Functionality & MVPs
 
