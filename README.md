@@ -2,7 +2,7 @@
 
 ## Background & Overview
 
-The Untitled Audio Visualization Project (TUAVP) is an audio visualizer program utilizing the Web Audio and D3 APIs to create real-time imagery corresponding to attributes of simultaneously playing audio (e.g. the volume of the audio, the frequencies of the audio, etc.).  
+The Untitled Audio Visualization Project (TUAVP) is an audio visualizer program utilizing the Web Audio API and D3 Library to create real-time imagery corresponding to attributes of simultaneously playing audio (e.g. the volume of the audio, the frequencies of the audio, etc.).  
 
 The program contains a limited – yet varied – collection of built-in sounds.  Users can also input their own sounds through utilizing SoundCloud’s audio API, directly uploading from their own computer, or utilizing a microphone on their own device.
 

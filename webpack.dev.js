@@ -7,6 +7,5 @@ module.exports = merge(common, {
     devServer: {
         contentBase: "./",
         watchContentBase: true,
-        open: "Google Chrome"
     }
 });

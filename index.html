@@ -7,10 +7,14 @@
     <title>The Untitled Audio Visualization Project</title>
     <link rel="stylesheet" href="./dist/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
-    The Unititled Audio Visualization Project
     <div id="app"></div>
     <script src="./dist/main.js"></script>
+    <div class="audio-input">
+        <audio id="audio" controls></audio>
+        <input type="file" id="file-input" accept="audio/*" />
+    </div>
 </body>
 </html>

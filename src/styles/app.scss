@@ -3,4 +3,26 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+    color: white;
+    background-color: black;
+}
+
+body > svg {
+    margin: auto;
+}
+
+.audio-input {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.audio-input  > * {
+    display: block;
+    margin: 10px;
+}
+
+.audio-input  > input {
+    display: block;
+    margin-left: 72px;
 }
