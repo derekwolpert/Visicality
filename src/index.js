@@ -15,14 +15,14 @@ window.onload = () => {
         let src = context.createMediaElementSource(audio);
         src.connect(analyser);
         analyser.connect(context.destination);
-        analyser.fftSize = 128;
+        analyser.fftSize = 256;
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
         const h = window.innerHeight;
         const w = window.innerWidth;
 
         const colorScale = d3.scaleSequential(d3.interpolateSinebow)
-            .domain([0, 63]);
+            .domain([0, 127]);
 
         const svg = d3.select('body').append('svg')
             .attr('width', w)
@@ -38,7 +38,7 @@ window.onload = () => {
             .attr("width", function(d) { return (w / dataArray.length) * (0.8); })
             .attr("height", function(d) { return (h - y(d)); })
             .attr("y", function(d) {return y(d);})
-            .attr("x", function (d, i) { return ((w / dataArray.length) * i); });
+            .attr("x", function (d, i) { return ((w / dataArray.length) * i) + 0.1; });
 
         function renderFrame() {
             requestAnimationFrame(renderFrame);
