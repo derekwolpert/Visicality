@@ -19,7 +19,7 @@ window.onload = () => {
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
         const colorScale = d3.scaleSequential(d3.interpolatePlasma)
-            .domain([0, 127]);
+            .domain([1, 255]);
 
         const margin = { top: 10, right: 10, bottom: 10, left: 10 };
 
@@ -32,22 +32,32 @@ window.onload = () => {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        svg.selectAll('circle')
+        const width = d3.scaleLinear()
+            .domain([0, 255])
+            .range([0, w]);
+
+        const y = d3.scaleLinear()
+            .domain([0, dataArray.length])
+            .range([dataArray.length, 0]);
+
+        svg.selectAll("rect")
             .data(dataArray)
-            .enter().append('circle')
-            .attr('r', function (d) { return (((w > h ? h : w) / 2) * (d / 255)); })
-            .attr('cx', function (d) { return (w / 2); })
-            .attr('cy', function (d) { return (h / 2); });
+            .enter().append("rect")
+            .attr("width", function (d) { return (width(d)); })
+            .attr("height", function (d) { return (h / dataArray.length); })
+            .attr("y", function (d, i) { return (((h / dataArray.length) * y(i))); })
+            .attr("x", function (d) { return ((w / 2) - (width(d) / 2)); });
 
         function renderFrame() {
             requestAnimationFrame(renderFrame);
             analyser.getByteFrequencyData(dataArray);
 
-            svg.selectAll('circle')
+            svg.selectAll('rect')
                 .data(dataArray)
-                .attr('r', function (d) { return ((((w > h ? h : w)) / 2) * (d / 255)); })
-                .attr("fill", function (d, i) { return colorScale(i); })
-                .attr("stroke", function (d, i) { return "black"; })
+                .attr("width", function (d) { return (width(d)); })
+                .attr("x", function (d) { return ((w / 2) - (width(d) / 2)); })
+                .attr('fill', function (d) { return colorScale(d); })
+                .attr('stroke', function (d) { return "black"; })
                 .attr("stroke-width", function (d) { return 2; });
         }
         renderFrame();
