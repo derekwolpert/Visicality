@@ -15,13 +15,13 @@ window.onload = () => {
         let src = context.createMediaElementSource(audio);
         src.connect(analyser);
         analyser.connect(context.destination);
-        analyser.fftSize = 128;
+        analyser.fftSize = 256;
         const dataArray = new Float32Array(analyser.fftSize);
 
         const colorScale = d3.scaleSequential(d3.interpolatePlasma)
             .domain([1, 255]);
 
-        const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+        const margin = { top: 0, right: 0, bottom: 0, left: 0 };
 
         const h = window.innerHeight - margin.top - margin.bottom,
             w = window.innerWidth - margin.left - margin.right;
@@ -43,16 +43,16 @@ window.onload = () => {
         const line = d3.line()
             .x(function (d, i) { return x(i); })
             .y(function (d, i) { return y(d); })
-            .curve(d3.curveCatmullRom.alpha(0.5));
+            .curve(d3.curveCatmullRomOpen);
 
         // svg.append("g")
         //     .attr("class", "x axis")
         //     .attr("transform", "translate(0," + h/2 + ")")
         //     .call(d3.axisBottom(x));
 
-        // svg.append("g")
-        //     .attr("class", "y axis")
-        //     .call(d3.axisLeft(y));
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(d3.axisLeft(y));
 
 
         function renderFrame() {
@@ -62,8 +62,8 @@ window.onload = () => {
             svg.select("path")
                 .datum(dataArray)
                 .attr("d", line)
-                .attr("stroke", function (d, i) { return "white"; })
-                .attr("stroke-width", function (d, i) { return 2; });
+                .attr("stroke", function (d, i) { return "#FF7F50"; })
+                .attr("stroke-width", function (d, i) { return 10; });
 
         }
         renderFrame();

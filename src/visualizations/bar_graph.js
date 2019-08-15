@@ -21,7 +21,7 @@ window.onload = () => {
         const colorScale = d3.scaleSequential(d3.interpolatePlasma)
             .domain([1, 255]);
 
-        const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+        const margin = { top: 0, right: 0, bottom: 0, left: 0 };
 
         const h = window.innerHeight - margin.top - margin.bottom,
             w = window.innerWidth - margin.left - margin.right;
@@ -52,7 +52,7 @@ window.onload = () => {
                 .data(dataArray)
                 .attr("height", function (d) { return ((d / 255) * h); })
                 .attr("y", function (d) { return y(d); })
-                .attr('fill', function (d) { return colorScale(d); });
+                .attr('fill', function (d) { return colorScale(d); })
                 .attr("stroke", function (d, i) { return "black"; })
                 .attr("stroke-width", function (d, i) { return 2; });
         }
