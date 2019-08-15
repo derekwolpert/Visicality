@@ -52,14 +52,11 @@ window.onload = () => {
                 .data(dataArray)
                 .attr("height", function (d) { return ((d / 255) * h); })
                 .attr("y", function (d) { return y(d); })
-                .attr('fill', function (d) { return colorScale(d); })
-                .attr('stroke', function (d) { return "black"; })
-                .attr("stroke-width", function (d) { return 2; });
-
+                .attr('fill', function (d) { return colorScale(d); });
+                .attr("stroke", function (d, i) { return "black"; })
+                .attr("stroke-width", function (d, i) { return 2; });
         }
         renderFrame();
         audio.play();
     };
 };
-
-window.addEventListener("resize", redraw);

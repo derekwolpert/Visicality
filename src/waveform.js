@@ -15,20 +15,16 @@ window.onload = () => {
         let src = context.createMediaElementSource(audio);
         src.connect(analyser);
         analyser.connect(context.destination);
-        analyser.fftSize = 256;
-        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+        analyser.fftSize = 128;
+        const dataArray = new Float32Array(analyser.fftSize);
 
         const colorScale = d3.scaleSequential(d3.interpolatePlasma)
-            .domain([0, 255]);
+            .domain([1, 255]);
 
         const margin = { top: 10, right: 10, bottom: 10, left: 10 };
 
         const h = window.innerHeight - margin.top - margin.bottom,
             w = window.innerWidth - margin.left - margin.right;
-
-        const y = d3.scaleLinear()
-            .domain([0, dataArray.length])
-            .range([dataArray.length, 0]);
 
         const svg = d3.select('body').append('svg')
             .attr('width', w + margin.left + margin.right)
@@ -36,23 +32,39 @@ window.onload = () => {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        svg.selectAll('circle')
-            .data(dataArray)
-            .enter().append('circle')
-            .attr('r', function (d) { return (((w > h ? h : w) / 2) * (d / 255)); })
-            .attr("cx", function (d, i) { return ((w / dataArray.length) * i); })
-            .attr('cy', function (d, i) { return ((h / dataArray.length) * y(i)); });
+        const x = d3.scaleLinear()
+            .domain([0, dataArray.length])
+            .range([0, w]);
+
+        const y = d3.scaleLinear()
+            .domain([-1, 1])
+            .range([h, 0]);
+
+        const line = d3.line()
+            .x(function (d, i) { return x(i); })
+            .y(function (d, i) { return y(d); })
+            .curve(d3.curveCatmullRom.alpha(0.5));
+
+        // svg.append("g")
+        //     .attr("class", "x axis")
+        //     .attr("transform", "translate(0," + h/2 + ")")
+        //     .call(d3.axisBottom(x));
+
+        // svg.append("g")
+        //     .attr("class", "y axis")
+        //     .call(d3.axisLeft(y));
+
 
         function renderFrame() {
             requestAnimationFrame(renderFrame);
-            analyser.getByteFrequencyData(dataArray);
+            analyser.getFloatTimeDomainData(dataArray);
 
-            svg.selectAll('circle')
-                .data(dataArray)
-                .attr('r', function (d) { return ((((w > h ? h : w)) / 2) * (d / 255)); })
-                .attr("fill", function (d, i) { return colorScale(d); })
-                .attr("stroke", function (d, i) { return "black"; })
+            svg.select("path")
+                .datum(dataArray)
+                .attr("d", line)
+                .attr("stroke", function (d, i) { return "white"; })
                 .attr("stroke-width", function (d, i) { return 2; });
+
         }
         renderFrame();
         audio.play();
