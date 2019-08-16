@@ -1,56 +1,38 @@
-import "./styles/app.scss";
+const visualization = function (analyser) {
 
-window.onload = () => {
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-    const file = document.getElementById("file-input");
-    const audio = document.getElementById("audio");
+    const colorScale = d3.scaleSequential(d3.interpolatePlasma)
+        .domain([0, 127]);
 
-    file.onchange = function () {
-        const files = this.files;
-        audio.src = URL.createObjectURL(files[0]);
+    const margin = { top: 0, right: 0, bottom: 0, left: 0 };
 
-        const context = new AudioContext();
-        const analyser = context.createAnalyser();
+    const h = window.innerHeight - margin.top - margin.bottom,
+        w = window.innerWidth - margin.left - margin.right;
 
-        let src = context.createMediaElementSource(audio);
-        src.connect(analyser);
-        analyser.connect(context.destination);
-        analyser.fftSize = 256;
-        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    const svg = d3.select('body').append('svg')
+        .attr('width', w + margin.left + margin.right)
+        .attr('height', h + margin.top + margin.bottom)
+        .attr('id', 'visualizer-svg')
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        const colorScale = d3.scaleSequential(d3.interpolatePlasma)
-            .domain([0, 127]);
+    svg.selectAll('circle')
+        .data(dataArray)
+        .enter().append('circle')
+        .attr('cx', function (d) { return (w / 2); })
+        .attr('cy', function (d) { return (h / 2); });
 
-        const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-
-        const h = window.innerHeight - margin.top - margin.bottom,
-            w = window.innerWidth - margin.left - margin.right;
-
-        const svg = d3.select('body').append('svg')
-            .attr('width', w + margin.left + margin.right)
-            .attr('height', h + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+        analyser.getByteFrequencyData(dataArray);
 
         svg.selectAll('circle')
             .data(dataArray)
-            .enter().append('circle')
-            .attr('r', function (d) { return (((w > h ? h : w) / 2) * (d / 255)); })
-            .attr('cx', function (d) { return (w / 2); })
-            .attr('cy', function (d) { return (h / 2); });
-
-        function renderFrame() {
-            requestAnimationFrame(renderFrame);
-            analyser.getByteFrequencyData(dataArray);
-
-            svg.selectAll('circle')
-                .data(dataArray)
-                .attr('r', function (d) { return ((((w > h ? w : h)) / 2) * (d / 255)); })
-                .attr("fill", function (d, i) { return colorScale(i); })
-                .attr("stroke", function (d, i) { return "rgba(0, 0, 0, 0.5)"; })
-                .attr("stroke-width", function (d, i) { return 2; });
-        }
-        renderFrame();
-        audio.play();
-    };
+            .attr('r', function (d) { return ((((w > h ? w : h)) / 2) * (d / 255)); })
+            .attr("fill", function (d, i) { return colorScale(i); })
+            .attr("stroke", function (d, i) { return "rgba(0, 0, 0, 0.5)"; })
+            .attr("stroke-width", function (d, i) { return 2; });
+    }
+    renderFrame();
 };

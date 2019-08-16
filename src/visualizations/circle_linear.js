@@ -17,30 +17,25 @@ const visualization = function (analyser) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    const width = d3.scaleLinear()
-        .domain([0, 255])
-        .range([0, w]);
-
     const y = d3.scaleLinear()
         .domain([0, dataArray.length])
         .range([dataArray.length, 0]);
 
-    svg.selectAll("rect")
+    svg.selectAll('circle')
         .data(dataArray)
-        .enter().append("rect")
-        .attr("height", function (d) { return (h / dataArray.length); })
-        .attr("y", function (d, i) { return (((h / dataArray.length) * y(i))); });
+        .enter().append('circle')
+        .attr("cx", function (d, i) { return ((w / dataArray.length) * i); })
+        .attr('cy', function (d, i) { return ((h / dataArray.length) * y(i)); });
 
     function renderFrame() {
         requestAnimationFrame(renderFrame);
         analyser.getByteFrequencyData(dataArray);
 
-        svg.selectAll('rect')
+        svg.selectAll('circle')
             .data(dataArray)
-            .attr("width", function (d) { return (width(d)); })
-            .attr("x", function (d) { return ((w / 2) - (width(d) / 2)); })
-            .attr('fill', function (d) { return colorScale(d); })
-            .attr("stroke", function (d, i) { return "black"; })
+            .attr('r', function (d) { return ((((w > h ? h : w)) / 2) * (d / 255)); })
+            .attr("fill", function (d, i) { return colorScale(d); })
+            .attr("stroke", function (d, i) { return "rgba(0, 0, 0, 0.5)"; })
             .attr("stroke-width", function (d, i) { return 2; });
     }
     renderFrame();

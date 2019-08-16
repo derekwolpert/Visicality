@@ -24,17 +24,37 @@ window.onload = () => {
         playPause.classList.add("fa-pause");
     };
 
+    const context = new AudioContext();
+    const analyser = context.createAnalyser();
+
+    let src = context.createMediaElementSource(audio);
+    src.connect(analyser);
+    analyser.connect(context.destination);
+    analyser.fftSize = 256;
+
     file.onchange = function () {
         const files = this.files;
         audio.src = URL.createObjectURL(files[0]);
 
-        const context = new AudioContext();
-        const analyser = context.createAnalyser();
+        document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
 
-        let src = context.createMediaElementSource(audio);
-        src.connect(analyser);
-        analyser.connect(context.destination);
-        analyser.fftSize = 128;
+        audio.play();
+
+        if (document.getElementById('visualizer-svg')) {
+            document.getElementById('visualizer-svg').remove();
+        }
+        visualization(analyser);
+    };
+
+    window.onresize = function () {
+        if (document.getElementById('visualizer-svg')) {
+            document.getElementById('visualizer-svg').remove();
+        }
+        visualization(analyser);
+    };
+
+    const visualization = function (analyser) {
+
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
         const colorScale = d3.scaleSequential(d3.interpolatePlasma)
@@ -48,20 +68,23 @@ window.onload = () => {
         const svg = d3.select('body').append('svg')
             .attr('width', w + margin.left + margin.right)
             .attr('height', h + margin.top + margin.bottom)
+            .attr('id', 'visualizer-svg')
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        const y = d3.scaleLinear()
+        const width = d3.scaleLinear()
             .domain([0, 255])
-            .range([h, 0]);
+            .range([0, w]);
+
+        const y = d3.scaleLinear()
+            .domain([0, dataArray.length])
+            .range([dataArray.length, 0]);
 
         svg.selectAll("rect")
             .data(dataArray)
             .enter().append("rect")
-            .attr("width", function (d) { return (w / dataArray.length); })
-            .attr("height", function (d) { return (h - y(d)); })
-            .attr("y", function (d) { return y(d); })
-            .attr("x", function (d, i) { return ((w / dataArray.length) * i); });
+            .attr("height", function (d) { return (h / dataArray.length); })
+            .attr("y", function (d, i) { return (((h / dataArray.length) * y(i))); });
 
         function renderFrame() {
             requestAnimationFrame(renderFrame);
@@ -69,13 +92,12 @@ window.onload = () => {
 
             svg.selectAll('rect')
                 .data(dataArray)
-                .attr("height", function (d) { return ((d / 255) * h); })
-                .attr("y", function (d) { return y(d); })
+                .attr("width", function (d) { return (width(d)); })
+                .attr("x", function (d) { return ((w / 2) - (width(d) / 2)); })
                 .attr('fill', function (d) { return colorScale(d); })
                 .attr("stroke", function (d, i) { return "black"; })
                 .attr("stroke-width", function (d, i) { return 2; });
         }
         renderFrame();
-        audio.play();
     };
 };

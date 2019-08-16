@@ -7,10 +7,6 @@ body {
     background-color: black;
 }
 
-body > svg {
-    margin: auto;
-}
-
 #file-input {
 	width: 0.1px;
 	height: 0.1px;
@@ -27,37 +23,41 @@ footer {
     width: 100%;
     height: 52px;
     font-size: 26px;
-    background-color: rgba(18, 18, 18, 0.5);
+    background-color: rgba(18, 18, 18, 0.6);
     color: white;
 }
 
 .footer-audio-container {
-    border-top: solid 2px rgba(0, 0, 0, 0.7);
+    border-top: solid 2px rgba(0, 0, 0, 0.6);
     display: flex;
 }
 
 .play-pause {
-    padding: 13px 20px;
-    border-right: solid 2px rgba(0, 0, 0, 0.7);
-    color: rgba(255, 255, 255, 0.2);
+    padding: 11px 20px;
+    border-right: solid 2px rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.3);
     transition: 0.2s;
 }
 
-.play-pause:hover {
-    color: rgba(255, 255, 255, 0.7);
+#play-pause {
+    cursor: pointer;
+}
+
+#play-pause:hover {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .file-input {
-    padding-top: 18px;
+    padding: 18px 0;
     font-size: 14px;
     height: 52px;
-    border-right: solid 2px rgba(0, 0, 0, 0.7);
+    border-right: solid 2px rgba(0, 0, 0, 0.6);
 }
 
 .file-input > label {
-    margin: 0 20px 0 24px;
+    margin: 0 20px;
     padding: 4px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.3);
     color: rgba(0, 0, 0, 0.7);
     border-radius: 6px;
     font-weight: 600;
@@ -66,7 +66,7 @@ footer {
 }
 
 .file-input > label:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.6);
     color: black;
     border-radius: 4px;
     font-weight: 600;
@@ -74,4 +74,19 @@ footer {
     transition: 0.2s
 }
 
+#track-name {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 20px;
+    padding-top: 17.5px;
+    color: rgba(255, 255, 255, 0.3);
+    border-right: solid 2px rgba(0, 0, 0, 0.6);
+}
 
+#track-name > span {
+    transition: 0.2s;
+}
+
+#track-name > span:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
