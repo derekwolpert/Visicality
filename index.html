@@ -8,13 +8,24 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://kit.fontawesome.com/2221aae2ef.js"></script>
 </head>
 <body>
     <div id="app"></div>
     <script src="./dist/main.js"></script>
-    <div class="audio-input">
-        <audio id="audio" controls></audio>
-        <input type="file" id="file-input" accept="audio/*" />
-    </div>
+    <footer class="footer-audio-player">
+        <section class="footer-audio-container">
+            <div class="play-pause">
+                <i class="fas fa-play" id="play-pause"></i>
+            </div>
+
+            <div class="file-input">
+                <input type="file" id="file-input" accept="audio/*" />
+                <label for="file-input">Choose a local file for visualizer</label>
+            </div>
+
+        </section>
+    </footer>
+    <audio id="audio"></audio>
 </body>
 </html>

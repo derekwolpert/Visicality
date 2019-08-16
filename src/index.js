@@ -4,6 +4,25 @@ window.onload = () => {
 
     const file = document.getElementById("file-input");
     const audio = document.getElementById("audio");
+    const playPause = document.getElementById("play-pause");
+
+    playPause.onclick = function () {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    };
+
+    audio.onpause = () => {
+        playPause.classList.remove("fa-pause");
+        playPause.classList.add("fa-play");
+    };
+
+    audio.onplay = () => {
+        playPause.classList.remove("fa-play");
+        playPause.classList.add("fa-pause");
+    };
 
     file.onchange = function () {
         const files = this.files;
