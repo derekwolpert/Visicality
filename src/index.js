@@ -24,13 +24,9 @@ window.onload = () => {
         playPause.classList.add("fa-pause");
     };
 
-    const context = new AudioContext();
-    const analyser = context.createAnalyser();
-
-    let src = context.createMediaElementSource(audio);
-    src.connect(analyser);
-    analyser.connect(context.destination);
-    analyser.fftSize = 256;
+    let contextCreated = false;
+    let context;
+    let analyser;
 
     file.onchange = function () {
         const files = this.files;
@@ -39,6 +35,18 @@ window.onload = () => {
         document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
 
         audio.play();
+
+        if (!contextCreated) {
+            contextCreated = true;
+
+            context = new AudioContext();
+            analyser = context.createAnalyser();
+
+            let src = context.createMediaElementSource(audio);
+            src.connect(analyser);
+            analyser.connect(context.destination);
+            analyser.fftSize = 256;
+        }
 
         if (document.getElementById('visualizer-svg')) {
             document.getElementById('visualizer-svg').remove();
@@ -50,7 +58,9 @@ window.onload = () => {
         if (document.getElementById('visualizer-svg')) {
             document.getElementById('visualizer-svg').remove();
         }
-        visualization(analyser);
+        if (contextCreated) {
+            visualization(analyser);
+        }
     };
 
     const visualization = function (analyser) {
