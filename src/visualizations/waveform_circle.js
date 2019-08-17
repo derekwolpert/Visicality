@@ -1,4 +1,6 @@
-const visualization = function (analyser) {
+const waveformCircle = function (analyser, colors) {
+
+    analyser.fftSize = 2048;
 
     const dataArray = new Float32Array(analyser.fftSize);
 
@@ -12,23 +14,28 @@ const visualization = function (analyser) {
         .attr('height', h + margin.top + margin.bottom)
         .attr('id', 'visualizer-svg')
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    const x = d3.scaleLinear()
-        .domain([0, dataArray.length])
-        .range([0, w]);
+        .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
 
     const y = d3.scaleLinear()
-        .domain([-1, 1])
-        .range([h, 0]);
-
-    const line = d3.line()
-        .x(function (d, i) { return x(i); })
-        .y(function (d, i) { return y(d); });
+        .domain([1, -1])
+        .range([0, h]);
 
     svg.append("g")
         .attr("class", "y axis")
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y))
+        .attr("color", "transparent");
+
+    const angle = d3.scaleLinear()
+        .domain([0, dataArray.length - 1])
+        .range([Math.PI, (Math.PI * 3)]);
+
+    const radius = d3.scaleLinear()
+        .domain([-1, 1])
+        .range([0, (w > h) ? (h / 2) : (w / 2)]);
+
+    const lineRadial = d3.lineRadial()
+        .radius(function (d, i) { return (radius(d)); })
+        .angle(function (d, i) { return (angle(i)); });
 
     // https://github.com/politiken-journalism/scale-color-perceptual
     // used for rgb codes below
@@ -89,9 +96,9 @@ const visualization = function (analyser) {
 
         svg.select("path")
             .datum(dataArray)
-            .attr("d", line)
+            .attr("d", lineRadial)
             .attr("stroke", function (d, i) { return plasmaLoop[colorOffset]; })
-            .attr("stroke-width", function (d, i) { return 5; });
+            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 480) : (h / 480)); });
     }
     renderFrame();
 };

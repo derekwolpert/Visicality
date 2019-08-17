@@ -1,4 +1,6 @@
-const visualization = function (analyser) {
+const barGraph = function (analyser, colors) {
+
+    analyser.fftSize = 512;
 
     const margin = { top: 0, right: 0, bottom: 0, left: 0 };
 
@@ -37,7 +39,7 @@ const visualization = function (analyser) {
             .attr("y", function (d) { return y(d); })
             .attr('fill', function (d) { return colorScale(d); })
             .attr("stroke", function (d, i) { return "black"; })
-            .attr("stroke-width", function (d, i) { return 2; });
+            .attr("stroke-width", function (d, i) { return ((w / (dataArray.length * 2)) * 0.2); });
     }
     renderFrame();
 };

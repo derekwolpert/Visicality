@@ -23,7 +23,7 @@ footer {
     width: 100%;
     height: 52px;
     font-size: 26px;
-    background-color: rgba(18, 18, 18, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
     color: white;
 }
 
@@ -35,7 +35,7 @@ footer {
 .play-pause {
     padding: 11px 20px;
     border-right: solid 2px rgba(0, 0, 0, 0.6);
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.2);
     transition: 0.2s;
 }
 
@@ -57,7 +57,7 @@ footer {
 .file-input > label {
     margin: 0 20px;
     padding: 4px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
     color: rgba(0, 0, 0, 0.7);
     border-radius: 6px;
     font-weight: 600;
@@ -76,17 +76,76 @@ footer {
 
 #track-name {
     font-size: 14px;
-    font-weight: 600;
     padding: 0 20px;
+    font-weight: 600;
     padding-top: 17.5px;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.4);
     border-right: solid 2px rgba(0, 0, 0, 0.6);
 }
 
-#track-name > span {
-    transition: 0.2s;
+.playbar-container {
+    flex: 1;
+    position: relative;
+
 }
 
-#track-name > span:hover {
-    color: rgba(255, 255, 255, 0.6);
+#playbar {
+    height: 8px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 25%;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#playbar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#playbar-progress {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 25%;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#time-progress {
+    width: 60px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    position: relative;
+}
+
+#time-progress > span {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 24%;
+}
+
+#time-left {
+    width: 60px;
+    border-right: solid 2px rgba(0, 0, 0, 0.6);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    position: relative;
+}
+
+#time-left > span {
+    position: absolute;
+    left: 0px;
+    width: 60px;
+    text-align: center;
+    top: 24%;
+}
+
+.volume-container {
+    width: 70px;
 }
