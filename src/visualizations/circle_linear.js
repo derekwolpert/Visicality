@@ -32,7 +32,7 @@ export const circleLinear = function (analyser, colors) {
         svg.selectAll('circle')
             .data(dataArray)
             .attr('r', function (d) { return ((((w > h ? h : w)) / 2) * (d / 255)); })
-            .attr("fill", function (d, i) { return colorScale(d); })
+            .attr("fill", function (d, i) { return d === 0 ? "black" : colorScale(d); })
             .attr("stroke", function (d, i) { return "black"; })
             .attr("stroke-width", function (d, i) { return (((w > h) ? (w) : (h))/960); });
     }

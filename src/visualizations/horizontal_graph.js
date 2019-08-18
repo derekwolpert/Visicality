@@ -39,7 +39,7 @@ export const horizontalBar = function (analyser, colors) {
             .data([...dataArray.slice().reverse(), ...dataArray])
             .attr("width", function (d) { return (width(d)); })
             .attr("x", function (d) { return ((w / 2) - (width(d) / 2)); })
-            .attr('fill', function (d) { return colorScale(d); })
+            .attr('fill', function (d) { return d === 0 ? "black" : colorScale(d); })
             .attr("stroke", function (d, i) { return "black"; })
             .attr("stroke-width", function (d, i) { return ((h / (dataArray.length * 2)) * 0.2); });
     }

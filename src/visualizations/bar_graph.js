@@ -1,6 +1,6 @@
 export const barGraph = function (analyser, colors) {
 
-    analyser.fftSize = 128;
+    analyser.fftSize = 256;
 
     const h = window.innerHeight,
         w = window.innerWidth;
@@ -9,7 +9,7 @@ export const barGraph = function (analyser, colors) {
         .attr('width', w)
         .attr('height', h)
         .attr('id', 'visualizer-svg');
-        
+
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
     const colorScale = d3.scaleSequential(colors)
@@ -22,20 +22,20 @@ export const barGraph = function (analyser, colors) {
     svg.selectAll("rect")
         .data([...dataArray, ...dataArray.slice().reverse()])
         .enter().append("rect")
-        .attr("width", function (d) { return (w / (dataArray.length * 2)); })
-        .attr("x", function (d, i) { return ((w / (dataArray.length * 2)) * i); });
+        .attr("width", function (d) { return (w / dataArray.length); })
+        .attr("x", function (d, i) { return ((w / dataArray.length) * i); });
 
     function renderFrame() {
         requestAnimationFrame(renderFrame);
         analyser.getByteFrequencyData(dataArray);
 
         svg.selectAll('rect')
-            .data([...dataArray.slice().reverse(), ...dataArray])
+            .data(dataArray)
             .attr("height", function (d) { return (h - y(d)); })
             .attr("y", function (d) { return y(d); })
-            .attr('fill', function (d) { return colorScale(d); })
+            .attr('fill', function (d) { return d === 0 ? "black" : colorScale(d); })
             .attr("stroke", function (d, i) { return "black"; })
-            .attr("stroke-width", function (d, i) { return ((w / (dataArray.length * 2)) * 0.2); });
+            .attr("stroke-width", function (d, i) { return ((w / (dataArray.length)) * 0.2); });
     }
     renderFrame();
 };

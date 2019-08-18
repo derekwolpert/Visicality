@@ -1,0 +1,52 @@
+.left-sidebar  {
+    position: fixed;
+    left: 0;
+    bottom: 36px;
+    width: 36px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.4);
+    border-top: 2px solid rgba(0, 0, 0, 0.3);
+    border-right: 2px solid rgba(0, 0, 0, 0.3);
+    
+}
+
+.left-sidebar-container {
+    position: relative;
+}
+
+.left-sidebar-container > h3 {
+    transform: rotate(-90deg);
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+    padding: 0 10px;
+    left: -52px;
+    bottom: -77px;
+}
+
+.left-sidebar-container > div {
+    height: 36px;
+    width: 36px;
+    transition: 0.2s;
+    position: relative;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.left-sidebar-container > div > span {
+    position: absolute;
+    left: 35%;
+    top: 26%;
+}
+
+.left-sidebar-container > div:hover {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+
+.visualizer-options-9 {
+    margin-bottom: 139px;
+}
