@@ -57,7 +57,7 @@ footer {
 
 .file-input > label {
     margin: 0 15px;
-    padding: 2px 4px ;
+    padding: 1px 4px ;
     background-color: rgba(255, 255, 255, 0.3);
     color: rgba(0, 0, 0, 0.6);
     border-radius: 6px;
@@ -80,7 +80,7 @@ footer {
     padding: 0 15px;
     font-weight: 600;
     padding-top: 11px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.5);
     border-right: solid 2px rgba(0, 0, 0, 0.3);
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
@@ -147,8 +147,4 @@ footer {
     width: 50px;
     text-align: center;
     top: 26%;
-}
-
-.volume-container {
-    width: 70px;
 }

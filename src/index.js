@@ -103,7 +103,7 @@ window.onload = () => {
         if (document.getElementById('visualizer-svg')) {
             document.getElementById('visualizer-svg').remove();
         }
-        fullScreen(analyser, rainbowD3);
+        fullScreen(analyser, plasmaD3);
     };
 
     window.onresize = function () {
@@ -111,7 +111,7 @@ window.onload = () => {
             document.getElementById('visualizer-svg').remove();
         }
         if (contextCreated) {
-            fullScreen(analyser, rainbowD3);
+            fullScreen(analyser, plasmaD3);
         }
     };
 };
