@@ -1,23 +1,19 @@
-const circleLinear = function (analyser, colors) {
+export const circleLinear = function (analyser, colors) {
 
     analyser.fftSize = 128;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-    const colorScale = d3.scaleSequential(d3.interpolatePlasma)
+    const colorScale = d3.scaleSequential(colors)
         .domain([1, 255]);
 
-    const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-
-    const h = window.innerHeight - margin.top - margin.bottom,
-        w = window.innerWidth - margin.left - margin.right;
+    const h = window.innerHeight,
+        w = window.innerWidth;
 
     const svg = d3.select('body').append('svg')
-        .attr('width', w + margin.left + margin.right)
-        .attr('height', h + margin.top + margin.bottom)
-        .attr('id', 'visualizer-svg')
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr('width', w)
+        .attr('height', h)
+        .attr('id', 'visualizer-svg');
 
     const y = d3.scaleLinear()
         .domain([0, dataArray.length])
@@ -38,7 +34,7 @@ const circleLinear = function (analyser, colors) {
             .attr('r', function (d) { return ((((w > h ? h : w)) / 2) * (d / 255)); })
             .attr("fill", function (d, i) { return colorScale(d); })
             .attr("stroke", function (d, i) { return "black"; })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 960) : (h / 960)); });
+            .attr("stroke-width", function (d, i) { return (((w > h) ? (w) : (h))/960); });
     }
     renderFrame();
 };

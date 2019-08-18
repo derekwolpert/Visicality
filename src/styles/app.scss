@@ -21,44 +21,45 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 52px;
-    font-size: 26px;
-    background-color: rgba(0, 0, 0, 0.3);
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.2);
     color: white;
 }
 
 .footer-audio-container {
-    border-top: solid 2px rgba(0, 0, 0, 0.6);
+    border-top: solid 2px rgba(0, 0, 0, 0.3);
     display: flex;
 }
 
 .play-pause {
-    padding: 11px 20px;
-    border-right: solid 2px rgba(0, 0, 0, 0.6);
-    color: rgba(255, 255, 255, 0.2);
+    padding: 7px 15px 0 15px;
+    border-right: solid 2px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.3);
     transition: 0.2s;
+    font-size: 20px;
 }
 
-#play-pause {
+.fa-pause, .fa-play {
     cursor: pointer;
 }
 
-#play-pause:hover {
+
+.fa-pause:hover, .fa-play:hover {
     color: rgba(255, 255, 255, 0.6);
 }
 
 .file-input {
-    padding: 18px 0;
-    font-size: 14px;
-    height: 52px;
-    border-right: solid 2px rgba(0, 0, 0, 0.6);
+    padding: 11px 0 0;
+    font-size: 12px;
+    height: 36px;
+    border-right: solid 2px rgba(0, 0, 0, 0.3);
 }
 
 .file-input > label {
-    margin: 0 20px;
-    padding: 4px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: rgba(0, 0, 0, 0.7);
+    margin: 0 15px;
+    padding: 2px 4px ;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: rgba(0, 0, 0, 0.6);
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
@@ -67,7 +68,7 @@ footer {
 
 .file-input > label:hover {
     background-color: rgba(255, 255, 255, 0.6);
-    color: black;
+    color: rgba(0, 0, 0, 0.8);
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
@@ -75,75 +76,77 @@ footer {
 }
 
 #track-name {
-    font-size: 14px;
-    padding: 0 20px;
+    font-size: 12px;
+    padding: 0 15px;
     font-weight: 600;
-    padding-top: 17.5px;
+    padding-top: 11px;
     color: rgba(255, 255, 255, 0.4);
-    border-right: solid 2px rgba(0, 0, 0, 0.6);
+    border-right: solid 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .playbar-container {
     flex: 1;
     position: relative;
-
 }
 
 #playbar {
-    height: 8px;
+    height: 6px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 25%;
+    top: 30%;
     transition: 0.2s;
     cursor: pointer;
 }
 
 #playbar:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 #playbar-progress {
-    height: 8px;
+    height: 6px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 25%;
+    top: 30%;
     transition: 0.2s;
     cursor: pointer;
 }
 
 #time-progress {
-    width: 60px;
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.4);
+    width: 50px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
     position: relative;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 #time-progress > span {
     position: absolute;
     width: 100%;
     text-align: center;
-    top: 24%;
+    top: 26%;
 }
 
 #time-left {
-    width: 60px;
-    border-right: solid 2px rgba(0, 0, 0, 0.6);
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.4);
+    width: 50px;
+    border-right: solid 2px rgba(0, 0, 0, 0.3);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
     position: relative;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 #time-left > span {
     position: absolute;
     left: 0px;
-    width: 60px;
+    width: 50px;
     text-align: center;
-    top: 24%;
+    top: 26%;
 }
 
 .volume-container {

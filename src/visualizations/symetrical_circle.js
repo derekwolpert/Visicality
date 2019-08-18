@@ -1,8 +1,8 @@
-export const waveformCircle = function (analyser, colors) {
+export const symetricalCircle = function (analyser, colors) {
 
-    analyser.fftSize = 1024;
+    analyser.fftSize = 512;
 
-    const dataArray = new Float32Array(analyser.fftSize);
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
     const h = window.innerHeight,
         w = window.innerWidth;
@@ -15,24 +15,28 @@ export const waveformCircle = function (analyser, colors) {
         .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
 
     const y = d3.scaleLinear()
-        .domain([1, -1])
+        .domain([255, -255])
         .range([0, h]);
 
     svg.append("g")
-        .attr("class", "y axis")
+        .attr("id", "y axis")
         .call(d3.axisLeft(y))
         .attr("color", "transparent");
 
     const angle = d3.scaleLinear()
-        .domain([0, dataArray.length - 1])
-        .range([Math.PI, (Math.PI * 3)]);
+        .domain([0, (dataArray.length * 4) - 1])
+        .range([Math.PI, (Math.PI * 5)]);
 
-    const radius = d3.scaleLinear()
-        .domain([-1, 1])
-        .range([0, (w > h) ? (w / 2) : (h / 2)]);
+    const outerRadius = d3.scaleLinear()
+        .domain([-255, 255])
+        .range([0, (w > h) ? (h / 2) : (w / 2)]);
+
+    const innerRadius = d3.scaleLinear()
+        .domain([-255, 255])
+        .range([(w > h) ? (h / 2) : (w / 2), 0]);
 
     const lineRadial = d3.lineRadial()
-        .radius(function (d, i) { return (radius(d)); })
+        .radius(function (d, i) { return i < (dataArray.length * 2) ? (outerRadius(d)) : (innerRadius(d)); })
         .angle(function (d, i) { return (angle(i)); });
 
     const colorScale = d3.scaleSequential(colors)
@@ -54,14 +58,16 @@ export const waveformCircle = function (analyser, colors) {
     function renderFrame() {
 
         requestAnimationFrame(renderFrame);
-        analyser.getFloatTimeDomainData(dataArray);
+        analyser.getByteFrequencyData(dataArray);
         setColorOffset();
 
-        svg.select("path")
-            .datum(dataArray)
+        svg.selectAll("path")
+            .datum([...dataArray.slice().reverse(), ...dataArray, ...dataArray.slice().reverse(), ...dataArray])
             .attr("d", lineRadial)
-            .attr("stroke", function (d, i) { return loopingColor(colorOffset); })
+            .attr("fill", function (d) { return loopingColor(colorOffset); })
+            .attr("stroke", function (d) { return "black"; })
             .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 960) : (h / 960)); });
+
     }
     renderFrame();
 };

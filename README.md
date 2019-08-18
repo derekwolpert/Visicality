@@ -30,7 +30,7 @@ Additionally, TUAVP includes:
 TUAVP utilizes the following technologies:
 * `Vanilla JavaScript`, for fundamental structure of project 
 * `Web Audio API`, to extract data from selected audio
-* `D3 API`, to create visually rich visuals based on data from audio 
+* `D3 Library`, to create visually rich visuals based on data from audio 
 * `SoundCloud API`, to allow users to input their own selection of audio
 * `Webpack`, JavaScript bundler to assist with development and production builds
 
@@ -39,7 +39,7 @@ TUAVP utilizes the following technologies:
 ### Day 1
 * Setup project's folder/file structure
 * Create general visual layout of program
-* Initial research/experiment with `Web Audio API` and `D3 API` get a better understanding of how these two APIs can be used together
+* Initial research/experiment with `Web Audio API` and `D3 Library` get a better understanding of how these two APIs can be used together
 * Research SoundCloud API to confirm whether or not it is practical to use as a third-party audio source
 
 ### Day 2
@@ -48,12 +48,12 @@ TUAVP utilizes the following technologies:
 
 ### Day 3
 
-* Explore `D3 API` resources to narrow down type of data visualization that would work best for project
+* Explore `D3 Library` resources to narrow down type of data visualization that would work best for project
 * Spend no more than 30 mins picking out an initial color palette and audio file to use for testing purposes
-* Build out `Web Audio API` and `D3 API` integration
+* Build out `Web Audio API` and `D3 Library` integration
 
 ### Day 4
-* Expand `D3 API` data representations selection
+* Expand `D3 Library` data representations selection
 * Expand color palettes selection
 * Work on custom user inputted audio (SoundCloud, direct upload, microphone)
 

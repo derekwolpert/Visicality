@@ -1,23 +1,19 @@
-const symmetricalBar = function (analyser, color) {
+export const horizontalBar = function (analyser, colors) {
 
     analyser.fftSize = 128;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-    const colorScale = d3.scaleSequential(d3.interpolatePlasma)
+    const colorScale = d3.scaleSequential(colors)
         .domain([1, 255]);
 
-    const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-
-    const h = window.innerHeight - margin.top - margin.bottom,
-        w = window.innerWidth - margin.left - margin.right;
+    const h = window.innerHeight,
+        w = window.innerWidth;
 
     const svg = d3.select('body').append('svg')
-        .attr('width', w + margin.left + margin.right)
-        .attr('height', h + margin.top + margin.bottom)
-        .attr('id', 'visualizer-svg')
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr('width', w)
+        .attr('height', h)
+        .attr('id', 'visualizer-svg');
 
     const width = d3.scaleLinear()
         .domain([0, 255])
@@ -39,13 +35,8 @@ const symmetricalBar = function (analyser, color) {
         requestAnimationFrame(renderFrame);
         analyser.getByteFrequencyData(dataArray);
 
-        const renderSymmetricalData = new Uint8Array(dataArray.length * 2);
-
-        renderSymmetricalData.set(dataArray.slice().reverse());
-        renderSymmetricalData.set(dataArray, dataArray.length);
-
         svg.selectAll('rect')
-            .data(renderSymmetricalData)
+            .data([...dataArray.slice().reverse(), ...dataArray])
             .attr("width", function (d) { return (width(d)); })
             .attr("x", function (d) { return ((w / 2) - (width(d) / 2)); })
             .attr('fill', function (d) { return colorScale(d); })
