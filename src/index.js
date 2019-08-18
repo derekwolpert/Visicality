@@ -33,72 +33,78 @@ window.onload = () => {
     const waveformCircleButton = document.getElementById('waveform-circle-button');
     const fullScreenButton = document.getElementById('full-screen-button');
 
+    const visualizerButtons = {
+        barGraph: barGraphButton,
+        horizontalBar: horizontalBarButton,
+        circleGraph: circleGraphButton,
+        circleLinear: circleLinearButton,
+        symetricalLine: symetricalLineButton,
+        symetricalCircle: symetricalCircleButton,
+        waveformLinear: waveformLinearButton,
+        waveformCircle: waveformCircleButton,
+        fullScreen: fullScreenButton
+    };
+
+    const visualizersArr = {
+        barGraph: barGraph,
+        horizontalBar: horizontalBar,
+        circleGraph: circleGraph,
+        circleLinear: circleLinear,
+        symetricalLine: symetricalLine,
+        symetricalCircle: symetricalCircle,
+        waveformLinear: waveformLinear,
+        waveformCircle: waveformCircle,
+        fullScreen: fullScreen
+    };
+
     let contextCreated = false;
     let context;
     let analyser;
 
-    let selectedVisualizer = barGraph;
+    let selectedVisualizer = "barGraph";
 
     const createVisualizer = () => {
         removeVisualizer();
         if (contextCreated) {
-            selectedVisualizer(analyser, spectralD3);
+            visualizersArr[selectedVisualizer](analyser, spectralD3);
+        }
+    };
+
+    const switchVisualizer = (newVisualizer) => {
+        if (selectedVisualizer !== newVisualizer) {
+            visualizerButtons[selectedVisualizer].classList.remove("active-visualizer");
+            selectedVisualizer = newVisualizer;
+            visualizerButtons[selectedVisualizer].classList.add("active-visualizer");
+            createVisualizer();
         }
     };
 
     barGraphButton.onclick = () => {
-        if (selectedVisualizer !== barGraph) {
-            selectedVisualizer = barGraph;
-            createVisualizer();
-        }
+        switchVisualizer("barGraph");
     };
     horizontalBarButton.onclick = () => {
-        if (selectedVisualizer !== horizontalBar) {
-            selectedVisualizer = horizontalBar;
-            createVisualizer();
-        }
+        switchVisualizer("horizontalBar");
     };
     circleGraphButton.onclick = () => {
-        if (selectedVisualizer !== circleGraph) {
-            selectedVisualizer = circleGraph;
-            createVisualizer();
-        }
+        switchVisualizer("circleGraph");
     };
     circleLinearButton.onclick = () => {
-        if (selectedVisualizer !== circleLinear) {
-            selectedVisualizer = circleLinear;
-            createVisualizer();
-        }
+        switchVisualizer("circleLinear");
     };
     symetricalLineButton.onclick = () => {
-        if (selectedVisualizer !== symetricalLine) {
-            selectedVisualizer = symetricalLine;
-            createVisualizer();
-        }
+        switchVisualizer("symetricalLine");
     };
     symetricalCircleButton.onclick = () => {
-        if (selectedVisualizer !== symetricalCircle) {
-            selectedVisualizer = symetricalCircle;
-            createVisualizer();
-        }
+        switchVisualizer("symetricalCircle");
     };
     waveformLinearButton.onclick = () => {
-        if (selectedVisualizer !== waveformLinear) {
-            selectedVisualizer = waveformLinear;
-            createVisualizer();
-        }
+        switchVisualizer("waveformLinear");
     };
     waveformCircleButton.onclick = () => {
-        if (selectedVisualizer !== waveformCircle) {
-            selectedVisualizer = waveformCircle;
-            createVisualizer();
-        }
+        switchVisualizer("waveformCircle");
     };
     fullScreenButton.onclick = () => {
-        if (selectedVisualizer !== fullScreen) {
-            selectedVisualizer = fullScreen;
-            createVisualizer();
-        }
+        switchVisualizer("fullScreen");
     };
     
     const removeVisualizer = () => {
