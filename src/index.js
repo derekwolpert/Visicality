@@ -25,6 +25,15 @@ window.onload = () => {
     const largePlay = document.getElementById('large-play');
     const largePlayContainer = document.getElementById('large-play-container');
 
+    const colorPicker = document.getElementById('color-picker');
+    const body = document.getElementById("body");
+    const colorPickerLabel = document.getElementById("color-picker-label");
+
+    colorPicker.onchange = function () {
+        body.style.backgroundColor = colorPicker.value;
+        colorPickerLabel.style.backgroundColor = colorPicker.value;
+    };
+
     const barGraphButton = document.getElementById('bar-graph-button');
     const horizontalBarButton = document.getElementById('horizontal-bar-button');
     const circleGraphButton = document.getElementById('circle-graph-button');
@@ -258,8 +267,7 @@ window.onload = () => {
             timeProgress.innerHTML = "";
             timeLeft.innerHTML = "";
             progressBar.style.width = "0%";
-        }
-        
+        } 
     }, 1000);
 
     file.onchange = function () {

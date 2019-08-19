@@ -58,6 +58,7 @@ footer {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: 0.2s
 }
     
 .file-input-container:hover {
@@ -84,7 +85,11 @@ footer {
 }
 
 #track-name > span:hover {
-   color: rgba(255, 255, 255, 0.8);
+    transition: 0.2s
+}
+
+#track-name > span:hover {
+   color: rgba(255, 255, 255, 0.8); 
 }
 
 .playbar-container {

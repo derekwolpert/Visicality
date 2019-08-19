@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/2221aae2ef.js"></script>
     <script src="./dist/main.js"></script>
 </head>
-<body>
+<body id="body" >
     
     <section id="large-play"><span id="large-play-container"></span></section>
 
@@ -52,7 +52,17 @@
     <section class="right-sidebar">
     
             <div class="right-sidebar-container">
-                <h3>Colors</h3>
+
+
+                <h3 class="background-color-title">Background Color</h3>
+
+                <input type="color" id="color-picker" value="#1C1C1C">
+                <div class="color-picker-container" >
+                    <label for="color-picker" id="color-picker-label"></label>
+                </div>
+
+
+                <h3 class="colors-title">Colors</h3>
                 <div class="color-option-1 active-color" id="plasma-button">
                     <span>1</span>
                 </div>

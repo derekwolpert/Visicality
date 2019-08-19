@@ -35,7 +35,7 @@ export const fullScreen = function (analyser, colors) {
 
         svg.selectAll('rect')
             .data(dataArray)
-            .attr('fill', function (d) { return d === 0 ? "black" : colorScale(d); });
+            .attr('fill', function (d) { return d === 0 ? "transparent" : colorScale(d); });
     }
     renderFrame();
 };
