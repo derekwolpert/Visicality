@@ -44,26 +44,31 @@ footer {
     font-size: 12px;
     height: 36px;
     border-right: solid 2px rgba(0, 0, 0, 0.3);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.file-input > label {
+.file-input-container {
     margin: 0 20px;
     padding: 2px 6px ;
     background-color: rgba(255, 255, 255, 0.3);
-    color: rgba(0, 0, 0, 0.6);
     border-radius: 6px;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+    
+.file-input-container:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.file-input-container > label {
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s;
-}
-
-.file-input > label:hover {
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s
 }
 
 #track-name {
