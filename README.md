@@ -1,23 +1,27 @@
-# The Untitled Audio Visualization Project
+# Audio-Visualizer Web Audio API + D3 Library Project
+
+<video src="demo_video_1.mp4" poster="demo_photo_1.png" width="576" height="360" controls preload></video>
 
 ## Background & Overview
 
-The Untitled Audio Visualization Project (TUAVP) is an audio visualizer program utilizing the Web Audio API and D3 Library to create real-time imagery corresponding to attributes of simultaneously playing audio (e.g. the volume of the audio, the frequencies of the audio, etc.).  
+The Audio-Visualizer Web Audio API + D3 Library Project (AVWAD3) is an audio visualizer program utilizing the Web Audio API and D3 Library to create real-time imagery corresponding to attributes of simultaneously playing audio (e.g. the volume of the audio, the frequencies of the audio, etc.).  
 
 The program contains a limited – yet varied – collection of built-in sounds.  Users can also input their own sounds through utilizing SoundCloud’s audio API, directly uploading from their own computer, or utilizing a microphone on their own device.
 
-TUAVP aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
+AVWAD3 aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
+
+<video src="demo_video_2.mp4" poster="demo_photo_2.png" width="576" height="360" controls preload></video>
 
 ## Functionality & MVPs
 
-In TUAVP users are able to:
+In AVWAD3 users are able to:
 * Experience a real-time visual representation of audio
 * Select a graph-inspired style for the visualization of audio
 * Select a color palette for the visualization
 * Select an audio for the visualization
 * Play, pause and restart options for the audio
 
-Additionally, TUAVP includes:
+Additionally, AVWAD3 includes:
 * A modal to house the settings for selecting a custom audio source
 * Links to various personal websites to learn more about the developer of the project
 
@@ -27,7 +31,7 @@ Additionally, TUAVP includes:
 
 ## Architecture & Technologies
 
-TUAVP utilizes the following technologies:
+AVWAD3 utilizes the following technologies:
 * `Vanilla JavaScript`, for fundamental structure of project 
 * `Web Audio API`, to extract data from selected audio
 * `D3 Library`, to create visually rich visuals based on data from audio 
