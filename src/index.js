@@ -22,6 +22,7 @@ window.onload = () => {
     const timeProgress = document.getElementById('time-progress');
     const timeLeft = document.getElementById('time-left');
     const trackName = document.getElementById('track-name');
+    const largePlay = document.getElementById('large-play');
     const largePlayContainer = document.getElementById('large-play-container');
 
     const barGraphButton = document.getElementById('bar-graph-button');
@@ -193,7 +194,7 @@ window.onload = () => {
         switchPlayPause();
     };
 
-    largePlayContainer.onclick = () => {
+    largePlay.onclick = () => {
         switchPlayPause();
     };
 
