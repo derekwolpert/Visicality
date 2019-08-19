@@ -2,17 +2,17 @@
 @import "./reset.scss";
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    background-color: #1C1C1C;
-    position: relative;
-    transition: 0.2s;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  background-color: #212121;
+  position: relative;
+  transition: 0.2s;
 }
 
 #large-play {
-    position: absolute;
-    height: 100vh;
-    width: 100%;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
 }
 
 #large-play-container {
@@ -24,15 +24,16 @@ body {
 
 #large-play-container > * {
   font-size: 96px;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: 0.2s;
 }
 
 #large-play-container > *:hover {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
 }
 
+@import "./background_color.scss";
 @import "./left_sidebar.scss";
 @import "./right_sidebar.scss";
 @import "./footer.scss";

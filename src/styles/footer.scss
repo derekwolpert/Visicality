@@ -25,7 +25,7 @@ footer {
 .play-pause {
     padding: 7px 20px 0 20px;
     border-right: solid 2px rgba(0, 0, 0, 0.3);
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.4);
     transition: 0.2s;
     font-size: 20px;
 }
@@ -34,13 +34,12 @@ footer {
     cursor: pointer;
 }
 
-
 #play-pause:hover {
     color: rgba(255, 255, 255, 0.6);
 }
 
 .file-input {
-    padding: 11px 0 0;
+    padding: 9px 0 0;
     font-size: 12px;
     height: 36px;
     border-right: solid 2px rgba(0, 0, 0, 0.3);
@@ -58,7 +57,7 @@ footer {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: 0.2s
+    transition: 0.2s;
 }
     
 .file-input-container:hover {

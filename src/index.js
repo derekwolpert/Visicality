@@ -7,8 +7,8 @@ import { symetricalCircle } from "./visualizations/symetrical_circle";
 import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
-
-import { viridisD3, plasmaD3, spectralD3, cubehelixD3, rainbowD3, sinebowD3 } from "./assets/colors";
+import { viridisD3, plasmaD3, spectralD3, cubehelixD3, rainbowD3, 
+    sinebowD3, ylOrRdD3, ylGnBuD3, greysD3 } from "./assets/colors";
 
 import "./styles/app.scss";
 
@@ -74,6 +74,9 @@ window.onload = () => {
     const cubehelixButton = document.getElementById('cubehelix-button');
     const rainbowButton = document.getElementById('rainbow-button');
     const sinebowButton = document.getElementById('sinebow-button');
+    const ylOrRdDButton = document.getElementById('ylorrd-button');
+    const ylGnBuButton = document.getElementById('ylgnbu-button');
+    const greysButton = document.getElementById('greys-button');
 
     const colorButtons = {
         viridisD3: viridisButton,
@@ -82,15 +85,23 @@ window.onload = () => {
         cubehelixD3: cubehelixButton,
         rainbowD3: rainbowButton,
         sinebowD3: sinebowButton,
+        ylOrRdD3: ylOrRdDButton,
+        ylGnBuD3: ylGnBuButton,
+        greysD3: greysButton
     };
 
+    
+
     const colorArr = {
-        viridisD3: viridisD3,
         plasmaD3: plasmaD3,
+        viridisD3: viridisD3,
         spectralD3: spectralD3,
         cubehelixD3: cubehelixD3,
         rainbowD3: rainbowD3,
         sinebowD3: sinebowD3,
+        ylOrRdD3: ylOrRdD3,
+        ylGnBuD3: ylGnBuD3,
+        greysD3: greysD3
     };
 
     let contextCreated = false;
@@ -172,6 +183,16 @@ window.onload = () => {
         switchColor("sinebowD3");
     };
     
+    ylOrRdDButton.onclick = () => {
+        switchColor("ylOrRdD3");
+    };
+    ylGnBuButton.onclick = () => {
+        switchColor("ylGnBuD3");
+    };
+    greysButton.onclick = () => {
+        switchColor("greysD3");
+    };
+
     const removeVisualizer = () => {
         if (document.getElementById('visualizer-svg')) {
             document.getElementById('visualizer-svg').remove();

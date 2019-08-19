@@ -1,12 +1,13 @@
 .right-sidebar  {
     position: fixed;
     right: 0;
-    bottom: 36px;
+    bottom: 40px;
     width: 36px;
     background-color: rgba(0, 0, 0, 0.2);
     color: rgba(255, 255, 255, 0.4);
     border-top: 2px solid rgba(0, 0, 0, 0.3);
     border-left: 2px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 .right-sidebar-container {
@@ -22,7 +23,7 @@
     text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     padding: 0 10px;
     letter-spacing: 0.1em;
-    left: -29px;
+    right: -26px;
     bottom: -54px;
 }
 
@@ -35,75 +36,25 @@
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-.color-option-1 {
-    border-top: 2px solid rgba(0, 0, 0, 0.3);
-}
-
 .right-sidebar-container > div > span {
     position: absolute;
-    left: 35%;
-    top: 26%;
+    right: 41%;
+    top: 28%;
 }
 
 .right-sidebar-container > div:hover {
     color: rgba(255, 255, 255, 0.7);
     background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
     cursor: pointer;
 }
 
 .active-color {
     color: rgba(255, 255, 255, 0.7);
     background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
 }
 
-.color-option-6 {
+.color-option-9 {
     margin-bottom: 91px;
-}
-
-#color-picker {
-    width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-
-.color-picker-container {
-    margin-bottom: 142px;
-    width: 36px;
-    height: 34px;
-    position: relative;
-}
-
-.background-color-title {
-    transform: rotate(-90deg);
-    position: absolute;
-    text-transform: uppercase;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.5);
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
-    padding: 0 10px;
-    letter-spacing: 0.1em;
-    left: -54px;
-    bottom: 285px;
-}
-
-#color-picker-label {
-    position: absolute;
-    margin: 4px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-color: #1C1C1C;
-    opacity: .8;
-    transition: 0.2s;
-    cursor: pointer;
-    border: solid 1px rgba(255, 255, 255, 0.6);
-    box-sizing: border-box;
-
-}
-
-#color-picker-label:hover  {
-    border: solid 1px rgba(255, 255, 255, 0.8);
 }

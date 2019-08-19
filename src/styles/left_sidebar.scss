@@ -1,12 +1,13 @@
 .left-sidebar  {
     position: fixed;
     left: 0;
-    bottom: 36px;
+    bottom: 40px;
     width: 36px;
     background-color: rgba(0, 0, 0, 0.2);
     color: rgba(255, 255, 255, 0.4);
     border-top: 2px solid rgba(0, 0, 0, 0.3);
     border-right: 2px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 .left-sidebar-container {
@@ -21,9 +22,9 @@
     color: rgba(255, 255, 255, 0.5);
     text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     padding: 0 10px;
-    left: -64px;
-    bottom: -89px;
     letter-spacing: 0.1em;
+    left: -63px;
+    bottom: -89px;
 }
 
 .left-sidebar-container > div {
@@ -37,21 +38,22 @@
 
 .left-sidebar-container > div > span {
     position: absolute;
-    left: 35%;
-    top: 26%;
+    left: 37%;
+    top: 28%;
 }
 
 .left-sidebar-container > div:hover {
     color: rgba(255, 255, 255, 0.7);
     background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
     cursor: pointer;
 }
 
 .active-visualizer {
     color: rgba(255, 255, 255, 0.7);
     background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
 }
-
 
 .visualizer-option-9 {
     margin-bottom: 162px;
