@@ -39,7 +39,7 @@ footer {
 }
 
 .file-input {
-    padding: 9px 0 0;
+    padding: 8px 0 0;
     font-size: 12px;
     height: 36px;
     border-right: solid 2px rgba(0, 0, 0, 0.3);
@@ -58,11 +58,14 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
     transition: 0.2s;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+
 }
     
 .file-input-container:hover {
     background-color: rgba(255, 255, 255, 0.6);
     color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 .file-input-container > label {

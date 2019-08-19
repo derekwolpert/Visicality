@@ -29,6 +29,11 @@
     letter-spacing: 0.1em;
     background-color: rgba(0, 0, 0, 0.2);
     height: 26px;
+    transition: 0.2s;
+}
+
+.background-color-title:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 #color-picker {

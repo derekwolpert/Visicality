@@ -25,6 +25,11 @@
     letter-spacing: 0.1em;
     left: -63px;
     bottom: -89px;
+    transition: 0.2s;
+}
+
+.left-sidebar-container > h3:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .left-sidebar-container > div {

@@ -25,6 +25,11 @@
     letter-spacing: 0.1em;
     right: -26px;
     bottom: -54px;
+    transition: 0.2s;
+}
+
+.colors-title:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .right-sidebar-container > div {
