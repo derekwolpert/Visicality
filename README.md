@@ -1,6 +1,5 @@
 # Audio-Visualizer Web Audio API + D3 Library Project
 
-
 ![Wireframe Image](demo_photo_1.png)
 
 ## Background & Overview
