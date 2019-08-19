@@ -1,6 +1,7 @@
 # Audio-Visualizer Web Audio API + D3 Library Project
 
-<video src="demo_video_1.mp4" poster="demo_photo_1.png" width="576" height="360" controls preload></video>
+
+![Wireframe Image](demo_photo_1.png)
 
 ## Background & Overview
 
@@ -10,7 +11,7 @@ The program contains a limited – yet varied – collection of built-in sounds.
 
 AVWAD3 aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
 
-<video src="demo_video_2.mp4" poster="demo_photo_2.png" width="576" height="360" controls preload></video>
+![Wireframe Image](demo_photo_2.png)
 
 ## Functionality & MVPs
 
