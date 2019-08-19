@@ -14,20 +14,21 @@ body {
     width: 100%;
 }
 
-#large-play > * {
+#large-play-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 168px;
-  height: 192px;
   transform: translate(-50%, -50%);
+}
+
+#large-play-container > * {
   font-size: 192px;
   color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: 0.2s;
 }
 
-#large-play > *:hover {
+#large-play-container > *:hover {
   color: rgba(255, 255, 255, 0.6);
 }
 

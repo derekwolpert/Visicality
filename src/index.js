@@ -263,27 +263,31 @@ window.onload = () => {
 
     file.onchange = function () {
 
-        playPause.classList.remove("fa-pause");
-        playPause.classList.add("fa-play");
-
         const files = this.files;
-        audio.src = URL.createObjectURL(files[0]);
 
-        trackName.innerHTML = `<span>${files[0].name}</span>`;
+        if (files.length > 0) {
 
-        if (!contextCreated) {
-            contextCreated = true;
+            audio.src = URL.createObjectURL(files[0]);
 
-            context = new AudioContext();
-            analyser = context.createAnalyser();
+            playPause.classList.remove("fa-pause");
+            playPause.classList.add("fa-play");
+            largePlayContainer.innerHTML = `<i class="fas fa-play"></i>`;
+            removeVisualizer();
 
-            let src = context.createMediaElementSource(audio);
-            src.connect(analyser);
-            analyser.connect(context.destination);
+            trackName.innerHTML = `<span>${files[0].name}</span>`;
+
+            if (!contextCreated) {
+                contextCreated = true;
+
+                context = new AudioContext();
+                analyser = context.createAnalyser();
+
+                let src = context.createMediaElementSource(audio);
+                src.connect(analyser);
+                analyser.connect(context.destination);
+            }
         }
-        largePlayContainer.innerHTML = `<i class="fas fa-play"></i>`;
     };
-
     window.onresize = () => {
         createVisualizer();
     };
