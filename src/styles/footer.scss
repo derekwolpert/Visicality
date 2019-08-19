@@ -35,7 +35,7 @@ footer {
 }
 
 #play-pause:hover {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .file-input {
@@ -53,18 +53,18 @@ footer {
     padding: 2px 6px ;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 6px;
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.5);
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
     transition: 0.2s;
-    border: 1px solid rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.3);
 
 }
     
 .file-input-container:hover {
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
@@ -114,9 +114,9 @@ footer {
 
 #playbar-progress {
     height: 8px;
+    margin: 1px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 28%;
     transition: 0.2s;
@@ -125,7 +125,6 @@ footer {
 
 #playbar:hover ~ #playbar-progress { 
     background-color: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 #playbar:hover { 
@@ -141,6 +140,10 @@ footer {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
 
+#time-progress:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 #time-progress > span {
     position: absolute;
     width: 100%;
@@ -154,6 +157,10 @@ footer {
     color: rgba(255, 255, 255, 0.6);
     position: relative;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#time-left:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 #time-left > span {
