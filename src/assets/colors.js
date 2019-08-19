@@ -6,4 +6,6 @@ export const spectralD3 = d3.interpolateSpectral;
 
 export const rainbowD3 = d3.interpolateRainbow;
 
-export const cubeHelixD3 = d3.interpolateCubehelixDefault;
+export const cubehelixD3 = d3.interpolateCubehelixDefault;
+
+export const sinebowD3 = d3.interpolateSinebow;

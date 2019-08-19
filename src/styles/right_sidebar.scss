@@ -1,19 +1,19 @@
-.left-sidebar  {
+.right-sidebar  {
     position: fixed;
-    left: 0;
+    right: 0;
     bottom: 36px;
     width: 36px;
     background-color: rgba(0, 0, 0, 0.2);
     color: rgba(255, 255, 255, 0.4);
     border-top: 2px solid rgba(0, 0, 0, 0.3);
-    border-right: 2px solid rgba(0, 0, 0, 0.3);
+    border-left: 2px solid rgba(0, 0, 0, 0.3);
 }
 
-.left-sidebar-container {
+.right-sidebar-container {
     position: relative;
 }
 
-.left-sidebar-container > h3 {
+.right-sidebar-container > h3 {
     transform: rotate(-90deg);
     position: absolute;
     text-transform: uppercase;
@@ -21,12 +21,12 @@
     color: rgba(255, 255, 255, 0.5);
     text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     padding: 0 10px;
-    left: -64px;
-    bottom: -89px;
+    left: -29px;
+    bottom: -54px;
     letter-spacing: 0.1em;
 }
 
-.left-sidebar-container > div {
+.right-sidebar-container > div {
     height: 36px;
     width: 36px;
     transition: 0.2s;
@@ -35,24 +35,23 @@
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-.left-sidebar-container > div > span {
+.right-sidebar-container > div > span {
     position: absolute;
     left: 35%;
     top: 26%;
 }
 
-.left-sidebar-container > div:hover {
+.right-sidebar-container > div:hover {
     color: rgba(255, 255, 255, 0.7);
     background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
 
-.active-visualizer {
+.active-color {
     color: rgba(255, 255, 255, 0.7);
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-
-.visualizer-option-9 {
-    margin-bottom: 162px;
+.color-option-6 {
+    margin-bottom: 91px;
 }

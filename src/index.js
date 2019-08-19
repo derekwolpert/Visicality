@@ -8,7 +8,7 @@ import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
 
-import { plasmaD3, viridisD3, spectralD3, rainbowD3, cubeHelixD3 } from "./assets/colors";
+import { viridisD3, plasmaD3, spectralD3, cubehelixD3, rainbowD3, sinebowD3 } from "./assets/colors";
 
 import "./styles/app.scss";
 
@@ -22,6 +22,7 @@ window.onload = () => {
     const timeProgress = document.getElementById('time-progress');
     const timeLeft = document.getElementById('time-left');
     const trackName = document.getElementById('track-name');
+    const largePlayContainer = document.getElementById('large-play-container');
 
     const barGraphButton = document.getElementById('bar-graph-button');
     const horizontalBarButton = document.getElementById('horizontal-bar-button');
@@ -45,7 +46,7 @@ window.onload = () => {
         fullScreen: fullScreenButton
     };
 
-    const visualizersArr = {
+    const visualizerArr = {
         barGraph: barGraph,
         horizontalBar: horizontalBar,
         circleGraph: circleGraph,
@@ -57,16 +58,42 @@ window.onload = () => {
         fullScreen: fullScreen
     };
 
+    const viridisButton = document.getElementById('viridis-button');
+    const plasmaButton = document.getElementById('plasma-button');
+    const spectralButton = document.getElementById('spectral-button');
+    const cubehelixButton = document.getElementById('cubehelix-button');
+    const rainbowButton = document.getElementById('rainbow-button');
+    const sinebowButton = document.getElementById('sinebow-button');
+
+    const colorButtons = {
+        viridisD3: viridisButton,
+        plasmaD3: plasmaButton,
+        spectralD3: spectralButton,
+        cubehelixD3: cubehelixButton,
+        rainbowD3: rainbowButton,
+        sinebowD3: sinebowButton,
+    };
+
+    const colorArr = {
+        viridisD3: viridisD3,
+        plasmaD3: plasmaD3,
+        spectralD3: spectralD3,
+        cubehelixD3: cubehelixD3,
+        rainbowD3: rainbowD3,
+        sinebowD3: sinebowD3,
+    };
+
     let contextCreated = false;
     let context;
     let analyser;
 
     let selectedVisualizer = "barGraph";
+    let selectedColor = "plasmaD3";
 
     const createVisualizer = () => {
         removeVisualizer();
         if (contextCreated) {
-            visualizersArr[selectedVisualizer](analyser, spectralD3);
+            visualizerArr[selectedVisualizer](analyser, colorArr[selectedColor]);
         }
     };
 
@@ -106,6 +133,34 @@ window.onload = () => {
     fullScreenButton.onclick = () => {
         switchVisualizer("fullScreen");
     };
+
+    const switchColor = (newColor) => {
+        if (selectedColor !== newColor) {
+            colorButtons[selectedColor].classList.remove("active-color");
+            selectedColor = newColor;
+            colorButtons[selectedColor].classList.add("active-color");
+            createVisualizer();
+        }
+    };
+
+    viridisButton.onclick = () => {
+        switchColor("viridisD3");
+    };
+    plasmaButton.onclick = () => {
+        switchColor("plasmaD3");
+    };
+    spectralButton.onclick = () => {
+        switchColor("spectralD3");
+    };
+    cubehelixButton.onclick = () => {
+        switchColor("cubehelixD3");
+    };
+    rainbowButton.onclick = () => {
+        switchColor("rainbowD3");
+    };
+    sinebowButton.onclick = () => {
+        switchColor("sinebowD3");
+    };
     
     const removeVisualizer = () => {
         if (document.getElementById('visualizer-svg')) {
@@ -124,14 +179,21 @@ window.onload = () => {
             if (audio.paused) {
                 createVisualizer();
                 audio.play();
+                largePlayContainer.innerHTML = "";
+
             } else {
+                removeVisualizer();
                 audio.pause();
+                largePlayContainer.innerHTML = `<i class="fas fa-play"></i>`;
             }
         }
     };
 
-
     playPause.onclick = () => {
+        switchPlayPause();
+    };
+
+    largePlayContainer.onclick = () => {
         switchPlayPause();
     };
 
@@ -141,7 +203,6 @@ window.onload = () => {
             if (e.keyCode == 32) {
                 switchPlayPause();
             }
-        
             if (e.keyCode == 37) {
                 if (audio.currentTime < 5) {
                     audio.currentTime = 0;
@@ -220,6 +281,7 @@ window.onload = () => {
             src.connect(analyser);
             analyser.connect(context.destination);
         }
+        largePlayContainer.innerHTML = `<i class="fas fa-play"></i>`;
     };
 
     window.onresize = () => {

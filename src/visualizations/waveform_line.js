@@ -55,7 +55,7 @@ export const waveformLinear = function (analyser, colors) {
             .datum(dataArray)
             .attr("d", line)
             .attr("stroke", function (d) { return loopingColor(colorOffset); })
-            .attr("stroke-width", function (d) { return w / 960; });
+            .attr("stroke-width", function (d) { return w / 720; });
     }
     renderFrame();
 };

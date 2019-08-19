@@ -69,7 +69,7 @@ export const symetricalLine = function (analyser, colors) {
             .datum([...dataArray.slice().reverse(), ...dataArray, ...dataArray.slice().reverse(), ...dataArray])
             .attr("d", line)
             .attr("stroke", function (d) { return loopingColor(colorOffset); })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 960) : (h / 960)); });
+            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 720) : (h / 720)); });
     }
     renderFrame();
 };

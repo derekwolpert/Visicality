@@ -5,7 +5,32 @@ body {
     font-family: 'Open Sans', sans-serif;
     color: white;
     background-color: black;
+    position: relative;
+}
+
+#large-play {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+#large-play > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 168px;
+  height: 192px;
+  transform: translate(-50%, -50%);
+  font-size: 192px;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#large-play > *:hover {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 @import "./left_sidebar.scss";
+@import "./right_sidebar.scss";
 @import "./footer.scss";
