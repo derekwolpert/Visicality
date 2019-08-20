@@ -1,6 +1,6 @@
 export const circleGraph = function (analyser, colors) {
 
-    analyser.fftSize = 128;
+    analyser.fftSize = 256;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
@@ -28,9 +28,7 @@ export const circleGraph = function (analyser, colors) {
         svg.selectAll('circle')
             .data(dataArray)
             .attr('r', function (d) { return ((((w > h ? w : h)) / 2) * (d / 255)); })
-            .attr("fill", function (d, i) { return colorScale(i); })
-            .attr("stroke", function (d, i) { return "black"; })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 960) : (h / 960)); });
+            .attr("fill", function (d, i) { return colorScale(i); });
     }
     renderFrame();
 };

@@ -1,6 +1,6 @@
 export const symetricalLine = function (analyser, colors) {
 
-    analyser.fftSize = 1024;
+    analyser.fftSize = 2048;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
@@ -68,8 +68,7 @@ export const symetricalLine = function (analyser, colors) {
         svg.selectAll("path")
             .datum([...dataArray.slice().reverse(), ...dataArray, ...dataArray.slice().reverse(), ...dataArray])
             .attr("d", line)
-            .attr("stroke", function (d) { return loopingColor(colorOffset); })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 720) : (h / 720)); });
+            .attr("fill", function (d) { return loopingColor(colorOffset); });
     }
     renderFrame();
 };

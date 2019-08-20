@@ -1,6 +1,6 @@
 export const symetricalCircle = function (analyser, colors) {
 
-    analyser.fftSize = 512;
+    analyser.fftSize = 2048;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
@@ -67,7 +67,6 @@ export const symetricalCircle = function (analyser, colors) {
             .attr("fill", function (d) { return loopingColor(colorOffset); })
             .attr("stroke", function (d) { return "black"; })
             .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 720) : (h / 720)); });
-
     }
     renderFrame();
 };
