@@ -15,31 +15,16 @@ import "./styles/app.scss";
 
 window.onload = () => {
 
-    const file = document.getElementById("file-input");
     const audio = document.getElementById("audio");
     const playPause = document.getElementById("play-pause");
-    const playbar = document.getElementById("playbar");
     const progressBar = document.getElementById('playbar-progress');
     const timeProgress = document.getElementById('time-progress');
     const timeLeft = document.getElementById('time-left');
-    const trackName = document.getElementById('track-name');
-    const largePlay = document.getElementById('large-play');
     const largePlayIcon = document.getElementById("large-play-icon");
-    
-    const gainBar = document.getElementById("gain-bar");
     const gainBarValue = document.getElementById("gain-bar-value");
-
-    const backgroundColorsTitle = document.getElementById("background-color-title");
-    
-    const colorsTitle = document.getElementById("colors-title");
-    const visualizerTitle = document.getElementById("visualizer-title");
-    const gainTitle = document.getElementById("gain-title");
-
-
     const colorPicker = document.getElementById('color-picker');
     const body = document.getElementById("body");
     const colorPickerLabel = document.getElementById("color-picker-label");
-
     const backgroundColorHeader = document.getElementById("background-color-header");
     const leftSidebar = document.getElementById("left-sidebar");
     const rightSidebar = document.getElementById("right-sidebar");
@@ -94,7 +79,7 @@ window.onload = () => {
         colorPickerLabel.style.backgroundColor = colorPicker.value;
     };
 
-    backgroundColorsTitle.onclick = () => {
+    document.getElementById("background-color-title").onclick = () => {
         setRandomColor();
     };
 
@@ -108,28 +93,61 @@ window.onload = () => {
     const waveformCircleButton = document.getElementById('waveform-circle-button');
     const fullScreenButton = document.getElementById('full-screen-button');
 
-    const visualizerButtons = {
-        barGraph: barGraphButton,
-        horizontalBar: horizontalBarButton,
-        circleGraph: circleGraphButton,
-        circleLinear: circleLinearButton,
-        symetricalLine: symetricalLineButton,
-        symetricalCircle: symetricalCircleButton,
-        waveformLinear: waveformLinearButton,
-        waveformCircle: waveformCircleButton,
-        fullScreen: fullScreenButton
-    };
-
-    const visualizerArr = {
-        barGraph: barGraph,
-        horizontalBar: horizontalBar,
-        circleGraph: circleGraph,
-        circleLinear: circleLinear,
-        symetricalLine: symetricalLine,
-        symetricalCircle: symetricalCircle,
-        waveformLinear: waveformLinear,
-        waveformCircle: waveformCircle,
-        fullScreen: fullScreen
+    const visualizerObj = {
+        barGraph: { 
+            button: barGraphButton, 
+            visualizer: barGraph, 
+            prev: "fullScreen", 
+            next: "horizontalBar",
+        },
+        horizontalBar: { 
+            button: horizontalBarButton, 
+            visualizer: horizontalBar,
+            prev: "barGraph",
+            next: "circleGraph",
+        },
+        circleGraph: { 
+            button: circleGraphButton, 
+            visualizer: circleGraph,
+            prev: "horizontalBar",
+            next: "circleLinear",
+        },
+        circleLinear: { 
+            button: circleLinearButton, 
+            visualizer: circleLinear,
+            prev: "circleGraph",
+            next: "symetricalLine",
+        },
+        symetricalLine: { 
+            button: symetricalLineButton, 
+            visualizer: symetricalLine,
+            prev: "circleLinear",
+            next: "symetricalCircle",
+        },
+        symetricalCircle: { 
+            button: symetricalCircleButton, 
+            visualizer: symetricalCircle,
+            prev: "symetricalLine",
+            next: "waveformLinear",
+        },
+        waveformLinear: { 
+            button: waveformLinearButton, 
+            visualizer: waveformLinear,
+            prev: "symetricalCircle",
+            next: "waveformCircle",
+        },
+        waveformCircle: { 
+            button: waveformCircleButton, 
+            visualizer: waveformCircle,
+            prev: "waveformLinear",
+            next: "fullScreen",
+        },
+        fullScreen: { 
+            button: fullScreenButton, 
+            visualizer: fullScreen,
+            prev: "waveformCircle",
+            next: "barGraph",
+        }
     };
 
     const viridisButton = document.getElementById('viridis-button');
@@ -142,37 +160,62 @@ window.onload = () => {
     const ylGnBuButton = document.getElementById('ylgnbu-button');
     const greysButton = document.getElementById('greys-button');
 
-    const colorButtons = {
-        viridisD3: viridisButton,
-        plasmaD3: plasmaButton,
-        spectralD3: spectralButton,
-        cubehelixD3: cubehelixButton,
-        rainbowD3: rainbowButton,
-        sinebowD3: sinebowButton,
-        ylOrRdD3: ylOrRdDButton,
-        ylGnBuD3: ylGnBuButton,
-        greysD3: greysButton
+    const colorObj = {
+        plasmaD3: {
+            button: plasmaButton,
+            color: plasmaD3,
+            prev: "greysD3",
+            next: "viridisD3",
+        },
+        viridisD3: {
+            button: viridisButton,
+            color: viridisD3,
+            prev: "plasmaD3",
+            next: "rainbowD3",
+        },
+        rainbowD3: {
+            button: rainbowButton,
+            color: rainbowD3,
+            prev: "viridisD3",
+            next: "spectralD3",
+        },
+        spectralD3: {
+            button: spectralButton,
+            color: spectralD3,
+            prev: "rainbowD3",
+            next: "cubehelixD3",
+        },
+        cubehelixD3: {
+            button: cubehelixButton,
+            color: cubehelixD3,
+            prev: "spectralD3",
+            next: "sinebowD3",
+        },
+        sinebowD3: {
+            button: sinebowButton,
+            color: sinebowD3,
+            prev: "cubehelixD3",
+            next: "ylOrRdD3",
+        },
+        ylOrRdD3: {
+            button: ylOrRdDButton,
+            color: ylOrRdD3,
+            prev: "sinebowD3",
+            next: "ylGnBuD3",
+        },
+        ylGnBuD3: {
+            button: ylGnBuButton,
+            color: ylGnBuD3,
+            prev: "ylOrRdD3",
+            next: "greysD3",
+        },
+        greysD3: {
+            button: greysButton,
+            color: greysD3,
+            prev: "ylGnBuD3",
+            next: "plasmaD3",
+        }
     };
-
-    
-    const colorArr = {
-        plasmaD3: plasmaD3,
-        viridisD3: viridisD3,
-        rainbowD3: rainbowD3,
-        spectralD3: spectralD3,
-        cubehelixD3: cubehelixD3,
-        sinebowD3: sinebowD3,
-        ylOrRdD3: ylOrRdD3,
-        ylGnBuD3: ylGnBuD3,
-        greysD3: greysD3
-    };
-
-    let AudioContext = window.AudioContext || window.webkitAudioContext;
-
-    let contextCreated = false;
-    let context;
-    let analyser;
-    let gain;
 
     let selectedVisualizer = "barGraph";
     let selectedColor = "plasmaD3";
@@ -180,35 +223,24 @@ window.onload = () => {
     const createVisualizer = () => {
         removeVisualizer();
         if (contextCreated) {
-            visualizerArr[selectedVisualizer](analyser, colorArr[selectedColor]);
+            visualizerObj[selectedVisualizer].visualizer(analyser, colorObj[selectedColor].color);
         }
     };
 
     const switchVisualizer = (newVisualizer) => {
         if (selectedVisualizer !== newVisualizer) {
-            visualizerButtons[selectedVisualizer].classList.remove("active-visualizer");
+            visualizerObj[selectedVisualizer].button.classList.remove("active-visualizer");
             selectedVisualizer = newVisualizer;
-            visualizerButtons[selectedVisualizer].classList.add("active-visualizer");
+            visualizerObj[selectedVisualizer].button.classList.add("active-visualizer");
             createVisualizer();
         }
     };
 
     const prevVisualizer = () => {
-        const currentIndex = Object.keys(visualizerArr).indexOf(selectedVisualizer);
-        const prevVisualizer = currentIndex === 0 ?
-            Object.keys(visualizerArr)[Object.keys(visualizerArr).length - 1] :
-            Object.keys(visualizerArr)[(currentIndex - 1)];
-        switchVisualizer(prevVisualizer);
+        switchVisualizer(visualizerObj[selectedVisualizer].prev);
     };
-
-    const nextVisualizer = () =>  {
-        const currentIndex = Object.keys(visualizerArr).indexOf(selectedVisualizer);
-        const nextVisualizer = Object.keys(visualizerArr)[(currentIndex + 1) % Object.keys(visualizerArr).length];
-        switchVisualizer(nextVisualizer);
-    };
-
-    visualizerTitle.onclick = () => {
-        nextVisualizer();
+    const nextVisualizer = () => {
+        switchVisualizer(visualizerObj[selectedVisualizer].next);
     };
 
     barGraphButton.onclick = () => {
@@ -239,31 +271,31 @@ window.onload = () => {
         switchVisualizer("fullScreen");
     };
 
+    const removeVisualizer = () => {
+        if (document.getElementById('visualizer-svg')) {
+            document.getElementById('visualizer-svg').remove();
+        }
+    };
+
+    document.getElementById("visualizer-title").onclick = () => {
+        nextVisualizer();
+    };
+
     const switchColor = (newColor) => {
         if (selectedColor !== newColor) {
-            colorButtons[selectedColor].classList.remove("active-color");
+            colorObj[selectedColor].button.classList.remove("active-color");
             selectedColor = newColor;
-            colorButtons[selectedColor].classList.add("active-color");
+            colorObj[selectedColor].button.classList.add("active-color");
             createVisualizer();
         }
     };
 
     const prevColor = () => {
-        const currentIndex = Object.keys(colorArr).indexOf(selectedColor);
-        const prevColor = currentIndex === 0 ? 
-            Object.keys(colorArr)[Object.keys(colorArr).length - 1] :
-            Object.keys(colorArr)[(currentIndex - 1)];
-        switchColor(prevColor);
-    };
 
+        switchColor(colorObj[selectedColor].prev);
+    };
     const nextColor = () => {
-        const currentIndex = Object.keys(colorArr).indexOf(selectedColor);
-        const nextColor = Object.keys(colorArr)[(currentIndex + 1) % Object.keys(colorArr).length];
-        switchColor(nextColor);
-    };
-
-    colorsTitle.onclick = () => {
-        nextColor();
+        switchColor(colorObj[selectedColor].next);
     };
 
     viridisButton.onclick = () => {
@@ -294,11 +326,16 @@ window.onload = () => {
         switchColor("greysD3");
     };
 
-    const removeVisualizer = () => {
-        if (document.getElementById('visualizer-svg')) {
-            document.getElementById('visualizer-svg').remove();
-        }
+    document.getElementById("colors-title").onclick = () => {
+        nextColor();
     };
+
+    let AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    let contextCreated = false;
+    let context;
+    let analyser;
+    let gain;
 
     const updateDisplayTime = () => {
         progressBar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
@@ -325,7 +362,7 @@ window.onload = () => {
         switchPlayPause();
     };
 
-    largePlay.onclick = () => {
+    document.getElementById('large-play').onclick = () => {
         switchPlayPause();
     };
 
@@ -381,7 +418,7 @@ window.onload = () => {
         gainBarValue.style.width = `${193 * value}px`;
     };
 
-    gainBar.onclick = (e) => {
+    document.getElementById("gain-bar").onclick = (e) => {
         if (context) {
             const bounds = e.currentTarget.getBoundingClientRect();
             const percent = ((e.clientX - (bounds.left)) / bounds.width);
@@ -389,14 +426,13 @@ window.onload = () => {
         }
     };
 
-    gainTitle.onclick = () => {
+    document.getElementById("gain-title").onclick = () => {
         if (gain.gain.value !== 0) {
             updateGain(0);
         } else {
             updateGain(1);
         }
     };
-
 
     audio.onpause = () => {
         playPause.classList.remove("fa-pause");
@@ -413,7 +449,7 @@ window.onload = () => {
         timeOut = setTimeout(() => hideElements(), 3000);
     };
 
-    playbar.onclick = (e) => {
+    document.getElementById("playbar").onclick = (e) => {
         if (audio.src !== "") {
             const bounds = e.currentTarget.getBoundingClientRect();
             const percent = ((e.clientX - (bounds.left)) / bounds.width);
@@ -441,7 +477,7 @@ window.onload = () => {
         } 
     }, 1000);
 
-    file.onchange = function () {
+    document.getElementById("file-input").onchange = function () {
 
         const files = this.files;
 
@@ -456,7 +492,7 @@ window.onload = () => {
             largePlayIcon.style.cursor = "pointer";
             removeVisualizer();
 
-            trackName.innerHTML = `<span>${files[0].name}</span>`;
+            document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
 
             if (!contextCreated) {
                 contextCreated = true;
