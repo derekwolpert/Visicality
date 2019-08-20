@@ -28,7 +28,6 @@ export const barGraph = function (analyser, colors) {
     function renderFrame() {
         requestAnimationFrame(renderFrame);
         analyser.getByteFrequencyData(dataArray);
-
         svg.selectAll('rect')
             .data(dataArray)
             .attr("height", function (d) { return (h - y(d)); })

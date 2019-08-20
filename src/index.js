@@ -25,11 +25,16 @@ window.onload = () => {
     const trackName = document.getElementById('track-name');
     const largePlay = document.getElementById('large-play');
     const largePlayIcon = document.getElementById("large-play-icon");
+    
+    const gainBar = document.getElementById("gain-bar");
+    const gainBarValue = document.getElementById("gain-bar-value");
 
     const backgroundColorsTitle = document.getElementById("background-color-title");
     
     const colorsTitle = document.getElementById("colors-title");
     const visualizerTitle = document.getElementById("visualizer-title");
+    const gainTitle = document.getElementById("gain-title");
+
 
     const colorPicker = document.getElementById('color-picker');
     const body = document.getElementById("body");
@@ -39,6 +44,7 @@ window.onload = () => {
     const leftSidebar = document.getElementById("left-sidebar");
     const rightSidebar = document.getElementById("right-sidebar");
     const footerAudioPlayer = document.getElementById("footer-audio-player");
+    const rightGainBar = document.getElementById("right-gain-bar");
 
     const hideElements = () => {
         if (!audio.paused) {
@@ -46,6 +52,7 @@ window.onload = () => {
             leftSidebar.style.opacity = 0;
             rightSidebar.style.opacity = 0;
             footerAudioPlayer.style.opacity = 0;
+            rightGainBar.style.opacity = 0;
         }
     };
 
@@ -54,20 +61,21 @@ window.onload = () => {
         leftSidebar.style.opacity = "";
         rightSidebar.style.opacity = "";
         footerAudioPlayer.style.opacity = "";
+        rightGainBar.style.opacity = "";
     };
  
-    let timeOut = setTimeout(() => hideElements(), 4000);
+    let timeOut = setTimeout(() => hideElements(), 3000);
 
     document.onmousemove = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 4000);
+        timeOut = setTimeout(() => hideElements(), 3000);
     };
 
     document.onclick = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 4000);
+        timeOut = setTimeout(() => hideElements(), 3000);
     };
 
     colorPicker.onchange = function () {
@@ -159,9 +167,12 @@ window.onload = () => {
         greysD3: greysD3
     };
 
+    let AudioContext = window.AudioContext || window.webkitAudioContext;
+
     let contextCreated = false;
     let context;
     let analyser;
+    let gain;
 
     let selectedVisualizer = "barGraph";
     let selectedColor = "plasmaD3";
@@ -342,27 +353,64 @@ window.onload = () => {
                 updateDisplayTime();
             }   
         }
-
+        if (e.keyCode === 65) prevColor();
+        if (e.keyCode === 69) setRandomColor();
+        if (e.keyCode === 68) nextColor();
         if (e.keyCode === 87) prevVisualizer();
         if (e.keyCode === 83) nextVisualizer();
-        if (e.keyCode === 38) prevColor();
-        if (e.keyCode === 40) nextColor();
-        if (e.keyCode === 68) setRandomColor();
 
+        if (e.keyCode === 38) {
+            if (gain.gain.value < 0.9) {
+                updateGain(gain.gain.value + 0.1);
+            } else if (gain.gain.value !== 1) {
+                updateGain(1);
+            }
+        }
+
+        if (e.keyCode === 40) {
+            if (gain.gain.value > 0.1) {
+                updateGain(gain.gain.value - 0.1);
+            } else if (gain.gain.value !== 0) {
+                updateGain(0);
+            }
+        }
     };
+
+    const updateGain = (value) => {
+        gain.gain.value = value;
+        gainBarValue.style.width = `${193 * value}px`;
+    };
+
+    gainBar.onclick = (e) => {
+        if (context) {
+            const bounds = e.currentTarget.getBoundingClientRect();
+            const percent = ((e.clientX - (bounds.left)) / bounds.width);
+            updateGain(percent);
+        }
+    };
+
+    gainTitle.onclick = () => {
+        if (gain.gain.value !== 0) {
+            updateGain(0);
+        } else {
+            updateGain(1);
+        }
+    };
+
 
     audio.onpause = () => {
         playPause.classList.remove("fa-pause");
         playPause.classList.add("fa-play");
         largePlayIcon.style.opacity = 1;
         largePlayIcon.style.cursor = "pointer";
+        removeVisualizer();
         showElements();
     };
 
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
-        timeOut = setTimeout(() => hideElements(), 4000);
+        timeOut = setTimeout(() => hideElements(), 3000);
     };
 
     playbar.onclick = (e) => {
@@ -400,6 +448,7 @@ window.onload = () => {
         if (files.length > 0) {
 
             audio.src = URL.createObjectURL(files[0]);
+            audio.load();
 
             playPause.classList.remove("fa-pause");
             playPause.classList.add("fa-play");
@@ -414,9 +463,14 @@ window.onload = () => {
 
                 context = new AudioContext();
                 analyser = context.createAnalyser();
+                analyser.minDecibels = -100;
+                analyser.maxDecibels = -15;
+                gain = context.createGain();
 
                 let src = context.createMediaElementSource(audio);
-                src.connect(analyser);
+
+                src.connect(gain);
+                gain.connect(analyser);
                 analyser.connect(context.destination);
             }
         }

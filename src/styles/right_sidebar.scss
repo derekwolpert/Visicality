@@ -1,7 +1,7 @@
 .right-sidebar  {
     position: fixed;
     right: 0;
-    bottom: 44px;
+    bottom: 92px;
     width: 36px;
     background-color: rgba(0, 0, 0, 0.4);
     color: rgba(255, 255, 255, 0.6);
@@ -70,3 +70,91 @@
 .color-option-9 {
     margin-bottom: 91px;
 }
+
+.right-gain-bar {
+    position: fixed;
+    right: 0px;
+    bottom: 44px;
+    height: 36px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 2px solid rgba(0, 0, 0, 0.5);
+    border-left: 2px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+#right-gain-bar {
+    transition: 1s;
+}
+
+.right-gain-container {
+    position: relative;
+}
+
+.gain-title {
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    border-right: 2px solid rgba(0, 0, 0, 0.4);
+    padding: 10px 11px;
+    letter-spacing: 0.1em;
+    right: 233px;
+    bottom: -36px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.gain-title:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-right: 2px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+.gain-container {
+    position: absolute; 
+}
+
+.gain-bar-container {
+    position: relative;
+    height: 36px;
+    width: 233px;
+    right: -67px;
+}
+
+#gain-bar {
+    margin: 15px 20px 0 20px;
+    height: 8px;
+    width: 193px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    position: fixed;
+    transition: 0.2s;
+    z-index: 10;
+    cursor: pointer;
+}
+
+
+#gain-bar-value {
+    margin: 15px 20px 0 21px;
+    height: 8px;
+    width: 193px;
+    bottom: 58px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    position: fixed;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#gain-bar:hover ~ #gain-bar-value { 
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#gain-bar:hover { 
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
