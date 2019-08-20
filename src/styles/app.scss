@@ -24,9 +24,10 @@ body {
 
 #large-play-container > * {
   font-size: 96px;
-  color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
   transition: 0.2s;
+  opacity: 0;
+  filter: drop-shadow(0 0 1px black);
 }
 
 #large-play-container > *:hover {

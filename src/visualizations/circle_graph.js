@@ -30,7 +30,7 @@ export const circleGraph = function (analyser, colors) {
             .attr('r', function (d) { return ((((w > h ? w : h)) / 2) * (d / 255)); })
             .attr("fill", function (d, i) { return colorScale(i); })
             .attr("stroke", function (d, i) { return "black"; })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 720) : (h / 720)); });
+            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 960) : (h / 960)); });
     }
     renderFrame();
 };

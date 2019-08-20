@@ -1,13 +1,17 @@
 .left-sidebar  {
     position: fixed;
     left: 0;
-    bottom: 40px;
+    bottom: 44px;
     width: 36px;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.4);
-    border-top: 2px solid rgba(0, 0, 0, 0.3);
-    border-right: 2px solid rgba(0, 0, 0, 0.3);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 2px solid rgba(0, 0, 0, 0.5);
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+#left-sidebar {
+    transition: 1s;
 }
 
 .left-sidebar-container {
@@ -19,17 +23,19 @@
     position: absolute;
     text-transform: uppercase;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.5);
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
-    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    padding: 11px 11px;
     letter-spacing: 0.1em;
-    left: -63px;
-    bottom: -89px;
+    left: -64px;
+    bottom: -100px;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .left-sidebar-container > h3:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .left-sidebar-container > div {
@@ -37,8 +43,8 @@
     width: 36px;
     transition: 0.2s;
     position: relative;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .left-sidebar-container > div > span {
@@ -48,16 +54,16 @@
 }
 
 .left-sidebar-container > div:hover {
-    color: rgba(255, 255, 255, 0.7);
-    background-color: rgba(0, 0, 0, 0.4);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3) !important;
     cursor: pointer;
 }
 
 .active-visualizer {
-    color: rgba(255, 255, 255, 0.7);
-    background-color: rgba(0, 0, 0, 0.4);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3) !important;
 }
 
 .visualizer-option-9 {

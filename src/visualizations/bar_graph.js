@@ -22,8 +22,8 @@ export const barGraph = function (analyser, colors) {
     svg.selectAll("rect")
         .data([...dataArray, ...dataArray.slice().reverse()])
         .enter().append("rect")
-        .attr("width", function (d) { return (w / dataArray.length); })
-        .attr("x", function (d, i) { return ((w / dataArray.length) * i); });
+        .attr("width", function (d) { return (w / dataArray.length) * 0.8; })
+        .attr("x", function (d, i) { return (((w / dataArray.length) * i) + ((w / dataArray.length) * 0.1)); });
 
     function renderFrame() {
         requestAnimationFrame(renderFrame);
@@ -33,9 +33,7 @@ export const barGraph = function (analyser, colors) {
             .data(dataArray)
             .attr("height", function (d) { return (h - y(d)); })
             .attr("y", function (d) { return y(d); })
-            .attr('fill', function (d) { return d === 0 ? "black" : colorScale(d); })
-            .attr("stroke", function (d, i) { return "black"; })
-            .attr("stroke-width", function (d, i) { return ((w / (dataArray.length)) * 0.2); });
+            .attr('fill', function (d) { return d === 0 ? "black" : colorScale(d); });
     }
     renderFrame();
 };

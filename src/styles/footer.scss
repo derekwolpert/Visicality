@@ -13,19 +13,23 @@ footer {
     bottom: 0;
     width: 100%;
     height: 36px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
 }
 
+#footer-audio-player {
+    transition: 1s;
+}
+
 .footer-audio-container {
-    border-top: solid 2px rgba(0, 0, 0, 0.3);
+    border-top: solid 2px rgba(0, 0, 0, 0.5);
     display: flex;
 }
 
 .play-pause {
     padding: 7px 20px 0 20px;
-    border-right: solid 2px rgba(0, 0, 0, 0.3);
-    color: rgba(255, 255, 255, 0.4);
+    border-right: solid 2px rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     transition: 0.2s;
     font-size: 20px;
 }
@@ -35,14 +39,14 @@ footer {
 }
 
 #play-pause:hover {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .file-input {
     padding: 8px 0 0;
     font-size: 12px;
     height: 36px;
-    border-right: solid 2px rgba(0, 0, 0, 0.3);
+    border-right: solid 2px rgba(0, 0, 0, 0.5);
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -51,21 +55,21 @@ footer {
 .file-input-container {
     margin: 0 20px;
     padding: 2px 6px ;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 6px;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.7);
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
     transition: 0.2s;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.5);
 
 }
     
 .file-input-container:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-    color: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .file-input-container > label {
@@ -77,9 +81,9 @@ footer {
 #track-name {
     font-size: 12px;
     padding: 11px 20px 0 20px;
-    color: rgba(255, 255, 255, 0.5);
-    border-right: solid 2px rgba(0, 0, 0, 0.3);
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    border-right: solid 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
     max-width: 250px;
     white-space: nowrap; 
     overflow: hidden;
@@ -91,7 +95,7 @@ footer {
 }
 
 #track-name > span:hover {
-   color: rgba(255, 255, 255, 0.8); 
+   color: rgba(255, 255, 255, 1); 
 }
 
 .playbar-container {
@@ -102,9 +106,9 @@ footer {
 #playbar {
     height: 8px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 28%;
     transition: 0.2s;
@@ -115,7 +119,7 @@ footer {
 #playbar-progress {
     height: 8px;
     margin: 1px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 5px;
     position: absolute;
     top: 28%;
@@ -124,24 +128,24 @@ footer {
 }
 
 #playbar:hover ~ #playbar-progress { 
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 #playbar:hover { 
-    border: 1px solid rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 
 #time-progress {
     width: 60px;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     position: relative;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 #time-progress:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1);
 }
 
 #time-progress > span {
@@ -154,13 +158,13 @@ footer {
 #time-left {
     width: 60px;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     position: relative;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 #time-left:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1);
 }
 
 #time-left > span {

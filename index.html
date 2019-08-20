@@ -13,21 +13,27 @@
 </head>
 <body id="body" >      
 
-    <section id="large-play"><span id="large-play-container"></span></section>
+    <section id="large-play">
+        <span id="large-play-container">
+            <i class="fas fa-play" id="large-play-icon" ></i>
+        </span>
+    </section>
 
-    <section class="background-color-header">
+    <section class="background-color-header" id="background-color-header">
         <div class="background-color-header-container">
             <div class="background-color-title-container">
-                <h3 class="background-color-title">Background Color</h3>
+                <h3 class="background-color-title" id="background-color-title">
+                    Background Color
+                </h3>
             </div>
-            <input type="color" id="color-picker" value="#1C1C1C">
             <div class="color-picker-container">
                 <label for="color-picker" id="color-picker-label"></label>
             </div>
         </div>
     </section>
+    <input type="color" id="color-picker" value="#1C1C1C">
 
-    <section class="left-sidebar">
+    <section class="left-sidebar" id="left-sidebar">
 
         <div class="left-sidebar-container">
             <div class="visualizer-option-1 active-visualizer" id="bar-graph-button">
@@ -57,16 +63,17 @@
             <div class="visualizer-option-9" id="full-screen-button">
                 <span>9</span>
             </div>
-            <h3>Visualizations</h3>
+            <h3 id="visualizer-title">Visualizations</h3>
         </div>
     </section>
 
-    <section class="right-sidebar">
+    <section class="right-sidebar" id="right-sidebar">
     
             <div class="right-sidebar-container">
 
-
-                <h3 class="colors-title">Colors</h3>
+                <h3 class="colors-title" id="colors-title">
+                    Colors
+                </h3>
                 <div class="color-option-1 active-color" id="plasma-button">
                     <span>1</span>
                 </div>
@@ -82,7 +89,6 @@
                 <div class="color-option-4" id="cubehelix-button">
                     <span>5</span>
                 </div>
-
                 <div class="color-option-6" id="sinebow-button">
                     <span>6</span>
                 </div>
@@ -99,7 +105,7 @@
     
     </section>
 
-    <footer class="footer-audio-player">
+    <footer class="footer-audio-player" id="footer-audio-player">
         <section class="footer-audio-container">
             <div class="play-pause">
                 <i class="fas fa-play" id="play-pause"></i>

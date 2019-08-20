@@ -7,6 +7,7 @@ import { symetricalCircle } from "./visualizations/symetrical_circle";
 import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
+
 import { viridisD3, plasmaD3, spectralD3, cubehelixD3, rainbowD3, 
     sinebowD3, ylOrRdD3, ylGnBuD3, greysD3 } from "./assets/colors";
 
@@ -23,15 +24,70 @@ window.onload = () => {
     const timeLeft = document.getElementById('time-left');
     const trackName = document.getElementById('track-name');
     const largePlay = document.getElementById('large-play');
-    const largePlayContainer = document.getElementById('large-play-container');
+    const largePlayIcon = document.getElementById("large-play-icon");
+
+    const backgroundColorsTitle = document.getElementById("background-color-title");
+    
+    const colorsTitle = document.getElementById("colors-title");
+    const visualizerTitle = document.getElementById("visualizer-title");
 
     const colorPicker = document.getElementById('color-picker');
     const body = document.getElementById("body");
     const colorPickerLabel = document.getElementById("color-picker-label");
 
+    const backgroundColorHeader = document.getElementById("background-color-header");
+    const leftSidebar = document.getElementById("left-sidebar");
+    const rightSidebar = document.getElementById("right-sidebar");
+    const footerAudioPlayer = document.getElementById("footer-audio-player");
+
+    const hideElements = () => {
+        if (!audio.paused) {
+            backgroundColorHeader.style.opacity = 0;
+            leftSidebar.style.opacity = 0;
+            rightSidebar.style.opacity = 0;
+            footerAudioPlayer.style.opacity = 0;
+        }
+    };
+
+    const showElements = () => {
+        backgroundColorHeader.style.opacity = "";
+        leftSidebar.style.opacity = "";
+        rightSidebar.style.opacity = "";
+        footerAudioPlayer.style.opacity = "";
+    };
+ 
+    let timeOut = setTimeout(() => hideElements(), 4000);
+
+    document.onmousemove = () => {
+        showElements();
+        clearTimeout(timeOut);
+        timeOut = setTimeout(() => hideElements(), 4000);
+    };
+
+    document.onclick = () => {
+        showElements();
+        clearTimeout(timeOut);
+        timeOut = setTimeout(() => hideElements(), 4000);
+    };
+
     colorPicker.onchange = function () {
         body.style.backgroundColor = colorPicker.value;
         colorPickerLabel.style.backgroundColor = colorPicker.value;
+    };
+
+    const setRandomColor = () => {
+        const chars = "0123456789ABCDEF";
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += chars[Math.floor(Math.random() * 16)];
+        }
+        colorPicker.value = color;
+        body.style.backgroundColor = colorPicker.value;
+        colorPickerLabel.style.backgroundColor = colorPicker.value;
+    };
+
+    backgroundColorsTitle.onclick = () => {
+        setRandomColor();
     };
 
     const barGraphButton = document.getElementById('bar-graph-button');
@@ -91,13 +147,12 @@ window.onload = () => {
     };
 
     
-
     const colorArr = {
         plasmaD3: plasmaD3,
         viridisD3: viridisD3,
+        rainbowD3: rainbowD3,
         spectralD3: spectralD3,
         cubehelixD3: cubehelixD3,
-        rainbowD3: rainbowD3,
         sinebowD3: sinebowD3,
         ylOrRdD3: ylOrRdD3,
         ylGnBuD3: ylGnBuD3,
@@ -125,6 +180,24 @@ window.onload = () => {
             visualizerButtons[selectedVisualizer].classList.add("active-visualizer");
             createVisualizer();
         }
+    };
+
+    const prevVisualizer = () => {
+        const currentIndex = Object.keys(visualizerArr).indexOf(selectedVisualizer);
+        const prevVisualizer = currentIndex === 0 ?
+            Object.keys(visualizerArr)[Object.keys(visualizerArr).length - 1] :
+            Object.keys(visualizerArr)[(currentIndex - 1)];
+        switchVisualizer(prevVisualizer);
+    };
+
+    const nextVisualizer = () =>  {
+        const currentIndex = Object.keys(visualizerArr).indexOf(selectedVisualizer);
+        const nextVisualizer = Object.keys(visualizerArr)[(currentIndex + 1) % Object.keys(visualizerArr).length];
+        switchVisualizer(nextVisualizer);
+    };
+
+    visualizerTitle.onclick = () => {
+        nextVisualizer();
     };
 
     barGraphButton.onclick = () => {
@@ -164,6 +237,24 @@ window.onload = () => {
         }
     };
 
+    const prevColor = () => {
+        const currentIndex = Object.keys(colorArr).indexOf(selectedColor);
+        const prevColor = currentIndex === 0 ? 
+            Object.keys(colorArr)[Object.keys(colorArr).length - 1] :
+            Object.keys(colorArr)[(currentIndex - 1)];
+        switchColor(prevColor);
+    };
+
+    const nextColor = () => {
+        const currentIndex = Object.keys(colorArr).indexOf(selectedColor);
+        const nextColor = Object.keys(colorArr)[(currentIndex + 1) % Object.keys(colorArr).length];
+        switchColor(nextColor);
+    };
+
+    colorsTitle.onclick = () => {
+        nextColor();
+    };
+
     viridisButton.onclick = () => {
         switchColor("viridisD3");
     };
@@ -182,7 +273,6 @@ window.onload = () => {
     sinebowButton.onclick = () => {
         switchColor("sinebowD3");
     };
-    
     ylOrRdDButton.onclick = () => {
         switchColor("ylOrRdD3");
     };
@@ -210,12 +300,12 @@ window.onload = () => {
             if (audio.paused) {
                 createVisualizer();
                 audio.play();
-                largePlayContainer.innerHTML = "";
-
+                largePlayIcon.style.opacity = "";
+                largePlayIcon.style.cursor = "";
             } else {
-                removeVisualizer();
                 audio.pause();
-                largePlayContainer.innerHTML = `<i class="fas fa-play"></i>`;
+                largePlayIcon.style.opacity = 1;
+                largePlayIcon.style.cursor = "pointer";
             }
         }
     };
@@ -229,6 +319,7 @@ window.onload = () => {
     };
 
     document.onkeyup = (e) => {
+        e.preventDefault();
         if (audio.src !== "") {
 
             if (e.keyCode == 32) {
@@ -251,16 +342,27 @@ window.onload = () => {
                 updateDisplayTime();
             }   
         }
+
+        if (e.keyCode === 87) prevVisualizer();
+        if (e.keyCode === 83) nextVisualizer();
+        if (e.keyCode === 38) prevColor();
+        if (e.keyCode === 40) nextColor();
+        if (e.keyCode === 68) setRandomColor();
+
     };
 
     audio.onpause = () => {
         playPause.classList.remove("fa-pause");
         playPause.classList.add("fa-play");
+        largePlayIcon.style.opacity = 1;
+        largePlayIcon.style.cursor = "pointer";
+        showElements();
     };
 
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
+        timeOut = setTimeout(() => hideElements(), 4000);
     };
 
     playbar.onclick = (e) => {
@@ -301,7 +403,8 @@ window.onload = () => {
 
             playPause.classList.remove("fa-pause");
             playPause.classList.add("fa-play");
-            largePlayContainer.innerHTML = `<i class="fas fa-play"></i>`;
+            largePlayIcon.style.opacity = 1;
+            largePlayIcon.style.cursor = "pointer";
             removeVisualizer();
 
             trackName.innerHTML = `<span>${files[0].name}</span>`;
