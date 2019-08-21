@@ -8,9 +8,6 @@ import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
 
-import { viridisD3, plasmaD3, spectralD3, cubehelixD3, rainbowD3, 
-    sinebowD3, ylOrRdD3, ylGnBuD3, greysD3 } from "./assets/colors";
-
 import "./styles/app.scss";
 
 window.onload = () => {
@@ -163,55 +160,55 @@ window.onload = () => {
     const colorObj = {
         plasmaD3: {
             button: plasmaButton,
-            color: plasmaD3,
+            color: d3.interpolatePlasma,
             prev: "greysD3",
             next: "viridisD3",
         },
         viridisD3: {
             button: viridisButton,
-            color: viridisD3,
+            color: d3.interpolateViridis,
             prev: "plasmaD3",
             next: "rainbowD3",
         },
         rainbowD3: {
             button: rainbowButton,
-            color: rainbowD3,
+            color: d3.interpolateRainbow,
             prev: "viridisD3",
             next: "spectralD3",
         },
         spectralD3: {
             button: spectralButton,
-            color: spectralD3,
+            color: d3.interpolateSpectral,
             prev: "rainbowD3",
             next: "cubehelixD3",
         },
         cubehelixD3: {
             button: cubehelixButton,
-            color: cubehelixD3,
+            color: d3.interpolateCubehelixDefault,
             prev: "spectralD3",
             next: "sinebowD3",
         },
         sinebowD3: {
             button: sinebowButton,
-            color: sinebowD3,
+            color: d3.interpolateSinebow,
             prev: "cubehelixD3",
             next: "ylOrRdD3",
         },
         ylOrRdD3: {
             button: ylOrRdDButton,
-            color: ylOrRdD3,
+            color: d3.interpolateYlOrRd,
             prev: "sinebowD3",
             next: "ylGnBuD3",
         },
         ylGnBuD3: {
             button: ylGnBuButton,
-            color: ylGnBuD3,
+            color: d3.interpolateYlGnBu,
             prev: "ylOrRdD3",
             next: "greysD3",
         },
         greysD3: {
             button: greysButton,
-            color: greysD3,
+            color: d3.interpolateGreys,
             prev: "ylGnBuD3",
             next: "plasmaD3",
         }

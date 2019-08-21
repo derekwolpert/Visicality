@@ -67,11 +67,11 @@
 #color-picker-label {
     position: absolute;
     left: 258px;
-    margin: 5px;
-    width: 26px;
-    height: 26px;
+    margin: 3px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background-color: #0C0C0C;
+    background-color: #212121;
     opacity: 0.8;
     transition: 0.2s;
     cursor: pointer;
@@ -82,4 +82,11 @@
 #color-picker-label:hover  {
     border: solid 1px rgba(255, 255, 255, 1);
     opacity: 1;
+}
+
+#color-picker-label > i {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    font-size: 16px;
 }
