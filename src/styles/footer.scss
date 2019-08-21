@@ -27,11 +27,14 @@ footer {
 }
 
 .play-pause {
-    padding: 7px 20px 0 20px;
+    padding: 6px 20px 0 25px;
     border-right: solid 2px rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 0.6);
     transition: 0.2s;
     font-size: 20px;
+}
+.play-pause:hover {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 #play-pause {

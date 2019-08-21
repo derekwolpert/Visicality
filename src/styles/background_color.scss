@@ -34,12 +34,33 @@
     background-color: rgba(0, 0, 0, 0.4);
     height: 25px;
     transition: 0.2s;
+    position: relative;
 }
 
 .background-color-title:hover {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
+}
+
+.background-color-title:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0,0,0,.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    top: 42px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Change to random background color";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    white-space: nowrap; 
+    left: -2px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    transition: 0.2s;
 }
 
 #color-picker {
@@ -67,9 +88,9 @@
 #color-picker-label {
     position: absolute;
     left: 258px;
-    margin: 3px;
-    width: 30px;
-    height: 30px;
+    margin: 4px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background-color: #212121;
     opacity: 0.8;
@@ -84,9 +105,29 @@
     opacity: 1;
 }
 
+#color-picker-label:hover:after {
+    font-family: 'Open Sans', sans-serif; 
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0,0,0,.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    top: 38px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Open color palette";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    white-space: nowrap; 
+    left: -6px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+}
+
 #color-picker-label > i {
     position: absolute;
-    left: 6px;
+    left: 5px;
     top: 5px;
     font-size: 16px;
 }

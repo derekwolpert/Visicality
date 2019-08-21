@@ -27,6 +27,7 @@ window.onload = () => {
     const rightSidebar = document.getElementById("right-sidebar");
     const footerAudioPlayer = document.getElementById("footer-audio-player");
     const rightGainBar = document.getElementById("right-gain-bar");
+    const favicon = document.getElementById('favicon');
 
     const hideElements = () => {
         if (!audio.paused) {
@@ -63,6 +64,29 @@ window.onload = () => {
     colorPicker.onchange = function () {
         body.style.backgroundColor = colorPicker.value;
         colorPickerLabel.style.backgroundColor = colorPicker.value;
+        changeFaviconColor();
+    };
+
+    const changeFaviconColor = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 32;
+        canvas.height = 32;
+
+        const faviconColor = canvas.getContext('2d');
+        const img = document.createElement('img');
+        img.src = favicon.href;
+
+        img.onload = () => {
+            faviconColor.drawImage(img, 0, 0, 32, 32);
+            faviconColor.beginPath();
+            faviconColor.arc(16, 16, 14, 0, 2 * Math.PI);
+            faviconColor.fillStyle = colorPicker.value;
+            faviconColor.fill();
+            faviconColor.strokeStyle = "white";
+            faviconColor.lineWidth = 2;
+            faviconColor.stroke();
+            favicon.href = canvas.toDataURL('image/png');
+        };
     };
 
     const setRandomColor = () => {
@@ -74,12 +98,13 @@ window.onload = () => {
         colorPicker.value = color;
         body.style.backgroundColor = colorPicker.value;
         colorPickerLabel.style.backgroundColor = colorPicker.value;
+        changeFaviconColor();
     };
 
     document.getElementById("background-color-title").onclick = () => {
         setRandomColor();
     };
-
+    
     const barGraphButton = document.getElementById('bar-graph-button');
     const horizontalBarButton = document.getElementById('horizontal-bar-button');
     const circleGraphButton = document.getElementById('circle-graph-button');
