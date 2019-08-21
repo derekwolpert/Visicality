@@ -66,7 +66,7 @@ export const symetricalCircle = function (analyser, colors) {
             .attr("d", lineRadial)
             .attr("fill", function (d) { return loopingColor(colorOffset); })
             .attr("stroke", function (d) { return "black"; })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 720) : (h / 720)); });
+            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 960) : (h / 960)); });
     }
     renderFrame();
 };

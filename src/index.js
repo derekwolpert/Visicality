@@ -267,7 +267,7 @@ window.onload = () => {
     fullScreenButton.onclick = () => {
         switchVisualizer("fullScreen");
     };
-
+    
     const removeVisualizer = () => {
         if (document.getElementById('visualizer-svg')) {
             document.getElementById('visualizer-svg').remove();
@@ -288,7 +288,6 @@ window.onload = () => {
     };
 
     const prevColor = () => {
-
         switchColor(colorObj[selectedColor].prev);
     };
     const nextColor = () => {
@@ -496,9 +495,9 @@ window.onload = () => {
 
                 context = new AudioContext();
                 analyser = context.createAnalyser();
-                analyser.minDecibels = -100;
-                analyser.maxDecibels = -30;
-                analyser.smoothingTimeConstant = 0.8;
+                analyser.minDecibels = -150;
+                analyser.maxDecibels = -25;
+                analyser.smoothingTimeConstant = 0.85;
 
                 gain = context.createGain();
 

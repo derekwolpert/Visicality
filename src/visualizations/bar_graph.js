@@ -20,7 +20,7 @@ export const barGraph = function (analyser, colors) {
         .range([h, 0]);
 
     svg.selectAll("rect")
-        .data([...dataArray, ...dataArray.slice().reverse()])
+        .data(dataArray)
         .enter().append("rect")
         .attr("width", function (d) { return (w / dataArray.length) * 0.8; })
         .attr("x", function (d, i) { return (((w / dataArray.length) * i) + ((w / dataArray.length) * 0.1)); });
