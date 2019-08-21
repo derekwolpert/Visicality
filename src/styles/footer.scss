@@ -27,12 +27,13 @@ footer {
 }
 
 .play-pause {
-    padding: 6px 20px 0 25px;
+    padding: 7px 20px 0 25px;
     border-right: solid 2px rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 0.6);
     transition: 0.2s;
     font-size: 20px;
 }
+
 .play-pause:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
@@ -43,6 +44,29 @@ footer {
 
 #play-pause:hover {
     color: rgba(255, 255, 255, 0.9);
+}
+
+#play-pause:hover:after {
+    font-family: 'Open Sans', sans-serif; 
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    bottom: 40px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 700 !important;
+    content: "Toggle play/pause, or use Spacebar";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    line-height: 16px;
+    left: 42px;
+    padding: 4px 8px;
+    position: absolute;
+    text-align: center;
+    z-index: 100;
+    width: 120px;
+    transition: text-shadow .1s;
 }
 
 .file-input {
@@ -66,13 +90,32 @@ footer {
     text-overflow: ellipsis;
     transition: 0.2s;
     border: 1px solid rgba(0, 0, 0, 0.5);
-
 }
     
 .file-input-container:hover {
     background-color: rgba(255, 255, 255, 0.8);
     color: rgba(0, 0, 0, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.file-input-container > label:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0,0,0,.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    bottom: 40px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Audio format support may vary depending on broswer";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    line-height: 16px;
+    left: 42px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
 }
 
 .file-input-container > label {
@@ -137,6 +180,29 @@ footer {
 #playbar:hover { 
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
+
+
+.playbar-container:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0,0,0,.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    bottom: 50px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Change audio position, or use ◀ & ▶ keys to adjust audio in 5 seconds increments";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    line-height: 16px;
+    right: 242px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    width: 245px;
+}
+
 
 
 #time-progress {

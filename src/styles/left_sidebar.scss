@@ -38,6 +38,29 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+
+.left-sidebar-container > h3:hover:after {
+    transform: rotate(90deg);
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    top: 97px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Next visualizer, or use W & S keys to cycle";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    left: 68px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    width: 130px;
+    text-align: center;
+    line-height: 16px;
+}
+
 .left-sidebar-container > div {
     height: 36px;
     width: 36px;

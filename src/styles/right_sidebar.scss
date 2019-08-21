@@ -39,6 +39,31 @@
 
 }
 
+
+
+.colors-title:hover:after {
+    transform: rotate(90deg);
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    bottom: 84px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Next color, or use A & D keys to cycle";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    left: 7px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    width: 110px;
+    text-align: center;
+    line-height: 16px;
+}
+
+
 .right-sidebar-container > div {
     height: 36px;
     width: 36px;
@@ -131,6 +156,26 @@
     border-right: 2px solid rgba(0, 0, 0, 0.3) !important;
 }
 
+.gain-title:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0,0,0,.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    top: -30px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Toggle mute";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    white-space: nowrap; 
+    left: -2px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    transition: 0.2s;
+}
+
 .gain-container {
     position: absolute; 
 }
@@ -140,6 +185,28 @@
     height: 36px;
     width: 233px;
     right: -67px;
+}
+
+.gain-bar-container:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0,0,0,.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Change gain value, or use ▲ & ▼ keys to adjust gain in 0.1 increments";
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    left: -44px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    transition: 0.2s;
+    bottom: 42px;
+    max-width: 215px;
+    text-align: center;
+    line-height: 16px;
 }
 
 #gain-bar {

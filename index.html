@@ -6,9 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Audio Visualization Web Audio D3</title>
     <link rel="stylesheet" href="./dist/main.css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADVklEQVRYR81XzU8TQRR/Q3cJCXT56Kntdmu4KJzUhI8LVy5w42BbE496QAMH8Y+QmABGk3IzUYkmHLnwF4AH8UT1QtLdtiYmQLYlkHRmM+aNnc32CxbLWl/StN3dmffb937z3u8R+AvjnKsAcA8A7taWHwDAN0IIve52xO8Czvmzs7Oz5319fXFFUUKt1jHGnIuLi0I4HH5FCHntZ+8rAViW9TAajb4LhUItnbZz4jgOK5VKjwzD2LoMyKUATk9PzaGhoYTcIJfLwe7uLuzt7UGhUIBisShuxeNx0HUdpqenYXZ2FsbGxlyfJycnPyKRyJ12IFoC4JzHHcfJy7fe39+HtbU1wG8/NjU1BcvLy4DfaJgaRVEShJCfjeubAKBzSmleVVUR8pWVFdje3vbjt+mZhYUFWF1dFder1arT29vbBKIJAGOM4ZtXKhVIpVKAYe/EMAqbm5sQDodFJFRVVbz71QHw5nxubq5j59IRgtja+sPFRk64AJDtuq6/7zTs7aLlTYdlWSnDMD7hsy4APDY9PT0hJFo6ne4k6m3XYhQwGo7jIClFKgQALDIAsIG/0blftl8XpTcVAPCUEPJGAKhUKvmBgQEDCYe5D9J2dnZEnbBtG2tMUgCglDIsr+vr64CfIG1paQnwg6dNVVWV1BpLNejwtzoRAKAggEkAECVuZmbGLa9BRQHDj2ngnAMhZBIBPAaALDocHR0Nym/dvkdHR/L/k/8CwAQAfOlSCia6T8KuH0MEYNt2XtM04/DwEObn5wMloixE5XI5Pzg4eKubpXiREPLWbUZSB6DcymQygURBNiOvLnABmKaZTiQSH/9FOzZN80Eymfxc145rYsEcHh4WIjRAQZKLRCLjMsRtJVm5XBat+SYkWTabBU3TUAdg08OhxrVWojRKKbVuWpRSSlEPxgghvy4FUBMoUcaYJScgJCa2ab9CBYUHtlycE9AYY1RRFL3ReRMHGql/fHz8fWRk5La8jnVCDiaommV6sMOh6pWDyfi4m2IUoXU5b/Rx5WiGjI3FYh+uO5rhUSuVShnJ9nbn+koAciHnfNG27Rf9/f0xFJS1fi5uy99YS87Pz4uapr3EIuOnmPgG4N2Mc45T0/3aiI63vgLAASHE8ePU+8xvXJbHWRx9qIEAAAAASUVORK5CYII=" sizes="32x32" id="favicon"/>
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link 
+        rel="shortcut icon" 
+        type="image/png" 
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADVklEQVRYR81XzU8TQRR/Q3cJCXT56Kntdmu4KJzUhI8LVy5w42BbE496QAMH8Y+QmABGk3IzUYkmHLnwF4AH8UT1QtLdtiYmQLYlkHRmM+aNnc32CxbLWl/StN3dmffb937z3u8R+AvjnKsAcA8A7taWHwDAN0IIve52xO8Czvmzs7Oz5319fXFFUUKt1jHGnIuLi0I4HH5FCHntZ+8rAViW9TAajb4LhUItnbZz4jgOK5VKjwzD2LoMyKUATk9PzaGhoYTcIJfLwe7uLuzt7UGhUIBisShuxeNx0HUdpqenYXZ2FsbGxlyfJycnPyKRyJ12IFoC4JzHHcfJy7fe39+HtbU1wG8/NjU1BcvLy4DfaJgaRVEShJCfjeubAKBzSmleVVUR8pWVFdje3vbjt+mZhYUFWF1dFder1arT29vbBKIJAGOM4ZtXKhVIpVKAYe/EMAqbm5sQDodFJFRVVbz71QHw5nxubq5j59IRgtja+sPFRk64AJDtuq6/7zTs7aLlTYdlWSnDMD7hsy4APDY9PT0hJFo6ne4k6m3XYhQwGo7jIClFKgQALDIAsIG/0blftl8XpTcVAPCUEPJGAKhUKvmBgQEDCYe5D9J2dnZEnbBtG2tMUgCglDIsr+vr64CfIG1paQnwg6dNVVWV1BpLNejwtzoRAKAggEkAECVuZmbGLa9BRQHDj2ngnAMhZBIBPAaALDocHR0Nym/dvkdHR/L/k/8CwAQAfOlSCia6T8KuH0MEYNt2XtM04/DwEObn5wMloixE5XI5Pzg4eKubpXiREPLWbUZSB6DcymQygURBNiOvLnABmKaZTiQSH/9FOzZN80Eymfxc145rYsEcHh4WIjRAQZKLRCLjMsRtJVm5XBat+SYkWTabBU3TUAdg08OhxrVWojRKKbVuWpRSSlEPxgghvy4FUBMoUcaYJScgJCa2ab9CBYUHtlycE9AYY1RRFL3ReRMHGql/fHz8fWRk5La8jnVCDiaommV6sMOh6pWDyfi4m2IUoXU5b/Rx5WiGjI3FYh+uO5rhUSuVShnJ9nbn+koAciHnfNG27Rf9/f0xFJS1fi5uy99YS87Pz4uapr3EIuOnmPgG4N2Mc45T0/3aiI63vgLAASHE8ePU+8xvXJbHWRx9qIEAAAAASUVORK5CYII="
+        sizes="32x32"
+        id="favicon"
+    />
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://kit.fontawesome.com/2221aae2ef.js"></script>
     <script src="./dist/main.js"></script>

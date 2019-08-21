@@ -409,6 +409,21 @@ window.onload = () => {
                     audio.currentTime += 5;
                 }
                 updateDisplayTime();
+            }
+            if (e.keyCode === 38) {
+                if (gain.gain.value < 0.9) {
+                    updateGain(gain.gain.value + 0.1);
+                } else if (gain.gain.value !== 1) {
+                    updateGain(1);
+                }
+            }
+
+            if (e.keyCode === 40) {
+                if (gain.gain.value > 0.1) {
+                    updateGain(gain.gain.value - 0.1);
+                } else if (gain.gain.value !== 0) {
+                    updateGain(0);
+                }
             }   
         }
         if (e.keyCode === 65) prevColor();
@@ -416,22 +431,6 @@ window.onload = () => {
         if (e.keyCode === 68) nextColor();
         if (e.keyCode === 87) prevVisualizer();
         if (e.keyCode === 83) nextVisualizer();
-
-        if (e.keyCode === 38) {
-            if (gain.gain.value < 0.9) {
-                updateGain(gain.gain.value + 0.1);
-            } else if (gain.gain.value !== 1) {
-                updateGain(1);
-            }
-        }
-
-        if (e.keyCode === 40) {
-            if (gain.gain.value > 0.1) {
-                updateGain(gain.gain.value - 0.1);
-            } else if (gain.gain.value !== 0) {
-                updateGain(0);
-            }
-        }
     };
 
     const updateGain = (value) => {
@@ -520,7 +519,7 @@ window.onload = () => {
 
                 context = new AudioContext();
                 analyser = context.createAnalyser();
-                analyser.minDecibels = -150;
+                analyser.minDecibels = -105;
                 analyser.maxDecibels = -25;
                 analyser.smoothingTimeConstant = 0.85;
 
