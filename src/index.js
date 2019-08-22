@@ -8,6 +8,8 @@ import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
 
+import { formatTime, getRandomColor } from "./utitlities";
+
 import "./styles/app.scss";
 
 window.onload = () => {
@@ -34,6 +36,153 @@ window.onload = () => {
     const footerAudioPlayer = document.getElementById("footer-audio-player");
     const rightGainBar = document.getElementById("right-gain-bar");
     const favicon = document.getElementById('favicon');
+
+    const barGraphButton = document.getElementById('bar-graph-button');
+    const horizontalBarButton = document.getElementById('horizontal-bar-button');
+    const circleGraphButton = document.getElementById('circle-graph-button');
+    const circleLinearButton = document.getElementById('circle-linear-button');
+    const symetricalLineButton = document.getElementById('symetrical-line-button');
+    const symetricalCircleButton = document.getElementById('symetrical-circle-button');
+    const waveformLinearButton = document.getElementById('waveform-linear-button');
+    const waveformCircleButton = document.getElementById('waveform-circle-button');
+    const fullScreenButton = document.getElementById('full-screen-button');
+
+    const viridisButton = document.getElementById('viridis-button');
+    const plasmaButton = document.getElementById('plasma-button');
+    const spectralButton = document.getElementById('spectral-button');
+    const cubehelixButton = document.getElementById('cubehelix-button');
+    const rainbowButton = document.getElementById('rainbow-button');
+    const sinebowButton = document.getElementById('sinebow-button');
+    const ylOrRdDButton = document.getElementById('ylorrd-button');
+    const ylGnBuButton = document.getElementById('ylgnbu-button');
+    const greysButton = document.getElementById('greys-button');
+
+    let selectedVisualizer = "barGraph";
+    let selectedColor = "plasmaD3";
+    let selectedBackgroundDirection = "45deg";
+    // let faviconDirection = 
+
+    const visualizerObj = {
+        barGraph: {
+            button: barGraphButton,
+            visualizer: barGraph,
+            prev: "fullScreen",
+            next: "horizontalBar",
+        },
+        horizontalBar: {
+            button: horizontalBarButton,
+            visualizer: horizontalBar,
+            prev: "barGraph",
+            next: "circleGraph",
+        },
+        circleGraph: {
+            button: circleGraphButton,
+            visualizer: circleGraph,
+            prev: "horizontalBar",
+            next: "circleLinear",
+        },
+        circleLinear: {
+            button: circleLinearButton,
+            visualizer: circleLinear,
+            prev: "circleGraph",
+            next: "symetricalLine",
+        },
+        symetricalLine: {
+            button: symetricalLineButton,
+            visualizer: symetricalLine,
+            prev: "circleLinear",
+            next: "symetricalCircle",
+        },
+        symetricalCircle: {
+            button: symetricalCircleButton,
+            visualizer: symetricalCircle,
+            prev: "symetricalLine",
+            next: "waveformLinear",
+        },
+        waveformLinear: {
+            button: waveformLinearButton,
+            visualizer: waveformLinear,
+            prev: "symetricalCircle",
+            next: "waveformCircle",
+        },
+        waveformCircle: {
+            button: waveformCircleButton,
+            visualizer: waveformCircle,
+            prev: "waveformLinear",
+            next: "fullScreen",
+        },
+        fullScreen: {
+            button: fullScreenButton,
+            visualizer: fullScreen,
+            prev: "waveformCircle",
+            next: "barGraph",
+        }
+    };
+
+    const colorObj = {
+        plasmaD3: {
+            button: plasmaButton,
+            color: d3.interpolatePlasma,
+            prev: "greysD3",
+            next: "viridisD3",
+        },
+        viridisD3: {
+            button: viridisButton,
+            color: d3.interpolateViridis,
+            prev: "plasmaD3",
+            next: "rainbowD3",
+        },
+        rainbowD3: {
+            button: rainbowButton,
+            color: d3.interpolateRainbow,
+            prev: "viridisD3",
+            next: "spectralD3",
+        },
+        spectralD3: {
+            button: spectralButton,
+            color: d3.interpolateSpectral,
+            prev: "rainbowD3",
+            next: "cubehelixD3",
+        },
+        cubehelixD3: {
+            button: cubehelixButton,
+            color: d3.interpolateCubehelixDefault,
+            prev: "spectralD3",
+            next: "sinebowD3",
+        },
+        sinebowD3: {
+            button: sinebowButton,
+            color: d3.interpolateSinebow,
+            prev: "cubehelixD3",
+            next: "ylOrRdD3",
+        },
+        ylOrRdD3: {
+            button: ylOrRdDButton,
+            color: d3.interpolateYlOrRd,
+            prev: "sinebowD3",
+            next: "ylGnBuD3",
+        },
+        ylGnBuD3: {
+            button: ylGnBuButton,
+            color: d3.interpolateYlGnBu,
+            prev: "ylOrRdD3",
+            next: "greysD3",
+        },
+        greysD3: {
+            button: greysButton,
+            color: d3.interpolateGreys,
+            prev: "ylGnBuD3",
+            next: "plasmaD3",
+        }
+    };
+
+    const directionArr = [ "0deg", "45deg", "90deg", "135deg", "180deg", "225deg", "270deg", "315deg" ];
+
+    let AudioContext = window.AudioContext || window.webkitAudioContext;
+    let contextCreated = false;
+    let context;
+    let analyser;
+    let gain;
 
     const hideElements = () => {
         if (!audio.paused) {
@@ -93,7 +242,20 @@ window.onload = () => {
             faviconColor.beginPath();
             faviconColor.arc(16, 16, 16, 0, 2 * Math.PI);
 
-            let gradient = faviconColor.createLinearGradient(0, 32, 32, 0);
+            const gradientParams = {
+                "0deg": [0, 32, 0, 0],
+                "45deg": [0, 32, 32, 0],
+                "90deg": [0, 0, 32, 0],
+                "135deg": [0, 0, 32, 32],
+                "180deg": [0, 0, 0, 32],
+                "225deg": [32, 0, 0, 32],
+                "270deg": [32, 32, 0, 32],
+                "315deg": [32, 32, 0, 0]
+
+            };
+
+            const gradient = faviconColor.createLinearGradient(...gradientParams[selectedBackgroundDirection]);
+            
             gradient.addColorStop(0, colorPicker1.value);
             gradient.addColorStop(0.5, colorPicker2.value);
             gradient.addColorStop(1, colorPicker3.value);
@@ -104,177 +266,60 @@ window.onload = () => {
         };
     };
 
-    const getRandomColor = () => {
-        const chars = "0123456789ABCDEF";
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += chars[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    };
-
     const setRandomColors = () => {
         colorPicker1.value = getRandomColor();
         colorPicker2.value = getRandomColor();
         colorPicker3.value = getRandomColor();
+        setNewColors();
+    };
+
+    const setBackground = () => {
+        body.style.backgroundImage = `linear-gradient(${selectedBackgroundDirection}, ${colorPicker1.value}, ${colorPicker2.value}, ${colorPicker3.value})`;
     };
 
     const setNewColors = () => {
-
         colorPickerLabel1.style.backgroundColor = colorPicker1.value;
         colorPickerLabel2.style.backgroundColor = colorPicker2.value;
         colorPickerLabel3.style.backgroundColor = colorPicker3.value;
 
-        body.style.backgroundColor = colorPicker1.value;
-        body.style.backgroundImage = `linear-gradient(to right top, ${colorPicker1.value}, ${colorPicker2.value}, ${colorPicker3.value})`;
+        body.style.backgroundColor = colorPicker2.value;
+
+        setBackground();
 
         changeFaviconColor();
     };
 
-    document.getElementById("background-color-title").onclick = () => {
-        setRandomColors();
+    const rotateBackgroundLeft = () => {
+        const currentIndex = directionArr.indexOf(selectedBackgroundDirection);
+        selectedBackgroundDirection = directionArr[currentIndex === 0 ? 7 : currentIndex - 1];
         setNewColors();
     };
-    
-    const barGraphButton = document.getElementById('bar-graph-button');
-    const horizontalBarButton = document.getElementById('horizontal-bar-button');
-    const circleGraphButton = document.getElementById('circle-graph-button');
-    const circleLinearButton = document.getElementById('circle-linear-button');
-    const symetricalLineButton = document.getElementById('symetrical-line-button');
-    const symetricalCircleButton = document.getElementById('symetrical-circle-button');
-    const waveformLinearButton = document.getElementById('waveform-linear-button');
-    const waveformCircleButton = document.getElementById('waveform-circle-button');
-    const fullScreenButton = document.getElementById('full-screen-button');
 
-    const visualizerObj = {
-        barGraph: { 
-            button: barGraphButton, 
-            visualizer: barGraph, 
-            prev: "fullScreen", 
-            next: "horizontalBar",
-        },
-        horizontalBar: { 
-            button: horizontalBarButton, 
-            visualizer: horizontalBar,
-            prev: "barGraph",
-            next: "circleGraph",
-        },
-        circleGraph: { 
-            button: circleGraphButton, 
-            visualizer: circleGraph,
-            prev: "horizontalBar",
-            next: "circleLinear",
-        },
-        circleLinear: { 
-            button: circleLinearButton, 
-            visualizer: circleLinear,
-            prev: "circleGraph",
-            next: "symetricalLine",
-        },
-        symetricalLine: { 
-            button: symetricalLineButton, 
-            visualizer: symetricalLine,
-            prev: "circleLinear",
-            next: "symetricalCircle",
-        },
-        symetricalCircle: { 
-            button: symetricalCircleButton, 
-            visualizer: symetricalCircle,
-            prev: "symetricalLine",
-            next: "waveformLinear",
-        },
-        waveformLinear: { 
-            button: waveformLinearButton, 
-            visualizer: waveformLinear,
-            prev: "symetricalCircle",
-            next: "waveformCircle",
-        },
-        waveformCircle: { 
-            button: waveformCircleButton, 
-            visualizer: waveformCircle,
-            prev: "waveformLinear",
-            next: "fullScreen",
-        },
-        fullScreen: { 
-            button: fullScreenButton, 
-            visualizer: fullScreen,
-            prev: "waveformCircle",
-            next: "barGraph",
-        }
+    const rotateBackgroundRight = () => {
+        const currentIndex = directionArr.indexOf(selectedBackgroundDirection);
+        selectedBackgroundDirection = directionArr[(currentIndex + 1) % 8];
+        setNewColors();
     };
 
-    const viridisButton = document.getElementById('viridis-button');
-    const plasmaButton = document.getElementById('plasma-button');
-    const spectralButton = document.getElementById('spectral-button');
-    const cubehelixButton = document.getElementById('cubehelix-button');
-    const rainbowButton = document.getElementById('rainbow-button');
-    const sinebowButton = document.getElementById('sinebow-button');
-    const ylOrRdDButton = document.getElementById('ylorrd-button');
-    const ylGnBuButton = document.getElementById('ylgnbu-button');
-    const greysButton = document.getElementById('greys-button');
 
-    const colorObj = {
-        plasmaD3: {
-            button: plasmaButton,
-            color: d3.interpolatePlasma,
-            prev: "greysD3",
-            next: "viridisD3",
-        },
-        viridisD3: {
-            button: viridisButton,
-            color: d3.interpolateViridis,
-            prev: "plasmaD3",
-            next: "rainbowD3",
-        },
-        rainbowD3: {
-            button: rainbowButton,
-            color: d3.interpolateRainbow,
-            prev: "viridisD3",
-            next: "spectralD3",
-        },
-        spectralD3: {
-            button: spectralButton,
-            color: d3.interpolateSpectral,
-            prev: "rainbowD3",
-            next: "cubehelixD3",
-        },
-        cubehelixD3: {
-            button: cubehelixButton,
-            color: d3.interpolateCubehelixDefault,
-            prev: "spectralD3",
-            next: "sinebowD3",
-        },
-        sinebowD3: {
-            button: sinebowButton,
-            color: d3.interpolateSinebow,
-            prev: "cubehelixD3",
-            next: "ylOrRdD3",
-        },
-        ylOrRdD3: {
-            button: ylOrRdDButton,
-            color: d3.interpolateYlOrRd,
-            prev: "sinebowD3",
-            next: "ylGnBuD3",
-        },
-        ylGnBuD3: {
-            button: ylGnBuButton,
-            color: d3.interpolateYlGnBu,
-            prev: "ylOrRdD3",
-            next: "greysD3",
-        },
-        greysD3: {
-            button: greysButton,
-            color: d3.interpolateGreys,
-            prev: "ylGnBuD3",
-            next: "plasmaD3",
-        }
+    document.getElementById('rotate-left').onclick = () => {
+        rotateBackgroundLeft();
     };
 
-    let selectedVisualizer = "barGraph";
-    let selectedColor = "plasmaD3";
+    document.getElementById('rotate-right').onclick = () => {
+        rotateBackgroundRight();
+    };
+
+
+    document.getElementById("background-color-title").onclick = () => {
+        setRandomColors();
+    };
+
+
 
     const createVisualizer = () => {
         removeVisualizer();
+        setBackground();
         if (contextCreated && !audio.paused) {
             visualizerObj[selectedVisualizer].visualizer(analyser, colorObj[selectedColor].color);
         }
@@ -350,11 +395,11 @@ window.onload = () => {
         switchColor(colorObj[selectedColor].next);
     };
 
-    viridisButton.onclick = () => {
-        switchColor("viridisD3");
-    };
     plasmaButton.onclick = () => {
         switchColor("plasmaD3");
+    };
+    viridisButton.onclick = () => {
+        switchColor("viridisD3");
     };
     spectralButton.onclick = () => {
         switchColor("spectralD3");
@@ -382,17 +427,10 @@ window.onload = () => {
         nextColor();
     };
 
-    let AudioContext = window.AudioContext || window.webkitAudioContext;
-
-    let contextCreated = false;
-    let context;
-    let analyser;
-    let gain;
-
     const updateDisplayTime = () => {
         progressBar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
-        timeProgress.innerHTML = `<span>${formatTime(audio.currentTime)}</span>`;
-        timeLeft.innerHTML = `<span>${formatTime(audio.duration - audio.currentTime)}</span>`;
+        timeProgress.innerHTML = `<span>${formatTime(audio.currentTime, audio.duration)}</span>`;
+        timeLeft.innerHTML = `<span>${formatTime(audio.duration - audio.currentTime, audio.duration)}</span>`;
     };
 
     const switchPlayPause = () => {
@@ -458,11 +496,21 @@ window.onload = () => {
             }   
         }
         if (e.keyCode === 65) prevColor();
-        if (e.keyCode === 69) {
-            setRandomColors();
-            setNewColors();
-        }
         if (e.keyCode === 68) nextColor();
+
+
+        if (e.keyCode === 82) {
+            setRandomColors();
+        }
+
+        if (e.keyCode === 81) {
+            rotateBackgroundLeft();
+        }
+
+        if (e.keyCode === 69) {
+            rotateBackgroundRight();
+        }
+
         if (e.keyCode === 87) prevVisualizer();
         if (e.keyCode === 83) nextVisualizer();
     };
@@ -512,14 +560,6 @@ window.onload = () => {
             progressBar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
             updateDisplayTime();
         }
-    };
-
-    const formatTime = (time) => {
-        const roundedTime = Math.floor(time);
-        const hours = Math.floor(roundedTime / 3600);
-        const minutes = Math.floor((roundedTime - (hours * 3600)) / 60);
-        const seconds = roundedTime - (hours * 3600) - (minutes * 60);
-        return ((audio.duration >= 3600 ? (hours + ":") : "") + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds));
     };
 
     setInterval(() => {

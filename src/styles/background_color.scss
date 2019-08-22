@@ -53,13 +53,90 @@
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 12px;
     font-weight: 600;
-    content: "Set random background color gradient, or press E";
+    content: "Set random background color gradient, or press R";
     text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     white-space: nowrap; 
     left: -2px;
     padding: 4px 8px;
     position: absolute;
     z-index: 100;
+}
+
+.rotate-background-container {
+    border-right: 2px solid rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.rotate-background-container:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-right: 2px solid rgba(0, 0, 0, 0.1) !important;
+
+}
+
+.rotate-background-container >  * {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    margin: 11px 8px 9px 8px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+
+}
+
+.rotate-background-container >  *:hover {
+    color: rgba(255, 255, 255, 1);
+
+}
+
+.rotate-left {
+    margin-right: 6px !important;
+}
+
+.rotate-right {
+    margin-left: 0px !important;
+}
+
+.rotate-left:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    top: 42px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Rotate background left 45°, or press Q";
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    left: 350px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+    line-height: 16px;
+    width: 115px;
+}
+
+.rotate-right:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    top: 42px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: "Rotate background right 45°, or press E";
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    left: 377px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+    line-height: 16px;
+    width: 120px;
 }
 
 #color-picker-1 {
@@ -129,15 +206,15 @@
 }
 
 #color-picker-label-1 {
-    background-color: #0E0E0E;
+    background-color: #2A272A;
 }
 
 #color-picker-label-2 {
-    background-color: #484848;
+    background-color: #677381;
 }
 
 #color-picker-label-3 {
-    background-color: #828282;
+    background-color: #A3CFCD;
 }
 
 #color-picker-label-1:hover, #color-picker-label-2:hover, #color-picker-label-3:hover  {
