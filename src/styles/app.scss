@@ -4,9 +4,15 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: white;
-  background-color: #212121;
+  background-color: #0E0E0E;
+  background-image: linear-gradient(to right top, #0E0E0E, #484848,#828282);
   position: relative;
   transition: 0.2s;
+  height: 100vh;
+  min-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
 }
 
 #large-play {

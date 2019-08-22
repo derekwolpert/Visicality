@@ -24,7 +24,7 @@
     text-transform: uppercase;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.7);
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     padding: 11px 11px;
     letter-spacing: 0.1em;
     left: -64px;
@@ -51,7 +51,7 @@
     font-size: 12px;
     font-weight: 600;
     content: "Next visualizer, or use W & S keys to cycle";
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     left: 68px;
     padding: 4px 8px;
     position: absolute;
@@ -92,7 +92,7 @@
     font-size: 12px;
     font-weight: 600;
     content: attr(data);
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     white-space: nowrap; 
     left: 40px;
     padding: 4px 8px;

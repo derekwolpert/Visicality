@@ -34,10 +34,6 @@ footer {
     font-size: 20px;
 }
 
-.play-pause:hover {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
 #play-pause {
     cursor: pointer;
 }
@@ -58,7 +54,7 @@ footer {
     font-size: 12px;
     font-weight: 700 !important;
     content: "Toggle play/pause, or use Spacebar";
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     line-height: 16px;
     left: 42px;
     padding: 4px 8px;
@@ -101,7 +97,7 @@ footer {
 .file-input-container > label:hover:after {
     text-transform: none;
     letter-spacing: normal;
-    background: rgba(0,0,0,.6);
+    background: rgba(0,0,0,0.6);
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     bottom: 40px;
@@ -109,13 +105,16 @@ footer {
     font-size: 12px;
     font-weight: 600;
     content: "Audio format support may vary depending on broswer";
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     text-align: center;
     line-height: 16px;
-    left: 42px;
+    left: 84px;
     padding: 4px 8px;
     position: absolute;
     z-index: 100;
+    width: 160px;
+    word-wrap: break-word;
+    white-space:normal;
 }
 
 .file-input-container > label {
@@ -193,7 +192,7 @@ footer {
     font-size: 12px;
     font-weight: 600;
     content: "Change audio position, or use ◀ & ▶ keys to adjust audio in 5 seconds increments";
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     text-align: center;
     line-height: 16px;
     right: 242px;

@@ -1,8 +1,6 @@
 export const fullScreen = function (analyser, colors) {
 
-    analyser.fftSize = 1024;
-
-    const margin = { top: 0, right: 0, bottom: 0, left: 0 };
+    analyser.fftSize = 512;
 
     const h = window.innerHeight,
         w = window.innerWidth;

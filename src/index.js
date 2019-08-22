@@ -19,9 +19,15 @@ window.onload = () => {
     const timeLeft = document.getElementById('time-left');
     const largePlayIcon = document.getElementById("large-play-icon");
     const gainBarValue = document.getElementById("gain-bar-value");
-    const colorPicker = document.getElementById('color-picker');
+    const colorPicker1 = document.getElementById('color-picker-1');
+    const colorPicker2 = document.getElementById('color-picker-2');
+    const colorPicker3 = document.getElementById('color-picker-3');
+
+    const colorPickerLabel1 = document.getElementById("color-picker-label-1");
+    const colorPickerLabel2 = document.getElementById("color-picker-label-2");
+    const colorPickerLabel3 = document.getElementById("color-picker-label-3");
+
     const body = document.getElementById("body");
-    const colorPickerLabel = document.getElementById("color-picker-label");
     const backgroundColorHeader = document.getElementById("background-color-header");
     const leftSidebar = document.getElementById("left-sidebar");
     const rightSidebar = document.getElementById("right-sidebar");
@@ -61,10 +67,16 @@ window.onload = () => {
         timeOut = setTimeout(() => hideElements(), 3000);
     };
 
-    colorPicker.onchange = function () {
-        body.style.backgroundColor = colorPicker.value;
-        colorPickerLabel.style.backgroundColor = colorPicker.value;
-        changeFaviconColor();
+    colorPicker1.onchange = function () {
+        setNewColors();
+    };
+
+    colorPicker2.onchange = function () {
+        setNewColors();
+    };
+
+    colorPicker3.onchange = function () {
+        setNewColors();
     };
 
     const changeFaviconColor = () => {
@@ -79,30 +91,49 @@ window.onload = () => {
         img.onload = () => {
             faviconColor.drawImage(img, 0, 0, 32, 32);
             faviconColor.beginPath();
-            faviconColor.arc(16, 16, 14, 0, 2 * Math.PI);
-            faviconColor.fillStyle = colorPicker.value;
+            faviconColor.arc(16, 16, 16, 0, 2 * Math.PI);
+
+            let gradient = faviconColor.createLinearGradient(0, 32, 32, 0);
+            gradient.addColorStop(0, colorPicker1.value);
+            gradient.addColorStop(0.5, colorPicker2.value);
+            gradient.addColorStop(1, colorPicker3.value);
+
+            faviconColor.fillStyle = gradient;
             faviconColor.fill();
-            faviconColor.strokeStyle = "white";
-            faviconColor.lineWidth = 2;
-            faviconColor.stroke();
             favicon.href = canvas.toDataURL('image/png');
         };
     };
 
-    const setRandomColor = () => {
+    const getRandomColor = () => {
         const chars = "0123456789ABCDEF";
         let color = '#';
         for (let i = 0; i < 6; i++) {
             color += chars[Math.floor(Math.random() * 16)];
         }
-        colorPicker.value = color;
-        body.style.backgroundColor = colorPicker.value;
-        colorPickerLabel.style.backgroundColor = colorPicker.value;
+        return color;
+    };
+
+    const setRandomColors = () => {
+        colorPicker1.value = getRandomColor();
+        colorPicker2.value = getRandomColor();
+        colorPicker3.value = getRandomColor();
+    };
+
+    const setNewColors = () => {
+
+        colorPickerLabel1.style.backgroundColor = colorPicker1.value;
+        colorPickerLabel2.style.backgroundColor = colorPicker2.value;
+        colorPickerLabel3.style.backgroundColor = colorPicker3.value;
+
+        body.style.backgroundColor = colorPicker1.value;
+        body.style.backgroundImage = `linear-gradient(to right top, ${colorPicker1.value}, ${colorPicker2.value}, ${colorPicker3.value})`;
+
         changeFaviconColor();
     };
 
     document.getElementById("background-color-title").onclick = () => {
-        setRandomColor();
+        setRandomColors();
+        setNewColors();
     };
     
     const barGraphButton = document.getElementById('bar-graph-button');
@@ -244,7 +275,7 @@ window.onload = () => {
 
     const createVisualizer = () => {
         removeVisualizer();
-        if (contextCreated) {
+        if (contextCreated && !audio.paused) {
             visualizerObj[selectedVisualizer].visualizer(analyser, colorObj[selectedColor].color);
         }
     };
@@ -427,7 +458,10 @@ window.onload = () => {
             }   
         }
         if (e.keyCode === 65) prevColor();
-        if (e.keyCode === 69) setRandomColor();
+        if (e.keyCode === 69) {
+            setRandomColors();
+            setNewColors();
+        }
         if (e.keyCode === 68) nextColor();
         if (e.keyCode === 87) prevVisualizer();
         if (e.keyCode === 83) nextVisualizer();
@@ -466,6 +500,7 @@ window.onload = () => {
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
+        createVisualizer();
         timeOut = setTimeout(() => hideElements(), 3000);
     };
 

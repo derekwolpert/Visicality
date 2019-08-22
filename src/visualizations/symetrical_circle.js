@@ -1,6 +1,6 @@
 export const symetricalCircle = function (analyser, colors) {
 
-    analyser.fftSize = 1024;
+    analyser.fftSize = 512;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 

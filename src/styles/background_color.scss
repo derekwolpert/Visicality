@@ -28,7 +28,7 @@
     text-transform: uppercase;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.7);
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     padding: 11px 10px 0;
     letter-spacing: 0.1em;
     background-color: rgba(0, 0, 0, 0.4);
@@ -53,18 +53,16 @@
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 12px;
     font-weight: 600;
-    content: "Set random background color, or press E";
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    content: "Set random background color gradient, or press E";
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    white-space: nowrap; 
     left: -2px;
     padding: 4px 8px;
     position: absolute;
     z-index: 100;
-    width: 140px;
-    text-align: center;
-    line-height: 16px;
 }
 
-#color-picker {
+#color-picker-1 {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -73,7 +71,34 @@
 	z-index: -1;
 }
 
-.color-picker-container {
+#color-picker-2 {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#color-picker-3 {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.color-picker-container-1, .color-picker-container-2 {
+    width: 36px;
+    height: 36px;
+    transition: 0.2s;
+    background-color: rgba(0, 0, 0, 0.4);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    border-right: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.color-picker-container-3 {
     width: 36px;
     height: 36px;
     transition: 0.2s;
@@ -81,19 +106,21 @@
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-.color-picker-container:hover {
+.color-picker-container-1:hover, .color-picker-container-2:hover, .color-picker-container-3:hover {
     color: rgba(255, 255, 255, 0.9);
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-#color-picker-label {
+.color-picker-container-1:hover, .color-picker-container-2:hover {
+    border-right: solid 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+#color-picker-label-1, #color-picker-label-2, #color-picker-label-3 {
     position: absolute;
-    left: 258px;
     margin: 4px;
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background-color: #212121;
     opacity: 0.8;
     transition: 0.2s;
     cursor: pointer;
@@ -101,12 +128,24 @@
     box-sizing: border-box;
 }
 
-#color-picker-label:hover  {
+#color-picker-label-1 {
+    background-color: #0E0E0E;
+}
+
+#color-picker-label-2 {
+    background-color: #484848;
+}
+
+#color-picker-label-3 {
+    background-color: #828282;
+}
+
+#color-picker-label-1:hover, #color-picker-label-2:hover, #color-picker-label-3:hover  {
     border: solid 1px rgba(0, 0, 0, 1);
     opacity: 1;
 }
 
-#color-picker-label:hover:after {
+#color-picker-label-1:hover:after, #color-picker-label-2:hover:after, #color-picker-label-3:hover:after {
     font-family: 'Open Sans', sans-serif; 
     text-transform: none;
     letter-spacing: normal;
@@ -117,8 +156,7 @@
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 12px;
     font-weight: 600;
-    content: "Open color palette";
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     white-space: nowrap; 
     left: -6px;
     padding: 4px 8px;
@@ -126,7 +164,19 @@
     z-index: 100;
 }
 
-#color-picker-label > i {
+#color-picker-label-1:hover:after {
+    content: "Color palette 1";
+}
+
+#color-picker-label-2:hover:after {
+    content: "Color palette 2";
+}
+
+#color-picker-label-3:hover:after {
+    content: "Color palette 3";
+}
+
+#color-picker-label-1 > i, #color-picker-label-2 > i, #color-picker-label-3 > i {
     position: absolute;
     left: 5px;
     top: 5px;

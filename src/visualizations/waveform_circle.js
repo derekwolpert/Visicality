@@ -1,6 +1,6 @@
 export const waveformCircle = function (analyser, colors) {
 
-    analyser.fftSize = 2048;
+    analyser.fftSize = 1024;
 
     const dataArray = new Float32Array(analyser.fftSize);
 
