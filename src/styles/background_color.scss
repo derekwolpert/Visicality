@@ -75,13 +75,13 @@
 
 .rotate-background-container >  * {
     display: inline-block;
-    width: 16px;
-    height: 16px;
-    font-size: 16px;
-    margin: 11px 8px 9px 8px;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    margin: 9px 8px 9px 8px;
     color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
-
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 .rotate-background-container >  *:hover {
@@ -206,15 +206,15 @@
 }
 
 #color-picker-label-1 {
-    background-color: #2A272A;
+    background-color: #1D364B;
 }
 
 #color-picker-label-2 {
-    background-color: #677381;
+    background-color: #3B4856;
 }
 
 #color-picker-label-3 {
-    background-color: #A3CFCD;
+    background-color: #9FADBD;
 }
 
 #color-picker-label-1:hover, #color-picker-label-2:hover, #color-picker-label-3:hover  {
