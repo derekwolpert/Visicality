@@ -572,8 +572,25 @@ window.onload = () => {
         } 
     }, 1000);
 
-    document.getElementById("file-input").onchange = function () {
+    document.getElementById("file-input-label").onclick = () => {
 
+        if (!contextCreated) {
+            contextCreated = true;
+
+            context = new AudioContext();
+            analyser = context.createAnalyser();
+            analyser.minDecibels = -105;
+            analyser.maxDecibels = -25;
+            analyser.smoothingTimeConstant = 0.85;
+            gain = context.createGain();
+            let src = context.createMediaElementSource(audio);
+            src.connect(gain);
+            gain.connect(analyser);
+            analyser.connect(context.destination);
+        }
+    };
+
+    document.getElementById("file-input").onchange = function () {
         const files = this.files;
 
         if (files.length > 0) {
@@ -588,24 +605,6 @@ window.onload = () => {
             removeVisualizer();
 
             document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
-
-            if (!contextCreated) {
-                contextCreated = true;
-
-                context = new AudioContext();
-                analyser = context.createAnalyser();
-                analyser.minDecibels = -105;
-                analyser.maxDecibels = -25;
-                analyser.smoothingTimeConstant = 0.85;
-
-                gain = context.createGain();
-
-                let src = context.createMediaElementSource(audio);
-
-                src.connect(gain);
-                gain.connect(analyser);
-                analyser.connect(context.destination);
-            }
         }
     };
     window.onresize = () => {

@@ -139,31 +139,15 @@
     width: 120px;
 }
 
-#color-picker-1 {
+#color-picker-1, #color-picker-2, #color-picker-3 {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
 	overflow: hidden;
 	position: absolute;
-	z-index: -1;
-}
-
-#color-picker-2 {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-
-#color-picker-3 {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+    z-index: -1;
+    left: 10px;
+    top: 12px;
 }
 
 .color-picker-container-1, .color-picker-container-2 {

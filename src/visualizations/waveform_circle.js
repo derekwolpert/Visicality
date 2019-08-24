@@ -61,7 +61,7 @@ export const waveformCircle = function (analyser, colors) {
             .datum(dataArray)
             .attr("d", lineRadial)
             .attr("stroke", function (d, i) { return loopingColor(colorOffset); })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 480) : (h / 480)); });
+            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 240) : (h / 240)); });
     }
     renderFrame();
 };

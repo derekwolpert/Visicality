@@ -24,7 +24,7 @@ export const circleLinear = function (analyser, colors) {
         .enter().append('circle')
         .attr("cx", function (d, i) { return ((w / dataArray.length) * i); })
         .attr('cy', function (d, i) { return ((h / dataArray.length) * y(i)); });
-
+        
     function renderFrame() {
         requestAnimationFrame(renderFrame);
         analyser.getByteFrequencyData(dataArray);
