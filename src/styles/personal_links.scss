@@ -1,14 +1,16 @@
-
-
-
 .personal-links {
     position: absolute;
     padding-right: 44px;
-    font-size: 36px;
+    font-size: 24px;
     right: 0px;
 }
 .personal-links > * {
-    padding: 4px 2px 0 4px;
+    padding: 8px 2px 0 4px;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     color: rgba(255, 255, 255, 0.7);
+    transition: 0.2s;
+}
+
+.personal-links > *:hover {
+    color: rgba(255, 255, 255, 1);
 }

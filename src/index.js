@@ -60,7 +60,6 @@ window.onload = () => {
     let selectedVisualizer = "barGraph";
     let selectedColor = "plasmaD3";
     let selectedBackgroundDirection = "45deg";
-    // let faviconDirection = 
 
     const visualizerObj = {
         barGraph: {
@@ -318,9 +317,9 @@ window.onload = () => {
 
 
     const createVisualizer = () => {
-        removeVisualizer();
-        setBackground();
-        if (contextCreated && !audio.paused) {
+        if (audio.src) {
+            removeVisualizer();
+            setBackground();
             visualizerObj[selectedVisualizer].visualizer(analyser, colorObj[selectedColor].color);
         }
     };
@@ -372,7 +371,7 @@ window.onload = () => {
     const removeVisualizer = () => {
         if (document.getElementById('visualizer-svg')) {
             document.getElementById('visualizer-svg').remove();
-        }
+          }
     };
 
     document.getElementById("visualizer-title").onclick = () => {
@@ -569,7 +568,7 @@ window.onload = () => {
             timeProgress.innerHTML = "";
             timeLeft.innerHTML = "";
             progressBar.style.width = "0%";
-        } 
+        }
     }, 1000);
 
     document.getElementById("file-input-label").onclick = () => {
@@ -607,6 +606,8 @@ window.onload = () => {
             document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
         }
     };
+
+
     window.onresize = () => {
         createVisualizer();
     };
