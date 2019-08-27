@@ -1,5 +1,3 @@
-
-
 export const formatTime = (currentTime, duration) => {
     const roundedTime = Math.floor(currentTime);
     const hours = Math.floor(roundedTime / 3600);
@@ -15,4 +13,8 @@ export const getRandomColor = () => {
         color += chars[Math.floor(Math.random() * 16)];
     }
     return color;
+};
+
+export const removeVisualizer = () => {
+    d3.selectAll("svg").remove();
 };

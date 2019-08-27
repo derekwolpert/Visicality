@@ -7,12 +7,19 @@ export const waveformCircle = function (analyser, colors) {
     const h = window.innerHeight,
         w = window.innerWidth;
 
-    const svg = d3.select('body').append('svg')
-        .attr('width', w)
-        .attr('height', h)
-        .attr('id', 'visualizer-svg')
-        .append("g")
-        .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
+    let svg;
+
+    if (document.getElementById('visualizer-svg-center')) {
+        d3.selectAll("svg > *").remove();
+    } else {
+        d3.selectAll("svg").remove();
+        svg = d3.select('body').append('svg')
+            .attr('width', w)
+            .attr('height', h)
+            .attr('id', 'visualizer-center')
+            .append("g")
+            .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
+    }
 
     const y = d3.scaleLinear()
         .domain([1, -1])

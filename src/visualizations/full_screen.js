@@ -5,10 +5,17 @@ export const fullScreen = function (analyser, colors) {
     const h = window.innerHeight,
         w = window.innerWidth;
 
-    const svg = d3.select('body').append('svg')
-        .attr('width', w)
-        .attr('height', h)
-        .attr('id', 'visualizer-svg');
+    let svg;
+
+    if (document.getElementById('visualizer-svg')) {
+        d3.selectAll("svg > *").remove();
+    } else {
+        d3.selectAll("svg").remove();
+        svg = d3.select('body').append('svg')
+            .attr('width', w)
+            .attr('height', h)
+            .attr('id', 'visualizer-svg');
+    }
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 

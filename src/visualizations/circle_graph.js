@@ -10,10 +10,17 @@ export const circleGraph = function (analyser, colors) {
     const h = window.innerHeight,
         w = window.innerWidth;
 
-    const svg = d3.select('body').append('svg')
-        .attr('width', w)
-        .attr('height', h)
-        .attr('id', 'visualizer-svg');
+    let svg;
+
+    if (document.getElementById('visualizer-svg')) {
+        d3.selectAll("svg > *").remove();
+    } else {
+        d3.selectAll("svg").remove();
+        svg = d3.select('body').append('svg')
+            .attr('width', w)
+            .attr('height', h)
+            .attr('id', 'visualizer-svg');
+    }
 
     svg.selectAll('circle')
         .data(dataArray)
@@ -27,7 +34,7 @@ export const circleGraph = function (analyser, colors) {
 
         svg.selectAll('circle')
             .data(dataArray)
-            .attr('r', function (d) { return ((((w > h ? w : h)) / 2) * (d / 255)); })
+            .attr('r', function (d) { return ((((w > h ? h : w)) / 2) * (d / 255)); })
             .attr("fill", function (d, i) { return colorScale(i); });
     }
     renderFrame();

@@ -8,7 +8,7 @@ import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
 
-import { formatTime, getRandomColor } from "./utitlities";
+import { formatTime, getRandomColor, removeVisualizer } from "./utitlities";
 
 import "./styles/app.scss";
 
@@ -29,7 +29,7 @@ window.onload = () => {
     const colorPickerLabel2 = document.getElementById("color-picker-label-2");
     const colorPickerLabel3 = document.getElementById("color-picker-label-3");
 
-    const body = document.getElementById("body");
+    const app = document.getElementById("app");
     const backgroundColorHeader = document.getElementById("background-color-header");
     const leftSidebar = document.getElementById("left-sidebar");
     const rightSidebar = document.getElementById("right-sidebar");
@@ -272,18 +272,13 @@ window.onload = () => {
         setNewColors();
     };
 
-    const setBackground = () => {
-        body.style.backgroundImage = `linear-gradient(${selectedBackgroundDirection}, ${colorPicker1.value}, ${colorPicker2.value}, ${colorPicker3.value})`;
-    };
-
     const setNewColors = () => {
         colorPickerLabel1.style.backgroundColor = colorPicker1.value;
         colorPickerLabel2.style.backgroundColor = colorPicker2.value;
         colorPickerLabel3.style.backgroundColor = colorPicker3.value;
 
-        body.style.backgroundColor = colorPicker2.value;
-
-        setBackground();
+        app.style.backgroundColor = colorPicker2.value;
+        app.style.backgroundImage = `linear-gradient(${selectedBackgroundDirection}, ${colorPicker1.value}, ${colorPicker2.value}, ${colorPicker3.value})`;
 
         changeFaviconColor();
     };
@@ -314,12 +309,9 @@ window.onload = () => {
         setRandomColors();
     };
 
-
-
     const createVisualizer = () => {
-        if (audio.src) {
+        if (contextCreated) {
             removeVisualizer();
-            setBackground();
             visualizerObj[selectedVisualizer].visualizer(analyser, colorObj[selectedColor].color);
         }
     };
@@ -366,12 +358,6 @@ window.onload = () => {
     };
     fullScreenButton.onclick = () => {
         switchVisualizer("fullScreen");
-    };
-    
-    const removeVisualizer = () => {
-        if (document.getElementById('visualizer-svg')) {
-            document.getElementById('visualizer-svg').remove();
-          }
     };
 
     document.getElementById("visualizer-title").onclick = () => {
@@ -435,7 +421,6 @@ window.onload = () => {
     const switchPlayPause = () => {
         if (context) {
             if (audio.paused) {
-                createVisualizer();
                 audio.play();
                 largePlayIcon.style.opacity = "";
                 largePlayIcon.style.cursor = "";
@@ -540,14 +525,12 @@ window.onload = () => {
         playPause.classList.add("fa-play");
         largePlayIcon.style.opacity = 1;
         largePlayIcon.style.cursor = "pointer";
-        removeVisualizer();
         showElements();
     };
 
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
-        createVisualizer();
         timeOut = setTimeout(() => hideElements(), 3000);
     };
 
@@ -575,17 +558,17 @@ window.onload = () => {
 
         if (!contextCreated) {
             contextCreated = true;
-
             context = new AudioContext();
             analyser = context.createAnalyser();
             analyser.minDecibels = -105;
             analyser.maxDecibels = -25;
-            analyser.smoothingTimeConstant = 0.85;
+            analyser.smoothingTimeConstant = 0.8;
             gain = context.createGain();
             let src = context.createMediaElementSource(audio);
             src.connect(gain);
             gain.connect(analyser);
             analyser.connect(context.destination);
+            createVisualizer();
         }
     };
 
@@ -601,14 +584,12 @@ window.onload = () => {
             playPause.classList.add("fa-play");
             largePlayIcon.style.opacity = 1;
             largePlayIcon.style.cursor = "pointer";
-            removeVisualizer();
 
             document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
         }
     };
-
-
     window.onresize = () => {
+        removeVisualizer();
         createVisualizer();
     };
 };

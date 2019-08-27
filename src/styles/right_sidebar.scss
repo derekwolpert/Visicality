@@ -48,17 +48,17 @@
     background: rgba(0, 0, 0, 0.6);
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
-    bottom: 84px;
+    bottom: 92px;
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 12px;
     font-weight: 600;
-    content: "Next color, or use A & D keys to cycle";
+    content: "Next color, or use [A] & [D] keys to cycle";
     text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
-    left: 7px;
+    left: -1px;
     padding: 4px 8px;
     position: absolute;
     z-index: 100;
-    width: 110px;
+    width: 125px;
     text-align: center;
     line-height: 16px;
 }
@@ -196,7 +196,7 @@
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 12px;
     font-weight: 600;
-    content: "Change gain value, or use ▲ & ▼ keys to adjust gain in 0.1 increments";
+    content: "Change gain value, or use [▲] & [▼] keys to adjust gain in 0.1 increments";
     text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     left: -44px;
     padding: 4px 8px;
