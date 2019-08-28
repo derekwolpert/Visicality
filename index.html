@@ -10,7 +10,7 @@
     <link 
         rel="shortcut icon" 
         type="image/png" 
-        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACj0lEQVRYR71X32vaUBTOL1vWlqB0akyMgVWNT6WzVAZ7GNvfu3Ws7H0rG3RNqWtBkNXXG6lzuqlb7URzx7lZQlpNE/NDQXPBm/t99zvfufccmvL5efHyFep2OiLGBk3TNMUwDMWyLAVjjDF5/v9iUVba79+9zftZmvaaVK3uT0ejIctxnBPEcwykNrb42afjD9xDGK4EarXnqNe7lqxdOnboCe6cS1EUzsmF9tHhm4WKLCRwUHuGfnQ7ocGdRIS8rC8iMUegXC7PJpMJAzEOumu39zDDGmdfTlhnSO4QqO7VUO9nR4oa+CElbAL7ewfoe+9asnYOLOMiIuQL+tHha+IJm4Asy9gCtMDjJKFpGsEmP6pamd7c/GGBwH3wuEisb2zOPh9/5AiiKIoY0s0NPA4SEGpQgd7dfYr6/a7kBR4HiZwk6bQsy4ZhmMfrqknAIUULguBL/jiMSU7ZXC7n6n4vRcKmKSEACoAhvMDiyA5bgaDgkRgTFFjGgJErkc1mA3sgrDFJCDKZTCgPhCFBihwg4HYHBPWG3+xIJBIkCwyMsXkxLHEYec33Q4JhGEwXyxU0/NUnNYDXosv+70Wi2WyaqOl0OvIweKUoyN9oNEwCiqJMx+MxuQ5XpcSjza3Z5de6eR07VVgFCdg9yE+wLAI7JfBCLxYvOMMBqZdKbuun2sndkgwmPSmpaBSTIWF9uHNSj9P6uXZq9whzZbkkSaQsj9oLAM5xnNFqtdzLcjscxQoaDqILB8ie5Lf1+sXZXHfk2prtFFU0HIQ/H8BwST6l1y/O/bdmlhLwLCjK9O/tLWt1wH6zBHa9trY+u7r6Fqw5dZKAcbGkot+jgWhlzv223NHKYZ5PtRuNS1/t+T8pJMeieNeGJwAAAABJRU5ErkJggg=="
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACX0lEQVRYR72Xb2/aMBDGfU4HoexdkyY2kFGpKnT7/l9jW9e9KN00Uf5o6oq0TXJCRRLfZGehlAYaSIJfkDdxnh/Pnc93QHKu/vsP4u+f38cEEQgBQgjqnYjJU0r1RIJI0GE8+Prl89s8n1Zf2rq63W4UhqEBAEuxVHTbU3HVTDOejkdH2wQ2AvR6lyIIRDPdnEd01ZH0/VhK5K1OcH31KdORTIB+vy/m83lzX9GsfS5v+1kQLwA8rxtTSmiZ4qkzlB7J+/ufxmpIngFcXPTFYvFY2PZt8OtOLAF65z3xGCbiKuGKxn47RMe/vvqoc2Kp1Ol4qHRT8SohpJRkNptpbf3jee8iRKmP2qoDVUK8qSdHVCu2W20Emi1eFYSqEw8PvwDOzs5FuBb7QznhuMwHxrikFNTKtL/KnFBFCjjjr9pfFYQKA3DO9W2S14GycwIYY7ireJkQGmAfB8qCANd193agDAgNUMSBohDgOE5hB4pAgHPqoCrI+yZikSOq2jiwLVtSI6nDh4aQiAiMt0UcLZplie8SjslkktTfU9tGAlCaA3kglP3T6X8Ay7IjSkG3SodyghpGfDccJtexWrZlIVCa60LaFXK9W1Z3wHg8empI1Asu40JGYVOFomonTNP0B4PB85YshYijsPSEXM2JuhK/uVnOCC/acuvkJAaqO4TSnZCSyNFouLktT/PBdbmI43KdqNca/u23p3+eam0czTSEqg8FE1P1vY16w7/9nsR8fb06nOojCsTYtU6oTKeUxuN9h9N1UsZaIgoXxyo9Nt4dqId2rNXN4G74I9d4/g/tePCETfegPQAAAABJRU5ErkJggg=="
         sizes="32x32"
         id="favicon"
     />
@@ -61,7 +61,7 @@
 
             <div class="color-picker-container-3">
                 <label for="color-picker-3" id="color-picker-label-3">
-                        <input type="color" id="color-picker-3" value="#404040">
+                        <input type="color" id="color-picker-3" value="#101010">
 
                     <i class="fas fa-palette"></i>
                 </label>
@@ -71,17 +71,21 @@
     </section>
 
 
-    <section class="personal-links">
+    <section class="personal-links" id="personal-links">
 
-        <i class="fab fa-github-square"></i>
-        
-        <i class="fab fa-linkedin"></i>
-        
-        <i class="fas fa-envelope-square"></i>
-        
-        <i class="fas fa-external-link-square-alt"></i>
+        <div id="personal-links-container">
+            <i class="fab fa-github" id="github-link"></i>
+            
+            <i class="fab fa-linkedin-in" id="linkedin-link"></i>
+    
+            <i class="fab fa-angellist" id="angellist-link"></i>
+                    
+            <i class="fas fa-external-link-alt" id="portfolio-link"></i>
+    
+            <i class="far fa-envelope" id="email-link"></i>
+        </div>
 
-        <i class="fas fa-info-circle"></i>
+        <i class="fas fa-info-circle" id="info-link"></i>
 
     </section>
 
@@ -152,33 +156,33 @@
                     Colors
                 </h3>
                 <div class="color-option-1 active-color" 
-                    id="plasma-button" 
-                    data="Plasma">
+                    id="sinebow-button" 
+                    data="Sinebow">
                     <span>1</span>
                 </div>
                 <div class="color-option-2" 
-                    id="viridis-button" 
-                    data="Viridis">
+                    id="plasma-button" 
+                    data="Plasma">
                     <span>2</span>
                 </div>
-                <div class="color-option-5" 
-                    id="rainbow-button" 
-                    data="Rainbow">
+                <div class="color-option-3" 
+                    id="viridis-button" 
+                    data="Viridis">
                     <span>3</span>
                 </div>
-                <div class="color-option-3" 
-                    id="spectral-button" 
-                    data="Spectral">
+                <div class="color-option-4" 
+                    id="rainbow-button" 
+                    data="Rainbow">
                     <span>4</span>
                 </div>
-                <div class="color-option-4" 
-                    id="cubehelix-button"
-                    data="Cubehelix">
+                <div class="color-option-5" 
+                    id="spectral-button" 
+                    data="Spectral">
                     <span>5</span>
                 </div>
                 <div class="color-option-6" 
-                    id="sinebow-button" 
-                    data="Sinebow">
+                    id="cubehelix-button"
+                    data="Cubehelix">
                     <span>6</span>
                 </div>
                 <div class="color-option-7" 

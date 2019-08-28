@@ -35,6 +35,8 @@ window.onload = () => {
     const rightSidebar = document.getElementById("right-sidebar");
     const footerAudioPlayer = document.getElementById("footer-audio-player");
     const rightGainBar = document.getElementById("right-gain-bar");
+    const personalLinks = document.getElementById("personal-links");
+    const personalLinksContainer = document.getElementById("personal-links-container");
     const favicon = document.getElementById('favicon');
 
     const barGraphButton = document.getElementById('bar-graph-button');
@@ -58,7 +60,7 @@ window.onload = () => {
     const greysButton = document.getElementById('greys-button');
 
     let selectedVisualizer = "barGraph";
-    let selectedColor = "plasmaD3";
+    let selectedColor = "sinebowD3";
     let selectedBackgroundDirection = "45deg";
 
     const visualizerObj = {
@@ -190,6 +192,8 @@ window.onload = () => {
             rightSidebar.style.opacity = 0;
             footerAudioPlayer.style.opacity = 0;
             rightGainBar.style.opacity = 0;
+            personalLinksContainer.style.opacity = 0;
+            personalLinks.style.paddingRight = "7px";
         }
     };
 
@@ -199,6 +203,8 @@ window.onload = () => {
         rightSidebar.style.opacity = "";
         footerAudioPlayer.style.opacity = "";
         rightGainBar.style.opacity = "";
+        personalLinksContainer.style.opacity = "";
+        personalLinks.style.paddingRight = "";
     };
  
     let timeOut;
@@ -206,13 +212,13 @@ window.onload = () => {
     document.onmousemove = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 3000);
+        timeOut = setTimeout(() => hideElements(), 5000);
     };
 
     document.onclick = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 3000);
+        timeOut = setTimeout(() => hideElements(), 5000);
     };
 
     colorPicker1.onchange = function () {
@@ -532,7 +538,7 @@ window.onload = () => {
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
-        timeOut = setTimeout(() => hideElements(), 3000);
+        timeOut = setTimeout(() => hideElements(), 5000);
     };
 
     document.getElementById("playbar").onclick = (e) => {

@@ -2,7 +2,7 @@ import { returnAnimationStatus } from "../utitlities";
 
 export const barGraph = function (analyser, colors) {
 
-    analyser.fftSize = 512;
+    analyser.fftSize = 256;
 
     const h = window.innerHeight,
         w = window.innerWidth;

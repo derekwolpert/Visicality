@@ -1,16 +1,49 @@
-.personal-links {
+#personal-links {
     position: absolute;
     padding-right: 44px;
-    font-size: 24px;
+    font-size: 26px;
     right: 0px;
-}
-.personal-links > * {
-    padding: 8px 2px 0 4px;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
-    color: rgba(255, 255, 255, 0.7);
-    transition: 0.2s;
+    transition: 1s;
 }
 
-.personal-links > *:hover {
-    color: rgba(255, 255, 255, 1);
+#personal-links-container {
+    display: inline-block;
+    transition: 1s;
+}
+
+.personal-links i {
+    padding: 7px 2px 0 4px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
+    vertical-align: text-top;
+}
+
+.personal-links i:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#github-link {
+    font-size: 26px;
+}
+
+#linkedin-link {
+    font-size: 29px;
+}
+
+#angellist-link {
+    font-size: 25px;
+}
+
+#portfolio-link {
+    font-size: 25px;
+}
+
+#email-link {
+    font-size: 29px;
+}
+
+#info-link {
+    font-size: 26px;
+    position: relative;
 }
