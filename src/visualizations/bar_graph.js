@@ -1,3 +1,5 @@
+import { returnAnimationStatus } from "../utitlities";
+
 export const barGraph = function (analyser, colors) {
 
     analyser.fftSize = 512;
@@ -32,11 +34,16 @@ export const barGraph = function (analyser, colors) {
         .attr("width", function (d) { return (w / dataArray.length) * 0.8; })
         .attr("x", function (d, i) { return (((w / dataArray.length) * i) + ((w / dataArray.length) * 0.1)); });
 
-    function renderFrame() {
-        requestAnimationFrame(renderFrame);
-        analyser.getByteFrequencyData(dataArray);
+    let currentCount = 0;
+    currentCount += returnAnimationStatus();
 
-        console.log(dataArray);
+    function renderFrame() {
+
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
+        analyser.getByteFrequencyData(dataArray);
+        
         svg.selectAll('rect')
             .data(dataArray)
             .attr("height", function (d) { return (h - y(d)); })

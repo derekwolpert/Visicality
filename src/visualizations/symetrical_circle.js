@@ -1,3 +1,5 @@
+import { returnAnimationStatus } from "../utitlities";
+
 export const symetricalCircle = function (analyser, colors) {
 
     analyser.fftSize = 1024;
@@ -61,9 +63,14 @@ export const symetricalCircle = function (analyser, colors) {
         colorOffset = (colorOffset + 1) % 600;
     };
 
+    let currentCount = 0;
+    currentCount += returnAnimationStatus();
+
     function renderFrame() {
 
-        requestAnimationFrame(renderFrame);
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
         analyser.getByteFrequencyData(dataArray);
         setColorOffset();
 

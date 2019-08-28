@@ -1,3 +1,5 @@
+import { returnAnimationStatus } from "../utitlities";
+
 export const circleGraph = function (analyser, colors) {
 
     analyser.fftSize = 128;
@@ -28,8 +30,14 @@ export const circleGraph = function (analyser, colors) {
         .attr('cx', function (d) { return (w / 2); })
         .attr('cy', function (d) { return (h / 2); });
 
+    let currentCount = 0;
+    currentCount += returnAnimationStatus();
+
     function renderFrame() {
-        requestAnimationFrame(renderFrame);
+
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
         analyser.getByteFrequencyData(dataArray);
 
         svg.selectAll('circle')

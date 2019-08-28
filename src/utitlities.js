@@ -18,3 +18,13 @@ export const getRandomColor = () => {
 export const removeVisualizer = () => {
     d3.selectAll("svg").remove();
 };
+
+let animationCount = 0;
+
+export const changeAnimationStatus = () => {
+    animationCount += 1;
+};
+
+export const returnAnimationStatus = () => {
+    return animationCount;
+};

@@ -1,6 +1,8 @@
+import { returnAnimationStatus } from "../utitlities";
+
 export const waveformLinear = function (analyser, colors) {
 
-    analyser.fftSize = 1024;
+    analyser.fftSize = 2048;
 
     const dataArray = new Float32Array(analyser.fftSize);
 
@@ -52,9 +54,14 @@ export const waveformLinear = function (analyser, colors) {
         colorOffset = (colorOffset + 1) % 600;
     };
 
+    let currentCount = 0;
+    currentCount += returnAnimationStatus();
+
     function renderFrame() {
 
-        requestAnimationFrame(renderFrame);
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
         analyser.getFloatTimeDomainData(dataArray);
         setColorOffset();
 
@@ -62,7 +69,7 @@ export const waveformLinear = function (analyser, colors) {
             .datum(dataArray)
             .attr("d", line)
             .attr("stroke", function (d) { return loopingColor(colorOffset); })
-            .attr("stroke-width", function (d) { return w / 240; });
+            .attr("stroke-width", function (d) { return w / 360; });
     }
     renderFrame();
 };

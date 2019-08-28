@@ -1,6 +1,8 @@
+import { returnAnimationStatus } from "../utitlities";
+
 export const waveformCircle = function (analyser, colors) {
 
-    analyser.fftSize = 1024;
+    analyser.fftSize = 2048;
 
     const dataArray = new Float32Array(analyser.fftSize);
 
@@ -58,9 +60,14 @@ export const waveformCircle = function (analyser, colors) {
         colorOffset = (colorOffset + 1) % 600;
     };
 
+    let currentCount = 0;
+    currentCount += returnAnimationStatus();
+
     function renderFrame() {
 
-        requestAnimationFrame(renderFrame);
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
         analyser.getFloatTimeDomainData(dataArray);
         setColorOffset();
 
@@ -68,7 +75,7 @@ export const waveformCircle = function (analyser, colors) {
             .datum(dataArray)
             .attr("d", lineRadial)
             .attr("stroke", function (d, i) { return loopingColor(colorOffset); })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 240) : (h / 240)); });
+            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 360) : (h / 360)); });
     }
     renderFrame();
 };

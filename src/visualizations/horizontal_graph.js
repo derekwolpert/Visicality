@@ -1,6 +1,8 @@
+import { returnAnimationStatus } from "../utitlities";
+
 export const horizontalBar = function (analyser, colors) {
 
-    analyser.fftSize = 256;
+    analyser.fftSize = 128;
     
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
@@ -40,8 +42,14 @@ export const horizontalBar = function (analyser, colors) {
         .attr("height", function (d) { return ((h / (dataLength)) * 0.8); })
         .attr("y", function (d, i) { return (((h / (dataLength) * y(i)))) + ((h / (dataLength)) * 0.1); });
 
+    let currentCount = 0;
+    currentCount += returnAnimationStatus();
+
     function renderFrame() {
-        requestAnimationFrame(renderFrame);
+
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
         analyser.getByteFrequencyData(dataArray);
 
         svg.selectAll('rect')

@@ -8,7 +8,7 @@ import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
 
-import { formatTime, getRandomColor, removeVisualizer } from "./utitlities";
+import { formatTime, getRandomColor, removeVisualizer, changeAnimationStatus } from "./utitlities";
 
 import "./styles/app.scss";
 
@@ -201,7 +201,7 @@ window.onload = () => {
         rightGainBar.style.opacity = "";
     };
  
-    let timeOut = setTimeout(() => hideElements(), 3000);
+    let timeOut;
 
     document.onmousemove = () => {
         showElements();
@@ -311,6 +311,7 @@ window.onload = () => {
 
     const createVisualizer = () => {
         if (contextCreated) {
+            changeAnimationStatus();
             removeVisualizer();
             visualizerObj[selectedVisualizer].visualizer(analyser, colorObj[selectedColor].color);
         }
@@ -588,8 +589,8 @@ window.onload = () => {
             document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
         }
     };
+
     window.onresize = () => {
-        removeVisualizer();
         createVisualizer();
     };
 };

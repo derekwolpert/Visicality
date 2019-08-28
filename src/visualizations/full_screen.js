@@ -1,3 +1,5 @@
+import { returnAnimationStatus } from "../utitlities";
+
 export const fullScreen = function (analyser, colors) {
 
     analyser.fftSize = 512;
@@ -34,8 +36,14 @@ export const fullScreen = function (analyser, colors) {
         .attr("height", function (d) { return (h); })
         .attr("y", function (d) { return 0; });
 
+    let currentCount = 0;
+    currentCount += returnAnimationStatus();
+
     function renderFrame() {
-        requestAnimationFrame(renderFrame);
+
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
         analyser.getByteFrequencyData(dataArray);
 
         svg.selectAll('rect')
