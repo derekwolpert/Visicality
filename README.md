@@ -1,4 +1,7 @@
-# Audio-Visualizer Web Audio API + D3 Library Project
+# Visicality
+## An Audio-Visualizer utilizing Web Audio API and D3.js Library
+
+Note: this  README is currently a work in progress (8/28/19)
 
 ![Wireframe Image](demo_photo_1.png)
 
