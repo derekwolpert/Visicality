@@ -4,7 +4,7 @@ export const waveformCircle = function (analyser, colors) {
 
     analyser.fftSize = 2048;
 
-    const dataArray = new Float32Array(analyser.fftSize);
+    const dataArray = !!analyser.getFloatTimeDomainData ? new Float32Array(analyser.fftSize) : [...Array(analyser.fftSize)].map(el => 0);
 
     const h = window.innerHeight,
         w = window.innerWidth;
@@ -65,17 +65,19 @@ export const waveformCircle = function (analyser, colors) {
 
     function renderFrame() {
 
-        if (currentCount === returnAnimationStatus()) {
-            requestAnimationFrame(renderFrame);
-        }
-        analyser.getFloatTimeDomainData(dataArray);
-        setColorOffset();
+        if (!!analyser.getFloatTimeDomainData) {
+            if (currentCount === returnAnimationStatus()) {
+                requestAnimationFrame(renderFrame);
+            }
+            analyser.getFloatTimeDomainData(dataArray);
+            setColorOffset();
 
-        svg.select("path")
-            .datum(dataArray)
-            .attr("d", lineRadial)
-            .attr("stroke", function (d, i) { return loopingColor(colorOffset); })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 360) : (h / 360)); });
+            svg.select("path")
+                .datum(dataArray)
+                .attr("d", lineRadial)
+                .attr("stroke", function (d, i) { return loopingColor(colorOffset); })
+                .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 360) : (h / 360)); });
+        }
     }
     renderFrame();
 };
