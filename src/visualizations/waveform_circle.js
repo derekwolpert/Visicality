@@ -79,22 +79,30 @@ export const waveformCircle = function (analyser, colors) {
                 .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 360) : (h / 360)); });
         } else {
             svg.append("text")
-                .text("The Waveform Circle visualizer utilizes a feature")
+                .text("The Waveform Circles visualizer utilizes a Web Audio API")
                 .attr("y", -h / 4)
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 32)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0005);
 
             svg.append("text")
-                .text("not compatible with your web browser.")
+                .text("method not compatible with your web browser.")
                 .attr("y", (-h / 4) + (w / 32) + 6)
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 32)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0005);
 
             svg.append("text")
                 .text("Please select a different visualizer, or consider using Google Chrome,")
@@ -102,8 +110,12 @@ export const waveformCircle = function (analyser, colors) {
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0003);
 
             svg.append("text")
                 .text("Microsoft Edge, Mozilla Firefox or Opera for wider compatiblity.")
@@ -111,8 +123,12 @@ export const waveformCircle = function (analyser, colors) {
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0003);
         }
     }
     renderFrame();

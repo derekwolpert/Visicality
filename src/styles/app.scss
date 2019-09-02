@@ -39,6 +39,46 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
+#project-name {
+  position: fixed;
+  top: 66px;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+  transition: 1s;
+}
+
+.project-title {
+  padding-left: 72px;
+  font-size: 22px;
+}
+
+.project-title > span {
+  font-style: italic;
+  font-size: 36px;
+  letter-spacing: 0.1em;
+}
+
+.project-subtitle{
+  padding-left: 144px;
+  line-height: 36px;
+}
+
+.project-author{
+  padding-left: 216px;
+}
+
+#project-name a {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  transition: 0.2s;
+}
+
+#project-name a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 @import "./background_color.scss";
 @import "./personal_links.scss";
 @import "./left_sidebar.scss";

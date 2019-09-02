@@ -78,22 +78,30 @@ export const waveformLinear = function (analyser, colors) {
         } else {
 
             svg.append("text")
-                .text("The Waveform Line visualizer utilizes a feature")
+                .text("The Waveform Lines visualizer utilizes a Web Audio API")
                 .attr("y", h / 4)
                 .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 32)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0005);
 
             svg.append("text")
-                .text("not compatible with your web browser.")
+                .text("method not compatible with your web browser.")
                 .attr("y", (h / 4) + (w / 32) + 6)
                 .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 32)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0005);
 
             svg.append("text")
                 .text("Please select a different visualizer, or consider using Google Chrome,")
@@ -101,8 +109,12 @@ export const waveformLinear = function (analyser, colors) {
                 .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0003);
 
             svg.append("text")
                 .text("Microsoft Edge, Mozilla Firefox or Opera for wider compatiblity.")
@@ -110,8 +122,12 @@ export const waveformLinear = function (analyser, colors) {
                 .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)
+                .attr("font-weight", 600)
                 .attr("font-family", `"Open Sans", sans-serif`)
-                .attr("fill", "white");
+                .attr("opacity", 0.8)
+                .attr("fill", "white")
+                .attr("stroke", "black")
+                .attr("stroke-width", w * 0.0003);
         }
     }
     renderFrame();

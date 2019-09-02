@@ -37,6 +37,7 @@ window.onload = () => {
     const rightGainBar = document.getElementById("right-gain-bar");
     const personalLinks = document.getElementById("personal-links");
     const personalLinksContainer = document.getElementById("personal-links-container");
+    const projectName = document.getElementById("project-name");
     const favicon = document.getElementById('favicon');
 
     const barGraphButton = document.getElementById('bar-graph-button');
@@ -199,6 +200,7 @@ window.onload = () => {
             rightGainBar.style.opacity = 0;
             personalLinksContainer.style.opacity = 0;
             personalLinks.style.paddingRight = "7px";
+            projectName.style.opacity = 0;
         }
     };
 
@@ -210,6 +212,7 @@ window.onload = () => {
         rightGainBar.style.opacity = "";
         personalLinksContainer.style.opacity = "";
         personalLinks.style.paddingRight = "";
+        projectName.style.opacity = "";
     };
  
     let timeOut;
@@ -217,13 +220,13 @@ window.onload = () => {
     document.onmousemove = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 5000);
+        timeOut = setTimeout(() => hideElements(), 4000);
     };
 
     document.onclick = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 5000);
+        timeOut = setTimeout(() => hideElements(), 4000);
     };
 
     colorPicker1.onchange = function () {
@@ -543,7 +546,7 @@ window.onload = () => {
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
-        timeOut = setTimeout(() => hideElements(), 5000);
+        timeOut = setTimeout(() => hideElements(), 4000);
     };
 
     document.getElementById("playbar").onclick = (e) => {

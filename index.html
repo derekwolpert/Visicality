@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>vi·si·cal·i·ty: Online Music Visualizer - D3.js and Web Audio API</title>
+    <title>Visicality: Online Music Visualizer utilizing Web Audio API and D3.js</title>
     <link rel="stylesheet" href="./dist/main.css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,700&display=swap" rel="stylesheet">
     <link 
         rel="shortcut icon" 
         type="image/png" 
@@ -74,31 +74,35 @@
     <section class="personal-links" id="personal-links">
 
         <div id="personal-links-container">
-            <a href="https://github.com/derekwolpert/Visicality" target="_blank">
+            <a href="https://github.com/derekwolpert/Visicality" target="_blank" data="Visicality's Github repository">
                 <i class="fab fa-github" id="github-link"></i>
             </a>
             
-            <a href="https://www.linkedin.com/in/derek-wolpert/" target="_blank">
+            <a href="https://www.linkedin.com/in/derek-wolpert/" target="_blank" data="Derek Wolpert's LinkedIn profile">
                 <i class="fab fa-linkedin-in" id="linkedin-link"></i>
             </a>
             
-            <a href="https://angel.co/derek-wolpert" target="_blank">
+            <a href="https://angel.co/derek-wolpert" target="_blank" data="Derek Wolpert's AngelList profile">
                 <i class="fab fa-angellist" id="angellist-link"></i>
             </a>
                     
-            <a href="https://www.derekwolpert.com" target="_blank">
+            <a href="https://www.derekwolpert.com" target="_blank" data="Derek Wolpert's profolio website">
                 <i class="fas fa-external-link-alt" id="portfolio-link"></i>
             </a>
     
-            <a href="mailto: me@derekwolpert.com">
+            <a href="mailto: me@derekwolpert.com" data="Send Derek Wolpert an email about his project">
                 <i class="far fa-envelope" id="email-link"></i>
             </a>
         </div>
-
-        <i class="fas fa-info-circle" id="info-link"></i>
+        <i class="fas fa-info-circle" id="info-link" data="Instructions"></i>
 
     </section>
 
+    <section id="project-name">
+        <div class="project-title"><span>vi·si·cal·i·ty </span>(visual + musicality)</div>
+        <div class="project-subtitle">an Online Music Visualizer utilizing <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank">Web Audio API</a> and <a href="https://d3js.org" target="_blank">D3.js</a></div>
+        <div class="project-author">designed and developed by <a href="https://www.derekwolpert.com" target="_blank">Derek Wolpert</a></div>
+    </section>
 
     <section class="left-sidebar" id="left-sidebar">
 
@@ -141,12 +145,12 @@
             </div>
             <div class="visualizer-option-8" 
                 id="waveform-linear-button" 
-                data="Waveform Lines - not supported by Safari or Internet Explorer">
+                data="Waveform Lines">
                 <span>8</span>
             </div>
             <div class="visualizer-option-9" 
                 id="waveform-circle-button" 
-                data="Waveform Circles - not supported by Safari or Internet Explorer">
+                data="Waveform Circles">
                 <span>9</span>
             </div>
 
