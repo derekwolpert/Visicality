@@ -11,14 +11,14 @@ export const symetricalCircle = function (analyser, colors) {
 
     let svg;
 
-    if (document.getElementById('visualizer-svg-center')) {
+    if (document.getElementById('visualizer-svg')) {
         d3.selectAll("svg > *").remove();
     } else {
         d3.selectAll("svg").remove();
         svg = d3.select('body').append('svg')
             .attr('width', w)
             .attr('height', h)
-            .attr('id', 'visualizer-center')
+            .attr('id', 'visualizer-svg')
             .append("g")
             .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
     }

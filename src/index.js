@@ -426,7 +426,7 @@ window.onload = () => {
     };
 
     const switchPlayPause = () => {
-        if (context) {
+        if (context && audio.src !== "") {
             if (audio.paused) {
                 audio.play();
                 largePlayIcon.style.opacity = "";
@@ -568,7 +568,7 @@ window.onload = () => {
             context = new AudioContext();
             analyser = context.createAnalyser();
             analyser.minDecibels = -105;
-            analyser.maxDecibels = -25;
+            analyser.maxDecibels = -20;
             analyser.smoothingTimeConstant = 0.8;
             gain = context.createGain();
             let src = context.createMediaElementSource(audio);

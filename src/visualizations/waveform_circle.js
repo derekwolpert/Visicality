@@ -11,14 +11,14 @@ export const waveformCircle = function (analyser, colors) {
 
     let svg;
 
-    if (document.getElementById('visualizer-svg-center')) {
+    if (document.getElementById('visualizer-svg')) {
         d3.selectAll("svg > *").remove();
     } else {
         d3.selectAll("svg").remove();
         svg = d3.select('body').append('svg')
             .attr('width', w)
             .attr('height', h)
-            .attr('id', 'visualizer-center')
+            .attr('id', 'visualizer-svg')
             .append("g")
             .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
     }
@@ -77,6 +77,42 @@ export const waveformCircle = function (analyser, colors) {
                 .attr("d", lineRadial)
                 .attr("stroke", function (d, i) { return loopingColor(colorOffset); })
                 .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 360) : (h / 360)); });
+        } else {
+            svg.append("text")
+                .text("The Waveform Circle visualizer utilizes a feature")
+                .attr("y", -h / 4)
+                .attr("x", 0)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 32)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
+
+            svg.append("text")
+                .text("not compatible with your web browser.")
+                .attr("y", (-h / 4) + (w / 32) + 6)
+                .attr("x", 0)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 32)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
+
+            svg.append("text")
+                .text("Please select a different visualizer, or consider using Google Chrome,")
+                .attr("y", (-h / 4) + (2 * (w / 32)) + 18)
+                .attr("x", 0)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 48)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
+
+            svg.append("text")
+                .text("Microsoft Edge, Mozilla Firefox or Opera for wider compatiblity.")
+                .attr("y", (-h / 4) + (2 * (w / 32)) + (w / 48) + 24)
+                .attr("x", 0)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 48)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
         }
     }
     renderFrame();

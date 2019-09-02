@@ -75,8 +75,44 @@ export const waveformLinear = function (analyser, colors) {
                 .attr("stroke", function (d) { return loopingColor(colorOffset); })
                 .attr("stroke-width", function (d) { return w / 360; });
 
-        }
+        } else {
 
+            svg.append("text")
+                .text("The Waveform Line visualizer utilizes a feature")
+                .attr("y", h / 4)
+                .attr("x", w / 2)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 32)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
+
+            svg.append("text")
+                .text("not compatible with your web browser.")
+                .attr("y", (h / 4) + (w / 32) + 6)
+                .attr("x", w / 2)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 32)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
+
+            svg.append("text")
+                .text("Please select a different visualizer, or consider using Google Chrome,")
+                .attr("y", (h / 4) + (2 * (w / 32)) + 18)
+                .attr("x", w / 2)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 48)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
+
+            svg.append("text")
+                .text("Microsoft Edge, Mozilla Firefox or Opera for wider compatiblity.")
+                .attr("y", (h / 4) + (2 * (w / 32)) + (w / 48) + 24)
+                .attr("x", w / 2)
+                .attr("text-anchor", "middle")
+                .attr("font-size", w / 48)
+                .attr("font-family", `"Open Sans", sans-serif`)
+                .attr("fill", "white");
+        }
     }
     renderFrame();
 };
