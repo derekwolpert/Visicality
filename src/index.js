@@ -60,14 +60,14 @@ window.onload = () => {
     const greysButton = document.getElementById('greys-button');
 
     let selectedVisualizer = "barGraph";
-    let selectedColor = "sinebowD3";
+    let selectedColor = "rainbowD3";
     let selectedBackgroundDirection = "45deg";
 
     const visualizerObj = {
         barGraph: {
             button: barGraphButton,
             visualizer: barGraph,
-            prev: "fullScreen",
+            prev: "waveformCircle",
             next: "horizontalBar",
         },
         horizontalBar: {
@@ -98,69 +98,74 @@ window.onload = () => {
             button: symetricalCircleButton,
             visualizer: symetricalCircle,
             prev: "symetricalLine",
+            next: "fullScreen",
+        },
+        fullScreen: {
+            button: fullScreenButton,
+            visualizer: fullScreen,
+            prev: "symetricalCircle",
             next: "waveformLinear",
         },
         waveformLinear: {
             button: waveformLinearButton,
             visualizer: waveformLinear,
-            prev: "symetricalCircle",
+            prev: "fullScreen",
             next: "waveformCircle",
         },
         waveformCircle: {
             button: waveformCircleButton,
             visualizer: waveformCircle,
             prev: "waveformLinear",
-            next: "fullScreen",
-        },
-        fullScreen: {
-            button: fullScreenButton,
-            visualizer: fullScreen,
-            prev: "waveformCircle",
             next: "barGraph",
         }
     };
 
     const colorObj = {
+        rainbowD3: {
+            button: rainbowButton,
+            color: d3.interpolateRainbow,
+            prev: "greysD3",
+            next: "plasmaD3",
+        },
+
         plasmaD3: {
             button: plasmaButton,
             color: d3.interpolatePlasma,
-            prev: "greysD3",
+            prev: "rainbowD3",
             next: "viridisD3",
         },
+
         viridisD3: {
             button: viridisButton,
             color: d3.interpolateViridis,
             prev: "plasmaD3",
-            next: "rainbowD3",
+            next: "sinebowD3",
         },
-        rainbowD3: {
-            button: rainbowButton,
-            color: d3.interpolateRainbow,
+
+        sinebowD3: {
+            button: sinebowButton,
+            color: d3.interpolateSinebow,
             prev: "viridisD3",
             next: "spectralD3",
         },
+
         spectralD3: {
             button: spectralButton,
             color: d3.interpolateSpectral,
-            prev: "rainbowD3",
+            prev: "sinebowD3",
             next: "cubehelixD3",
         },
         cubehelixD3: {
             button: cubehelixButton,
             color: d3.interpolateCubehelixDefault,
             prev: "spectralD3",
-            next: "sinebowD3",
-        },
-        sinebowD3: {
-            button: sinebowButton,
-            color: d3.interpolateSinebow,
-            prev: "cubehelixD3",
             next: "ylOrRdD3",
         },
+
         ylOrRdD3: {
             button: ylOrRdDButton,
             color: d3.interpolateYlOrRd,
-            prev: "sinebowD3",
+            prev: "cubehelixD3",
             next: "ylGnBuD3",
         },
         ylGnBuD3: {
@@ -173,7 +178,7 @@ window.onload = () => {
             button: greysButton,
             color: d3.interpolateGreys,
             prev: "ylGnBuD3",
-            next: "plasmaD3",
+            next: "rainbowD3",
         }
     };
 
