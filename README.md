@@ -1,6 +1,6 @@
 # vi·si·cal·i·ty (visual + musicality)
 
-![Wireframe Image](demo_photo_1.png)
+![Visualizer Options](demo_pic_1.gif)
 
 ## Background & Overview
 
@@ -10,7 +10,7 @@ The program contains a limited – yet varied – collection of built-in sounds.
 
 Visicality aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
 
-![Wireframe Image](demo_photo_2.png)
+![Color Options](demo_pic_2.gif)
 
 ## Functionality & MVPs
 
@@ -21,13 +21,15 @@ In Visicality users are able to:
 * Select an audio for the visualization
 * Play, pause and restart options for the audio
 
+![Background Color Examples](demo_pic_3.gif)
+
 Additionally, Visicality includes:
 * A modal to house the settings for selecting a custom audio source
 * Links to various personal websites to learn more about the developer of the project
 
 ## Wireframe
 
-![Wireframe Image](wireframe_proposal_image.png)
+![Wireframe Proposal Image](wireframe_proposal_image.png)
 
 ## Architecture & Technologies
 
