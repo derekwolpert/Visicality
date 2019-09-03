@@ -267,7 +267,6 @@ window.onload = () => {
                 "225deg": [32, 0, 0, 32],
                 "270deg": [32, 32, 0, 32],
                 "315deg": [32, 32, 0, 0]
-
             };
 
             const gradient = faviconColor.createLinearGradient(...gradientParams[selectedBackgroundDirection]);
