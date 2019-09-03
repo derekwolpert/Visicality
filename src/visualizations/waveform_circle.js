@@ -41,7 +41,7 @@ export const waveformCircle = function (analyser, colors) {
         .range([0, (w > h) ? (w / 2) : (h / 2)]);
 
     const lineRadial = d3.lineRadial()
-        .radius(function (d, i) { return (radius(d)); })
+        .radius(function (d) { return (radius(d)); })
         .angle(function (d, i) { return (angle(i)); });
 
     const colorScale = d3.scaleSequential(colors)
@@ -78,8 +78,8 @@ export const waveformCircle = function (analyser, colors) {
             svg.select("path")
                 .datum(dataArray)
                 .attr("d", lineRadial)
-                .attr("stroke", function (d, i) { return loopingColor(colorOffset); })
-                .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 360) : (h / 360)); });
+                .attr("stroke", loopingColor(colorOffset))
+                .attr("stroke-width", (w > h) ? (w / 360) : (h / 360));
 
         } else {
 

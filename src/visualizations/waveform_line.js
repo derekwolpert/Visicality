@@ -31,7 +31,7 @@ export const waveformLinear = function (analyser, colors) {
 
     const line = d3.line()
         .x(function (d, i) { return x(i); })
-        .y(function (d, i) { return y(d); });
+        .y(function (d) { return y(d); });
 
     svg.append("g")
         .attr("class", "y axis")
@@ -72,8 +72,8 @@ export const waveformLinear = function (analyser, colors) {
             svg.select("path")
                 .datum(dataArray)
                 .attr("d", line)
-                .attr("stroke", function (d) { return loopingColor(colorOffset); })
-                .attr("stroke-width", function (d) { return w / 360; });
+                .attr("stroke", loopingColor(colorOffset))
+                .attr("stroke-width", w / 360);
 
         } else {
 
