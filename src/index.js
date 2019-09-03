@@ -12,6 +12,8 @@ import { formatTime, getRandomColor, removeVisualizer, changeAnimationStatus } f
 
 import "./styles/app.scss";
 
+import fscreen from 'fscreen';
+
 window.onload = () => {
 
     const audio = document.getElementById("audio");
@@ -24,6 +26,7 @@ window.onload = () => {
     const colorPicker1 = document.getElementById('color-picker-1');
     const colorPicker2 = document.getElementById('color-picker-2');
     const colorPicker3 = document.getElementById('color-picker-3');
+    const enterExitFullScreen = document.getElementById('full-screen-container');
 
     const colorPickerLabel1 = document.getElementById("color-picker-label-1");
     const colorPickerLabel2 = document.getElementById("color-picker-label-2");
@@ -220,13 +223,13 @@ window.onload = () => {
     document.onmousemove = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 4000);
+        timeOut = setTimeout(() => hideElements(), 3500);
     };
 
     document.onclick = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 4000);
+        timeOut = setTimeout(() => hideElements(), 3500);
     };
 
     colorPicker1.onchange = function () {
@@ -455,6 +458,24 @@ window.onload = () => {
         switchPlayPause();
     };
 
+    enterExitFullScreen.onclick = () => {
+        if (!fscreen.fullscreenElement) {
+            fscreen.requestFullscreen(document.documentElement);
+        } else {
+            fscreen.exitFullscreen();
+        }
+    };
+
+    fscreen.onfullscreenchange = (() => {
+        if (!!fscreen.fullscreenElement) {
+            enterExitFullScreen.innerHTML = `<i class="fas fa-compress-arrows-alt"></i>`;
+            enterExitFullScreen.setAttribute("data", "Exit Full-Screen");
+        } else {
+            enterExitFullScreen.innerHTML = `<i class="fas fa-arrows-alt"></i>`;
+            enterExitFullScreen.setAttribute("data", "Enter Full-Screen");
+        }
+    });
+
     document.onkeyup = (e) => {
         e.preventDefault();
         if (audio.src !== "") {
@@ -546,7 +567,7 @@ window.onload = () => {
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
-        timeOut = setTimeout(() => hideElements(), 4000);
+        timeOut = setTimeout(() => hideElements(), 3500);
     };
 
     document.getElementById("playbar").onclick = (e) => {
@@ -600,7 +621,7 @@ window.onload = () => {
             largePlayIcon.style.opacity = 1;
             largePlayIcon.style.cursor = "pointer";
 
-            document.getElementById('track-name').innerHTML = `<span>${files[0].name}</span>`;
+            document.getElementById('track-name').innerHTML = `<span>${files[0].name.split(".").slice(0, files[0].name.split(".").length - 1).join("")}</span>`;
         }
     };
 

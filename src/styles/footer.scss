@@ -27,7 +27,7 @@ footer {
 }
 
 .play-pause {
-    padding: 7px 20px 0 25px;
+    padding: 7px 20px 0 20px;
     border-right: solid 2px rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 0.6);
     transition: 0.2s;
@@ -36,6 +36,7 @@ footer {
 
 #play-pause {
     cursor: pointer;
+    transition: 0.2s;
 }
 
 #play-pause:hover {
@@ -108,7 +109,7 @@ footer {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     text-align: center;
     line-height: 16px;
-    left: 84px;
+    left: 80px;
     padding: 4px 8px;
     position: absolute;
     z-index: 100;
@@ -129,8 +130,7 @@ footer {
     color: rgba(255, 255, 255, 0.7);
     border-right: solid 2px rgba(0, 0, 0, 0.5);
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-    width: 18%;
-    max-width: 200px;
+    max-width: 15%;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -196,14 +196,12 @@ footer {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     text-align: center;
     line-height: 16px;
-    right: 242px;
+    right: 181px;
     padding: 4px 8px;
     position: absolute;
     z-index: 100;
     width: 260px;
 }
-
-
 
 #time-progress {
     width: 60px;
@@ -230,6 +228,8 @@ footer {
     color: rgba(255, 255, 255, 0.8);
     position: relative;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    border-right: solid 2px rgba(0, 0, 0, 0.5);
+
 }
 
 #time-left:hover {
@@ -244,6 +244,38 @@ footer {
     top: 26%;
 }
 
-.volume-container {
-    width: 5px;
+.full-screen {
+    padding: 5px 20px 0 20px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
+    font-size: 23px;
+}
+
+#full-screen-container {
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#full-screen-container:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#full-screen-container:hover:after {
+    text-transform: none;
+    letter-spacing: normal;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    bottom: 86px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 12px;
+    font-weight: 600;
+    content: attr(data);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    right: 22px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 100;
 }

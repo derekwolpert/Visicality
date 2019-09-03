@@ -80,10 +80,10 @@ export const waveformCircle = function (analyser, colors) {
         } else {
             svg.append("text")
                 .text("Waveform Circles visualizer utilizes a Web Audio API")
-                .attr("y", (-1 / 10) * h)
+                .attr("y", 0)
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
-                .attr("font-size", w / 32)
+                .attr("font-size", w / 42)
                 .attr("font-family", `"Open Sans", sans-serif`)
                 .attr("opacity", 0.8)
                 .attr("fill", "white")
@@ -92,10 +92,10 @@ export const waveformCircle = function (analyser, colors) {
 
             svg.append("text")
                 .text("method not compatible with your web browser.")
-                .attr("y", ((-1 / 10) * h) + (w / 32) + 6)
+                .attr("y", (w / 42) + 6)
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
-                .attr("font-size", w / 32)
+                .attr("font-size", w / 42)
                 .attr("font-family", `"Open Sans", sans-serif`)
                 .attr("opacity", 0.8)
                 .attr("fill", "white")
@@ -104,7 +104,7 @@ export const waveformCircle = function (analyser, colors) {
 
             svg.append("text")
                 .text("Please select a different visualizer, or consider using Google Chrome,")
-                .attr("y", ((-1 / 10) * h) + (2 * (w / 32)) + 18)
+                .attr("y", (2 * (w / 42)) + 18)
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)
@@ -116,7 +116,7 @@ export const waveformCircle = function (analyser, colors) {
 
             svg.append("text")
                 .text("Microsoft Edge, Mozilla Firefox or Opera for wider compatiblity.")
-                .attr("y", ((-1 / 10) * h) + (2 * (w / 32)) + (w / 48) + 24)
+                .attr("y", (2 * (w / 42)) + (w / 48) + 24)
                 .attr("x", 0)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)

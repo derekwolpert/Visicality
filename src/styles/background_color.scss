@@ -35,6 +35,8 @@
     height: 25px;
     transition: 0.2s;
     position: relative;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
 }
 
 .background-color-title:hover {
