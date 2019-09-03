@@ -31,6 +31,8 @@ Additionally, Visicality includes:
 
 ![Wireframe Proposal Image](wireframe_proposal_image.png)
 
+![Final Layout Image](final_layout_image.png)
+
 ## Architecture & Technologies
 
 Visicality utilizes the following technologies:
