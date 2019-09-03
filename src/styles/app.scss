@@ -45,7 +45,7 @@
   font-size: 18px;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
   transition: 1s;
 }
 
@@ -55,12 +55,12 @@
   white-space: nowrap; 
   text-overflow: ellipsis;
   letter-spacing: 0.1em;
-
 }
 
 .project-title > span {
   font-style: italic;
   font-size: 36px;
+  letter-spacing: 0.1em;
 }
 
 .project-subtitle{
@@ -68,12 +68,14 @@
   line-height: 36px;
   white-space: nowrap; 
   text-overflow: ellipsis;
+  letter-spacing: 0.1em;
 }
 
 .project-author{
   padding-left: 216px;
   white-space: nowrap; 
   text-overflow: ellipsis;
+  letter-spacing: 0.1em;
 }
 
 #project-name a {
