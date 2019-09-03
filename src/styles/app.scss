@@ -4,8 +4,8 @@
 #app {
   font-family: 'Open Sans', sans-serif;
   color: white;
-  background-color: #202020;
-  background-image: linear-gradient(45deg, #101010, #202020,#101010);
+  background-color: #181818;
+  background-image: linear-gradient(45deg, #080808, #181818,#080808);
   transition: 0.2s;
   min-height: 100vh;
   min-width: 100vw;
@@ -54,12 +54,13 @@
   font-size: 22px;
   white-space: nowrap; 
   text-overflow: ellipsis;
+  letter-spacing: 0.1em;
+
 }
 
 .project-title > span {
   font-style: italic;
   font-size: 36px;
-  letter-spacing: 0.1em;
 }
 
 .project-subtitle{
