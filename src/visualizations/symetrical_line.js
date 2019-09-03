@@ -79,14 +79,15 @@ export const symetricalLine = function (analyser, colors) {
         }
         
         analyser.getByteFrequencyData(dataArray);
+
         setColorOffset();
 
         svg.selectAll("path")
             .datum([...dataArray.slice().reverse(), ...dataArray, ...dataArray.slice().reverse(), ...dataArray])
             .attr("d", line)
-            .attr("fill", function (d) { return loopingColor(colorOffset); })
-            .attr("stroke", function (d) { return "black"; })
-            .attr("stroke-width", function (d, i) { return ((w > h) ? (w / 960) : (h / 960)); });
+            .attr("fill", loopingColor(colorOffset))
+            .attr("stroke", "black")
+            .attr("stroke-width", (w > h) ? (w / 960) : (h / 960));
     }
     renderFrame();
 };

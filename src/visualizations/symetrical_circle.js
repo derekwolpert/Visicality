@@ -72,6 +72,7 @@ export const symetricalCircle = function (analyser, colors) {
             requestAnimationFrame(renderFrame);
         }
         analyser.getByteFrequencyData(dataArray);
+
         setColorOffset();
 
         svg.selectAll("path")
