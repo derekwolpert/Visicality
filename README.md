@@ -1,30 +1,27 @@
-# Visicality
-## An Audio-Visualizer utilizing Web Audio API and D3.js Library
-
-Note: this  README is currently a work in progress (8/28/19)
+# vi·si·cal·i·ty (visual + musicality)
 
 ![Wireframe Image](demo_photo_1.png)
 
 ## Background & Overview
 
-The Audio-Visualizer Web Audio API + D3 Library Project (AVWAD3) is an audio visualizer program utilizing the Web Audio API and D3 Library to create real-time imagery corresponding to attributes of simultaneously playing audio (e.g. the volume of the audio, the frequencies of the audio, etc.).  
+Visicality is a music visualizer web application utilizing Web Audio API and D3.js to create real-time imagery corresponding to attributes of simultaneously playing audio.
 
 The program contains a limited – yet varied – collection of built-in sounds.  Users can also input their own sounds through utilizing SoundCloud’s audio API, directly uploading from their own computer, or utilizing a microphone on their own device.
 
-AVWAD3 aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
+Visicality aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
 
 ![Wireframe Image](demo_photo_2.png)
 
 ## Functionality & MVPs
 
-In AVWAD3 users are able to:
+In Visicality users are able to:
 * Experience a real-time visual representation of audio
 * Select a graph-inspired style for the visualization of audio
 * Select a color palette for the visualization
 * Select an audio for the visualization
 * Play, pause and restart options for the audio
 
-Additionally, AVWAD3 includes:
+Additionally, Visicality includes:
 * A modal to house the settings for selecting a custom audio source
 * Links to various personal websites to learn more about the developer of the project
 
@@ -34,7 +31,7 @@ Additionally, AVWAD3 includes:
 
 ## Architecture & Technologies
 
-AVWAD3 utilizes the following technologies:
+Visicality utilizes the following technologies:
 * `Vanilla JavaScript`, for fundamental structure of project 
 * `Web Audio API`, to extract data from selected audio
 * `D3 Library`, to create visually rich visuals based on data from audio 
