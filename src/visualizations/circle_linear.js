@@ -47,7 +47,7 @@ export const circleLinear = function (analyser, colors) {
         svg.selectAll('circle')
             .data(dataArray)
             .attr('r', function (d) { return ((((w > h ? h : w)) / 2) * (d / 255)); })
-            .attr("fill", function (d, i) { return d === 0 ? "black" : colorScale(d); });
+            .attr("fill", function (d) { return d === 0 ? "black" : colorScale(d); });
     }
     renderFrame();
 };

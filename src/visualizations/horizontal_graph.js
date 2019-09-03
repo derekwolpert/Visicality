@@ -39,7 +39,7 @@ export const horizontalBar = function (analyser, colors) {
     svg.selectAll("rect")
         .data(symmetricalData)
         .enter().append("rect")
-        .attr("height", function (d) { return ((h / (dataLength)) * 0.8); })
+        .attr("height", (h / (dataLength)) * 0.8)
         .attr("y", function (d, i) { return (((h / (dataLength) * y(i)))) + ((h / (dataLength)) * 0.1); });
 
     let currentCount = 0;

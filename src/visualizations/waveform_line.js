@@ -59,15 +59,15 @@ export const waveformLinear = function (analyser, colors) {
 
     function renderFrame() {
 
+        if (currentCount === returnAnimationStatus()) {
+            requestAnimationFrame(renderFrame);
+        }
+
+        setColorOffset();
+
         if (!!analyser.getFloatTimeDomainData) {
 
-            if (currentCount === returnAnimationStatus()) {
-                requestAnimationFrame(renderFrame);
-            }
-
             analyser.getFloatTimeDomainData(dataArray);
-
-            setColorOffset();
 
             svg.select("path")
                 .datum(dataArray)
@@ -77,51 +77,53 @@ export const waveformLinear = function (analyser, colors) {
 
         } else {
 
+            d3.selectAll("svg text").remove();
+
             svg.append("text")
-                .text("Waveform Circles visualizer utilizes a Web Audio API")
-                .attr("y", h / 2)
+                .text("Waveform Lines visualizer utilizes a Web Audio API")
+                .attr("y", (h * (9 / 20)))
                 .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 42)
                 .attr("font-family", `"Open Sans", sans-serif`)
                 .attr("opacity", 0.8)
-                .attr("fill", "white")
+                .attr("fill", loopingColor(colorOffset))
                 .attr("stroke", "black")
                 .attr("stroke-width", w * 0.0005);
 
             svg.append("text")
                 .text("method not compatible with your web browser.")
-                .attr("y", (h / 2) + (w / 42) + 6)
+                .attr("y", (h * (9 / 20)) + (w / 42) + 6)
                 .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 42)
                 .attr("font-family", `"Open Sans", sans-serif`)
                 .attr("opacity", 0.8)
-                .attr("fill", "white")
+                .attr("fill", loopingColor(colorOffset))
                 .attr("stroke", "black")
                 .attr("stroke-width", w * 0.0005);
 
             svg.append("text")
                 .text("Please select a different visualizer, or consider using Google Chrome,")
-                .attr("y", (h / 2) + (2 * (w / 42)) + 18)
-                .attr("x", w/2)
+                .attr("y", (h * (9 / 20)) + (2 * (w / 42)) + 18)
+                .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)
                 .attr("font-family", `"Open Sans", sans-serif`)
                 .attr("opacity", 0.8)
-                .attr("fill", "white")
+                .attr("fill", loopingColor(colorOffset))
                 .attr("stroke", "black")
                 .attr("stroke-width", w * 0.0003);
 
             svg.append("text")
                 .text("Microsoft Edge, Mozilla Firefox or Opera for wider compatiblity.")
-                .attr("y", (h / 2) + (2 * (w / 42)) + (w / 48) + 24)
-                .attr("x", w/2)
+                .attr("y", (h * (9 / 20)) + (2 * (w / 42)) + (w / 48) + 24)
+                .attr("x", w / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", w / 48)
                 .attr("font-family", `"Open Sans", sans-serif`)
                 .attr("opacity", 0.8)
-                .attr("fill", "white")
+                .attr("fill", loopingColor(colorOffset))
                 .attr("stroke", "black")
                 .attr("stroke-width", w * 0.0003);
         }

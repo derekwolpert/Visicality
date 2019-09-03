@@ -77,6 +77,7 @@ export const symetricalLine = function (analyser, colors) {
         if (currentCount === returnAnimationStatus()) {
             requestAnimationFrame(renderFrame);
         }
+        
         analyser.getByteFrequencyData(dataArray);
         setColorOffset();
 

@@ -130,7 +130,8 @@ footer {
     color: rgba(255, 255, 255, 0.7);
     border-right: solid 2px rgba(0, 0, 0, 0.5);
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-    max-width: 15%;
+    flex: 1;
+    max-width: 150px;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -145,7 +146,7 @@ footer {
 }
 
 .playbar-container {
-    flex: 1;
+    flex: 2;
     position: relative;
 }
 
@@ -196,7 +197,7 @@ footer {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
     text-align: center;
     line-height: 16px;
-    right: 181px;
+    right: 183px;
     padding: 4px 8px;
     position: absolute;
     z-index: 100;

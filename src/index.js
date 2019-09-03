@@ -458,7 +458,7 @@ window.onload = () => {
         switchPlayPause();
     };
 
-    enterExitFullScreen.onclick = () => {
+    const switchFullScreen = () => {
         if (!fscreen.fullscreenElement) {
             fscreen.requestFullscreen(document.documentElement);
         } else {
@@ -466,13 +466,17 @@ window.onload = () => {
         }
     };
 
+    enterExitFullScreen.onclick = () => {
+        switchFullScreen();
+    };
+
     fscreen.onfullscreenchange = (() => {
         if (!!fscreen.fullscreenElement) {
             enterExitFullScreen.innerHTML = `<i class="fas fa-compress-arrows-alt"></i>`;
-            enterExitFullScreen.setAttribute("data", "Exit Full-Screen");
+            enterExitFullScreen.setAttribute("data", "Exit Full-Screen, or press [F]");
         } else {
             enterExitFullScreen.innerHTML = `<i class="fas fa-arrows-alt"></i>`;
-            enterExitFullScreen.setAttribute("data", "Enter Full-Screen");
+            enterExitFullScreen.setAttribute("data", "Enter Full-Screen, or press [F]");
         }
     });
 
@@ -533,6 +537,8 @@ window.onload = () => {
 
         if (e.keyCode === 87) prevVisualizer();
         if (e.keyCode === 83) nextVisualizer();
+
+        if (e.keyCode === 70) switchFullScreen();
     };
 
     const updateGain = (value) => {

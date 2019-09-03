@@ -31,10 +31,10 @@ export const fullScreen = function (analyser, colors) {
     svg.selectAll("rect")
         .data(dataArray)
         .enter().append("rect")
-        .attr("width", function (d) { return ((w / dataArray.length) * 0.8); })
+        .attr("width", (w / dataArray.length) * 0.8)
         .attr("x", function (d, i) { return ((w / (dataArray.length)) * i) + ((w / dataArray.length) * 0.1); })
-        .attr("height", function (d) { return (h); })
-        .attr("y", function (d) { return 0; });
+        .attr("height", h)
+        .attr("y", 0);
 
     let currentCount = 0;
     currentCount += returnAnimationStatus();

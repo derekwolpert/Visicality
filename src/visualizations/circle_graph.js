@@ -27,8 +27,8 @@ export const circleGraph = function (analyser, colors) {
     svg.selectAll('circle')
         .data(dataArray)
         .enter().append('circle')
-        .attr('cx', function (d) { return (w / 2); })
-        .attr('cy', function (d) { return (h / 2); });
+        .attr('cx', (w / 2))
+        .attr('cy', (h / 2));
 
     let currentCount = 0;
     currentCount += returnAnimationStatus();
