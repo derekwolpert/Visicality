@@ -43,6 +43,8 @@ window.onload = () => {
     const projectName = document.getElementById("project-name");
     const favicon = document.getElementById('favicon');
 
+    const informationModal = document.getElementById('information-modal');
+
     const barGraphButton = document.getElementById('bar-graph-button');
     const horizontalBarButton = document.getElementById('horizontal-bar-button');
     const circleGraphButton = document.getElementById('circle-graph-button');
@@ -203,6 +205,7 @@ window.onload = () => {
             rightGainBar.style.opacity = 0;
             personalLinksContainer.style.opacity = 0;
             personalLinks.style.paddingRight = "7px";
+            projectName.style.transition = "1s";
             projectName.style.opacity = 0;
         }
     };
@@ -216,6 +219,16 @@ window.onload = () => {
         personalLinksContainer.style.opacity = "";
         personalLinks.style.paddingRight = "";
         projectName.style.opacity = "";
+        projectName.style.transition = "";
+
+    };
+
+    document.getElementById('info-link').onclick = () => {
+        informationModal.style.display = "block";
+    };
+
+    document.getElementById('close-modal').onclick = () => {
+        informationModal.style.display = "";
     };
  
     let timeOut;
@@ -601,7 +614,7 @@ window.onload = () => {
             contextCreated = true;
             context = new AudioContext();
             analyser = context.createAnalyser();
-            analyser.minDecibels = -100;
+            analyser.minDecibels = -105;
             analyser.maxDecibels = -25;
             analyser.smoothingTimeConstant = 0.8;
             gain = context.createGain();

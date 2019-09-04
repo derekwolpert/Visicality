@@ -42,16 +42,15 @@
 #project-name {
   position: fixed;
   top: 66px;
-  font-size: 18px;
+  font-size: 2vw;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
-  transition: 1s;
 }
 
 .project-title {
-  padding-left: 72px;
-  font-size: 22px;
+  padding-left: 60px;
+  font-size: 2.5vw;
   white-space: nowrap; 
   text-overflow: ellipsis;
   letter-spacing: 0.1em;
@@ -59,19 +58,19 @@
 
 .project-title > span {
   font-style: italic;
-  font-size: 36px;
+  font-size: 4vw;
   letter-spacing: 0.1em;
 }
 
 .project-subtitle{
-  padding-left: 114px;
-  line-height: 36px;
+  padding-left: 132px;
+  line-height: 4vw;
   white-space: nowrap; 
   text-overflow: ellipsis;
 }
 
 .project-author{
-  padding-left: 162px;
+  padding-left: 204px;
   white-space: nowrap; 
   text-overflow: ellipsis;
 }
@@ -79,7 +78,6 @@
 #project-name a {
   color: rgba(255, 255, 255, 0.7);
   font-weight: 400;
-  transition: 0.2s;
 }
 
 #project-name a:hover {
@@ -88,6 +86,7 @@
 
 @import "./background_color.scss";
 @import "./personal_links.scss";
+@import "./modal.scss";
 @import "./left_sidebar.scss";
 @import "./right_sidebar.scss";
 @import "./footer.scss";
