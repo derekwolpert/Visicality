@@ -601,8 +601,8 @@ window.onload = () => {
             contextCreated = true;
             context = new AudioContext();
             analyser = context.createAnalyser();
-            analyser.minDecibels = -105;
-            analyser.maxDecibels = -20;
+            analyser.minDecibels = -100;
+            analyser.maxDecibels = -25;
             analyser.smoothingTimeConstant = 0.8;
             gain = context.createGain();
             let src = context.createMediaElementSource(audio);
