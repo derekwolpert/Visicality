@@ -42,7 +42,7 @@
 #project-name {
   position: fixed;
   top: 66px;
-  font-size: 2vw;
+  font-size: 1.5vw;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
@@ -50,7 +50,7 @@
 
 .project-title {
   padding-left: 60px;
-  font-size: 2.5vw;
+  font-size: 2vw;
   white-space: nowrap; 
   text-overflow: ellipsis;
   letter-spacing: 0.1em;
@@ -58,13 +58,13 @@
 
 .project-title > span {
   font-style: italic;
-  font-size: 4vw;
+  font-size: 3.5vw;
   letter-spacing: 0.1em;
 }
 
 .project-subtitle{
   padding-left: 132px;
-  line-height: 4vw;
+  line-height: 2.5vw;
   white-space: nowrap; 
   text-overflow: ellipsis;
 }

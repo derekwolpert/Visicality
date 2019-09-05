@@ -2,7 +2,7 @@
     display: none;
     position: fixed;
     z-index: 1000;
-    padding-top: 10vh;
+    padding-top: 15vh;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -12,22 +12,24 @@
     background-color: rgba(0,0,0,0.6);
     text-shadow: 1px 1px white;
     line-height: 20px;
+    cursor: pointer;
 }
 
 .information-modal-container {
     background-color: rgba(255,255,255,0.8);
     color: black;
-    margin: auto auto 10vh auto;
+    margin: auto auto 15vh auto;
     padding: 20px;
     border: solid 2px rgba(0, 0, 0, 0.5);
     width: 80%;
     border-radius: 24px;
+    cursor: initial;
 }
 
 .center-modal-title {
     text-align: center;
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 36px;
     padding-right: 36px;
 }
@@ -35,11 +37,10 @@
 #close-modal {
     position: absolute;
     font-size: 36px;
-    top: calc(10vh + 24px);
+    top: calc(15vh + 24px);
     right: 10vw;
     cursor: pointer;
     color: rgba(0,0,0,0.6);
-    transition: 0.2s;
 }
 
 #close-modal:hover {
@@ -71,6 +72,12 @@
 
 .information-modal-container li {
     margin-left: 32px;
+    line-height: 22px;
+
+}
+
+.information-modal-container br {
+    line-height: 12px;
 }
 
 .information-modal-container a {

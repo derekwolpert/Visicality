@@ -230,19 +230,23 @@ window.onload = () => {
     document.getElementById('close-modal').onclick = () => {
         informationModal.style.display = "";
     };
+
+    informationModal.onclick = e => {
+        if (e.target === informationModal) informationModal.style.display = "";
+    };
  
     let timeOut;
 
     document.onmousemove = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 3500);
+        timeOut = setTimeout(() => hideElements(), 3000);
     };
 
     document.onclick = () => {
         showElements();
         clearTimeout(timeOut);
-        timeOut = setTimeout(() => hideElements(), 3500);
+        timeOut = setTimeout(() => hideElements(), 3000);
     };
 
     colorPicker1.onchange = function () {
@@ -585,7 +589,7 @@ window.onload = () => {
     audio.onplay = () => {
         playPause.classList.remove("fa-play");
         playPause.classList.add("fa-pause");
-        timeOut = setTimeout(() => hideElements(), 3500);
+        timeOut = setTimeout(() => hideElements(), 3000);
     };
 
     document.getElementById("playbar").onclick = (e) => {

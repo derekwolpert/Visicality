@@ -2,7 +2,7 @@ import { returnAnimationStatus } from "../utitlities";
 
 export const circleLinear = function (analyser, colors) {
 
-    analyser.fftSize = 128;
+    analyser.fftSize = 256;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
