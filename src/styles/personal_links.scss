@@ -40,7 +40,12 @@
 }
 
 #email-link {
-    font-size: 27px;
+    font-size: 26px;
+}
+
+#keyboard-controls {
+    cursor: pointer;
+    font-size: 26px;
 }
 
 #info-link {
@@ -48,11 +53,11 @@
     position: relative;
 }
 
-.personal-links a {
+.personal-links a, .personal-links span  {
     position: relative;
 }
 
-#personal-links a:hover:after {
+#personal-links a:hover:after, #personal-links span:hover:after {
     background: rgba(0,0,0,.6);
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;

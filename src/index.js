@@ -44,6 +44,7 @@ window.onload = () => {
     const favicon = document.getElementById('favicon');
 
     const informationModal = document.getElementById('information-modal');
+    const keyboardModal = document.getElementById('keyboard-modal');
 
     const barGraphButton = document.getElementById('bar-graph-button');
     const horizontalBarButton = document.getElementById('horizontal-bar-button');
@@ -220,7 +221,6 @@ window.onload = () => {
         personalLinks.style.paddingRight = "";
         projectName.style.opacity = "";
         projectName.style.transition = "";
-
     };
 
     document.getElementById('info-link').onclick = () => {
@@ -233,6 +233,19 @@ window.onload = () => {
 
     informationModal.onclick = e => {
         if (e.target === informationModal) informationModal.style.display = "";
+    };
+
+
+    document.getElementById('keyboard-controls').onclick = () => {
+        keyboardModal.style.display = "block";
+    };
+
+    document.getElementById('keyboard-close-modal').onclick = () => {
+        keyboardModal.style.display = "";
+    };
+
+    keyboardModal.onclick = e => {
+        if (e.target === keyboardModal) keyboardModal.style.display = "";
     };
  
     let timeOut;
