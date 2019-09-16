@@ -1,4 +1,8 @@
 export const formatTime = (currentTime, duration) => {
+    if (isNaN(currentTime) || isNaN(duration)) {
+        currentTime = 0;
+        duration = 0;
+    }
     const roundedTime = Math.floor(currentTime);
     const hours = Math.floor(roundedTime / 3600);
     const minutes = Math.floor((roundedTime - (hours * 3600)) / 60);
