@@ -285,6 +285,7 @@ window.onload = () => {
 
         img.onload = () => {
             faviconColor.drawImage(img, 0, 0, 32, 32);
+            faviconColor.clearRect(0, 0, 32, 32);
             faviconColor.beginPath();
             faviconColor.arc(16, 16, 16, 0, 2 * Math.PI);
 
@@ -302,11 +303,15 @@ window.onload = () => {
             const gradient = faviconColor.createLinearGradient(...gradientParams[selectedBackgroundDirection]);
             
             gradient.addColorStop(0, colorPicker1.value);
-            gradient.addColorStop(0.5, colorPicker2.value);
+            gradient.addColorStop(0.2, colorPicker1.value);
+            gradient.addColorStop(0.4, colorPicker2.value);
+            gradient.addColorStop(0.6, colorPicker2.value);
+            gradient.addColorStop(0.8, colorPicker3.value);
             gradient.addColorStop(1, colorPicker3.value);
 
             faviconColor.fillStyle = gradient;
             faviconColor.fill();
+            
             favicon.href = canvas.toDataURL('image/png');
         };
     };
