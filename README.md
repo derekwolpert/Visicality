@@ -34,7 +34,7 @@ Visicality utilizes the following technologies:
 * An intuitive, stylized, and responsive UI/UX, which automatically hides when audio is playing and no mouse movement is detected
 * Wide usage of tooltips when hovering over content, to offer explainations on what actions occur when clicking specific areas
 * Two modals - one offering an informational overview of the project, and another explaining the various keyboard shortcuts
-* A dynamic favicon that automatically adjusts to the current selected background color gradient
+* A dynamic favicon that automatically adjusts to match the currently selected background color gradient
 
 ## Wireframe Proposal vs Final Layout
 
