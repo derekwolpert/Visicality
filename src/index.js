@@ -235,7 +235,6 @@ window.onload = () => {
         if (e.target === informationModal) informationModal.style.display = "";
     };
 
-
     document.getElementById('keyboard-controls').onclick = () => {
         keyboardModal.style.display = "block";
     };

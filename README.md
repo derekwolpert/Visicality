@@ -1,80 +1,50 @@
 # vi·si·cal·i·ty (visual + musicality)
-
 ![Visualizer Options](demo_pic_1.gif)
 
 ## Background & Overview
+Visicality is a music visualizer web application utilizing Web Audio API and D3.js to create real-time imagery corresponding to attributes of simultaneously playing audio.  Users are able to input a local audio file from their own device to use with the application.
 
-Visicality is a music visualizer web application utilizing Web Audio API and D3.js to create real-time imagery corresponding to attributes of simultaneously playing audio.
+Visicality offers users a highly customizable user experience through a diverse selection of different visualizer designs and color palette.  Users are able to have complete complete control over adjusting the three colors and direction of the background color gradient.
 
-The program contains a limited – yet varied – collection of built-in sounds.  Users can also input their own sounds through utilizing SoundCloud’s audio API, directly uploading from their own computer, or utilizing a microphone on their own device.
-
-Visicality aims to create a polished visual experience influenced by the graphs seen in popular spreadsheet applications.  Users are able to choose between visualizers based on bar graphs, line graphs, circle/pie graphs and more.
+**Note:** For best compatibility please use Visicality with a desktop version of Google Chrome. With other web browsers some features may not be available. While this project's UI / UX is optimized for desktop browsers, it is also compatible with mobile devices that support Web Audio API.
 
 ![Color Options](demo_pic_2.gif)
 
-## Functionality & MVPs
+## Architecture & Technologies
 
-In Visicality users are able to:
-* Experience a real-time visual representation of audio
-* Select a graph-inspired style for the visualization of audio
-* Select a color palette for the visualization
-* Select an audio for the visualization
-* Play, pause and restart options for the audio
+Visicality utilizes the following technologies:
+* `Vanilla JavaScript`, for the fundamental structure of project 
+* `Web Audio API`, for persistent processing of audio files, and extraction of frequency and waveform data
+* `D3.js Library`, to meticulously craft and render a collection of widely distinct visualizers
+* `Webpack`, a JavaScript bundler to assist with development and production builds
+* `Fullscreen API`, to seemlessly enter in-and-out of a full-screen mode while in browser
 
 ![Background Color Examples](demo_pic_3.gif)
 
-Additionally, Visicality includes:
-* A modal to house the settings for selecting a custom audio source
-* Links to various personal websites to learn more about the developer of the project
+### Additional Features:
 
-## Wireframe
+* A polished audio player stored at the bottom of the application with:
+    * A play/pause button
+    * A button to input an audio file
+    * Various information about the selected audio file including the file's name, how many minutes have progressed in playback, and how many minutes are left
+    * A progress bar to show the current position of the audio's playback, as well as allowing the adjustment of the audio's current position when clicked
+    * A button to enter in and out of a full-screen mode with usage of Fullscreen API
+* The ablity to adjust the gain (volume) of audio through Web Audio API's GainNode interface, and see the adjustments reflected accordingly in visualizations
+* A robust set of on-screen controls and keyboard shortcuts, to adjust audio playback and visualizer settings
+* An intuitive, stylized, and responsive UI/UX, which automatically hides when audio is playing and no mouse movement is detected
+* Wide usage of tooltips when hovering over content, to offer explainations on what actions occur when clicking specific areas
+* Two modals - one offering an informational overview of the project, and another explaining the various keyboard shortcuts
+* A dynamic favicon that automatically adjusts to the current selected background color gradient
+
+## Wireframe Proposal vs Final Layout
 
 ![Wireframe Proposal Image](wireframe_proposal_image.png)
 
 ![Final Layout Image](final_layout_image.png)
 
-## Architecture & Technologies
-
-Visicality utilizes the following technologies:
-* `Vanilla JavaScript`, for fundamental structure of project 
-* `Web Audio API`, to extract data from selected audio
-* `D3 Library`, to create visually rich visuals based on data from audio 
-* `SoundCloud API`, to allow users to input their own selection of audio
-* `Webpack`, JavaScript bundler to assist with development and production builds
-
-## Implementation Timeline
-
-### Day 1
-* Setup project's folder/file structure
-* Create general visual layout of program
-* Initial research/experiment with `Web Audio API` and `D3 Library` get a better understanding of how these two APIs can be used together
-* Research SoundCloud API to confirm whether or not it is practical to use as a third-party audio source
-
-### Day 2
-* Add component to store audio, and create basic play/pause/restart functionality to control audio in project's header
-* Continue research/experiment `Web Audio API` with goal to get a solid understanding of how to extrapolate frequency/volume data from audio
-
-### Day 3
-
-* Explore `D3 Library` resources to narrow down type of data visualization that would work best for project
-* Spend no more than 30 mins picking out an initial color palette and audio file to use for testing purposes
-* Build out `Web Audio API` and `D3 Library` integration
-
-### Day 4
-* Expand `D3 Library` data representations selection
-* Expand color palettes selection
-* Work on custom user inputted audio (SoundCloud, direct upload, microphone)
-
-### Weekend
-* Expand audio selection
-* CSS polish magic
-* Test for problems
-* Deploy on GitHub
-
-## Bonus Features
-
-* Allow users to create their own custom color palettes to use with the visualizer
-* Allow user to manipulate and change audio through utilization of `Web Audio API`
-* Add other third-party audio APIs to the program for users, Spotify API, Apple's MusicKit JS API, etc.
-* Brief educational component to explore the science of sound
-* Allow users to take screenshots when pausing audio playback
+## Potential Features to Implement in the Future
+* Real-time manipulation of audio through Web Audio API
+* Usage of a user's microphone for real-time audio input
+* Custom color palettes for visualizer
+* Utilize third-party audio APIs (i.e. Spotify API, Apple's MusicKit JS API, etc.) to allow users select audio from souces other than their local device
+* Brief educational component to explore the science of sound, and how it is reflected in visualizers
