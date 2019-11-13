@@ -6,7 +6,7 @@ Visicality is a music visualizer web application utilizing Web Audio API and D3.
 
 Visicality offers users a highly customizable experience through a diverse selection of visualizer designs and color palettes.  Addtionally, users are able to adjust the colors and direction of the background color gradient.
 
-[vi·si·cal·i·ty is currently live at visicality.derekwolpert.com - Click Here to check it out for yourself!](https://visicality.derekwolpert.com "vi·si·cal·i·ty")
+<a href="https://visicality.derekwolpert.com" target="_blank">vi·si·cal·i·ty is currently live at visicality.derekwolpert.com - Click Here to check it out for yourself!</a>
 
 **Note:** For best compatibility please use Visicality with a desktop version of Google Chrome. With other web browsers some features may not be available. While this project's UI / UX is optimized for desktop browsers, it is also compatible with mobile devices that support Web Audio API.
 
