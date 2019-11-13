@@ -4,7 +4,7 @@
 ## Background & Overview
 Visicality is a music visualizer web application utilizing Web Audio API and D3.js to create real-time imagery corresponding to attributes of simultaneously playing audio.  Users are able to select a local audio files from their own device to use with this application.
 
-Visicality offers users a highly customizable experience through a diverse selection of different visualizer designs and color palettes.  Addtionally, users are able to have complete control over adjusting the three colors and direction of the background color gradient.
+Visicality offers users a highly customizable experience through a diverse selection of visualizer designs and color palettes.  Addtionally, users are able to adjust the colors and direction of the background color gradient.
 
 [vi·si·cal·i·ty is currently live at visicality.derekwolpert.com - Click Here to check it out for yourself!](https://visicality.derekwolpert.com "vi·si·cal·i·ty")
 
