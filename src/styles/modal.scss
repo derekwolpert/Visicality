@@ -1,5 +1,5 @@
 #information-modal {
-    display: none;
+    display: block;
     position: fixed;
     z-index: 1000;
     padding-top: 15vh;
@@ -10,14 +10,14 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.6);
-    text-shadow: 1px 1px white;
+    text-shadow: 1px 1px #ffffff;
     line-height: 20px;
 }
 
 .information-modal-container {
     position: relative;
     background-color: rgba(255,255,255,0.8);
-    color: black;
+    color: #000000;
     margin: auto auto 15vh auto;
     padding: 20px;
     border: solid 2px rgba(0, 0, 0, 0.5);
@@ -104,7 +104,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6);
-    text-shadow: 1px 1px black;
+    text-shadow: 1px 1px #000000;
     line-height: 20px;
 }
 
@@ -112,7 +112,7 @@
 .keyboard-modal-container {
     position: relative;
     background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    color: #ffffff;
     margin: auto auto 15vh auto;
     padding: 20px;
     border: solid 2px rgba(255, 255, 255, 0.5);

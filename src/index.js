@@ -224,15 +224,15 @@ window.onload = () => {
     };
 
     document.getElementById('info-link').onclick = () => {
-        informationModal.style.display = "block";
-    };
-
-    document.getElementById('close-modal').onclick = () => {
         informationModal.style.display = "";
     };
 
+    document.getElementById('close-modal').onclick = () => {
+        informationModal.style.display = "none";
+    };
+
     informationModal.onclick = e => {
-        if (e.target === informationModal) informationModal.style.display = "";
+        if (e.target === informationModal) informationModal.style.display = "none";
     };
 
     document.getElementById('keyboard-controls').onclick = () => {
