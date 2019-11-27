@@ -1,0 +1,25 @@
+#demo-button-container {
+    position: fixed;
+    left: 46px;
+    bottom: 44px;
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+#demo-button {
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    padding: 10px 11px;
+    letter-spacing: 0.1em;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#demo-button:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
+}

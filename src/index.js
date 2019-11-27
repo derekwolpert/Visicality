@@ -630,7 +630,6 @@ window.onload = () => {
     }, 1000);
 
     document.getElementById("file-input-label").onclick = () => {
-
         if (!contextCreated) {
             contextCreated = true;
             context = new AudioContext();
@@ -649,18 +648,40 @@ window.onload = () => {
 
     document.getElementById("file-input").onchange = function () {
         const files = this.files;
-
         if (files.length > 0) {
-
             audio.src = URL.createObjectURL(files[0]);
             audio.load();
-
             playPause.classList.remove("fa-pause");
             playPause.classList.add("fa-play");
             largePlayIcon.style.opacity = 1;
             largePlayIcon.style.cursor = "pointer";
-
             document.getElementById('track-name').innerHTML = `<span>${files[0].name.split(".").slice(0, files[0].name.split(".").length - 1).join("")}</span>`;
+        }
+    };
+
+    document.getElementById("demo-button").onclick = function () {
+        if (!contextCreated) {
+            contextCreated = true;
+            context = new AudioContext();
+            analyser = context.createAnalyser();
+            analyser.minDecibels = -105;
+            analyser.maxDecibels = -25;
+            analyser.smoothingTimeConstant = 0.8;
+            gain = context.createGain();
+            let src = context.createMediaElementSource(audio);
+            src.connect(gain);
+            gain.connect(analyser);
+            analyser.connect(context.destination);
+            createVisualizer();
+        }
+        if (!audio.src.includes("01%20Keep%20on%20Mixing.m4a")) {
+            audio.src = "./dist/01 Keep on Mixing.m4a";
+            audio.load();
+            playPause.classList.remove("fa-pause");
+            playPause.classList.add("fa-play");
+            largePlayIcon.style.opacity = 1;
+            largePlayIcon.style.cursor = "pointer";
+            document.getElementById('track-name').innerHTML = "<span>01 Keep on Mixing</span>";
         }
     };
 
