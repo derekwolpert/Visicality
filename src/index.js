@@ -27,6 +27,7 @@ window.onload = () => {
     const colorPicker2 = document.getElementById('color-picker-2');
     const colorPicker3 = document.getElementById('color-picker-3');
     const enterExitFullScreen = document.getElementById('full-screen-container');
+    const demoContainer = document.getElementById('demo-button-container');
 
     const colorPickerLabel1 = document.getElementById("color-picker-label-1");
     const colorPickerLabel2 = document.getElementById("color-picker-label-2");
@@ -197,6 +198,21 @@ window.onload = () => {
     let analyser;
     let gain;
 
+    const createContext = () => {
+        contextCreated = true;
+        context = new AudioContext();
+        analyser = context.createAnalyser();
+        analyser.minDecibels = -105;
+        analyser.maxDecibels = -25;
+        analyser.smoothingTimeConstant = 0.8;
+        gain = context.createGain();
+        let src = context.createMediaElementSource(audio);
+        src.connect(gain);
+        gain.connect(analyser);
+        analyser.connect(context.destination);
+        createVisualizer();
+    }
+
     const hideElements = () => {
         if (!audio.paused) {
             backgroundColorHeader.style.opacity = 0;
@@ -208,6 +224,7 @@ window.onload = () => {
             personalLinks.style.paddingRight = "7px";
             projectName.style.transition = "1s";
             projectName.style.opacity = 0;
+            demoContainer.style.opacity = 0;
         }
     };
 
@@ -221,6 +238,7 @@ window.onload = () => {
         personalLinks.style.paddingRight = "";
         projectName.style.opacity = "";
         projectName.style.transition = "";
+        demoContainer.style.opacity = "";
     };
 
     document.getElementById('info-link').onclick = () => {
@@ -631,18 +649,7 @@ window.onload = () => {
 
     document.getElementById("file-input-label").onclick = () => {
         if (!contextCreated) {
-            contextCreated = true;
-            context = new AudioContext();
-            analyser = context.createAnalyser();
-            analyser.minDecibels = -105;
-            analyser.maxDecibels = -25;
-            analyser.smoothingTimeConstant = 0.8;
-            gain = context.createGain();
-            let src = context.createMediaElementSource(audio);
-            src.connect(gain);
-            gain.connect(analyser);
-            analyser.connect(context.destination);
-            createVisualizer();
+            createContext();
         }
     };
 
@@ -661,18 +668,7 @@ window.onload = () => {
 
     document.getElementById("demo-button").onclick = function () {
         if (!contextCreated) {
-            contextCreated = true;
-            context = new AudioContext();
-            analyser = context.createAnalyser();
-            analyser.minDecibels = -105;
-            analyser.maxDecibels = -25;
-            analyser.smoothingTimeConstant = 0.8;
-            gain = context.createGain();
-            let src = context.createMediaElementSource(audio);
-            src.connect(gain);
-            gain.connect(analyser);
-            analyser.connect(context.destination);
-            createVisualizer();
+            createContext();
         }
         if (!audio.src.includes("01%20Keep%20on%20Mixing.m4a")) {
             audio.src = "./dist/01 Keep on Mixing.m4a";
