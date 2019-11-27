@@ -2,7 +2,7 @@ import { returnAnimationStatus } from "../utitlities";
 
 export const circleGraph = function (analyser, colors) {
 
-    analyser.fftSize = 256;
+    analyser.fftSize = 128;
 
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
