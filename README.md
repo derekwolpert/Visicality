@@ -15,7 +15,7 @@ Visicality offers users a highly customizable experience through a diverse selec
 ## Architecture & Technologies
 
 Visicality utilizes the following technologies:
-* `Vanilla JavaScript`, for the fundamental structure of project 
+* `JavaScript`, as the primary programing language for this project
 * `Web Audio API`, for persistent processing of audio files, and extraction of frequency and waveform data
 * `D3.js Library`, to meticulously craft and render a collection of widely distinct visualizers
 * `Webpack`, a JavaScript bundler to assist with development and production builds
