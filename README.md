@@ -48,5 +48,5 @@ Visicality utilizes the following technologies:
 * Further real-time manipulation of audio through Web Audio API
 * Usage of a user's microphone for real-time audio input
 * Custom color palettes for visualizer
-* Utilize third-party audio APIs (i.e. Spotify API, Apple's MusicKit JS API, etc.) to allow users select audio from souces other than their local device
+* Utilize third-party audio APIs (i.e. Spotify API, Apple's MusicKit JS API, etc.) to allow users to select audio from souces other than their local device
 * Brief educational component to explore the science of sound, and how it is reflected in the visualizations
