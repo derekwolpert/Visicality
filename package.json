@@ -31,7 +31,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
-    "css-loader": "^3.4.0",
+    "css-loader": "^3.4.1",
     "fscreen": "^1.0.2",
     "node-sass": "^4.13.0",
     "postcss-loader": "^3.0.0",
