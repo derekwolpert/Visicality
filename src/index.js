@@ -213,7 +213,7 @@ window.onload = () => {
         gain.connect(analyser);
         analyser.connect(context.destination);
         createVisualizer();
-    }
+    };
 
     const hideElements = () => {
         if (!audio.paused) {
