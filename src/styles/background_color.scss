@@ -67,6 +67,7 @@
 .rotate-background-container {
     border-right: 2px solid rgba(0, 0, 0, 0.4);
     background-color: rgba(0, 0, 0, 0.4);
+    min-width: 64px;
 }
 
 .rotate-background-container:hover {
