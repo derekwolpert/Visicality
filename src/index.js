@@ -7,11 +7,8 @@ import { symetricalCircle } from "./visualizations/symetrical_circle";
 import { waveformLinear } from "./visualizations/waveform_line";
 import { waveformCircle } from "./visualizations/waveform_circle";
 import { fullScreen } from "./visualizations/full_screen";
-
 import { formatTime, getRandomColor, removeVisualizer, changeAnimationStatus } from "./utitlities";
-
 import "./styles/app.scss";
-
 import fscreen from 'fscreen';
 
 window.onload = () => {
@@ -40,6 +37,7 @@ window.onload = () => {
     const footerAudioPlayer = document.getElementById("footer-audio-player");
     const rightGainBar = document.getElementById("right-gain-bar");
     const personalLinks = document.getElementById("personal-links");
+    const infoLink = document.getElementById('info-link');
     const personalLinksContainer = document.getElementById("personal-links-container");
     const projectName = document.getElementById("project-name");
     const favicon = document.getElementById('favicon');
@@ -70,6 +68,10 @@ window.onload = () => {
     let selectedVisualizer = "barGraph";
     let selectedColor = "rainbowD3";
     let selectedBackgroundDirection = "45deg";
+
+    if (window.innerWidth <= 824) {
+        personalLinks.style.top = "38px";
+    }
 
     const visualizerObj = {
         barGraph: {
@@ -225,6 +227,10 @@ window.onload = () => {
             projectName.style.transition = "1s";
             projectName.style.opacity = 0;
             demoContainer.style.opacity = 0;
+            if (window.innerWidth <= 824) {
+                infoLink.style.transform = "translate(0, -38px)";
+                personalLinksContainer.style.transform = "translate(0, -38px)";
+            }
         }
     };
 
@@ -239,9 +245,11 @@ window.onload = () => {
         projectName.style.opacity = "";
         projectName.style.transition = "";
         demoContainer.style.opacity = "";
+        infoLink.style.transform = "";
+        personalLinksContainer.style.transform = "";
     };
 
-    document.getElementById('info-link').onclick = () => {
+    infoLink.onclick = () => {
         informationModal.style.display = "";
     };
 
@@ -683,5 +691,16 @@ window.onload = () => {
 
     window.onresize = () => {
         createVisualizer();
+        if (window.innerWidth <= 824) {
+            personalLinks.style.top = "38px";
+            if (personalLinksContainer.style.opacity === "0") {
+                infoLink.style.transform = "translate(0, -38px)";
+                personalLinksContainer.style.transform = "translate(0, -38px)";
+            }
+        } else {
+            personalLinks.style.top = "";
+            infoLink.style.transform = "";
+            personalLinksContainer.style.transform = "";
+        }
     };
 };
