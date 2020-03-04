@@ -1,5 +1,5 @@
 # vi·si·cal·i·ty (visual + musicality)
-![Visualizer Options](demo_pic_1.gif)
+![Visualizer Options](./readme_images/demo_pic_1.gif)
 
 ## Background & Overview
 Visicality is a music visualizer web application utilizing Web Audio API and D3.js to create real-time imagery corresponding to attributes of simultaneously playing audio.  Users are able to select a local audio files from their own device to use with this application.
@@ -10,7 +10,7 @@ Visicality offers users a highly customizable experience through a diverse selec
 
 **Note:** For best compatibility please use a desktop version of Google Chrome. With other web browsers some features may not be available. This project's UI / UX is optimized for desktop browsers.
 
-![Color Options](demo_pic_2.gif)
+![Color Options](./readme_images/demo_pic_2.gif)
 
 ## Architecture & Technologies
 
@@ -21,7 +21,7 @@ Visicality utilizes the following technologies:
 * `Webpack`, a JavaScript bundler to assist with development and production builds
 * `Fullscreen API`, to seemlessly enter in-and-out of a full-screen mode while in browser
 
-![Background Color Examples](demo_pic_3.gif)
+![Background Color Examples](./readme_images/demo_pic_3.gif)
 
 ### Additional Features:
 
@@ -40,9 +40,9 @@ Visicality utilizes the following technologies:
 
 ## Wireframe Proposal vs Final Layout
 
-![Wireframe Proposal Image](wireframe_proposal_image.png)
+![Wireframe Proposal Image](./readme_images/wireframe_proposal_image.png)
 
-![Final Layout Image](final_layout_image.png)
+![Final Layout Image](./readme_images/final_layout_image.png)
 
 ## Potential Features to Implement in the Future
 * Further real-time manipulation of audio through Web Audio API
