@@ -6,8 +6,6 @@ module.exports = merge(common, {
     devtool: "inline-source-map",
     devServer: {
         contentBase: "./",
-        watchContentBase: true,
-        host: "0.0.0.0",
-        disableHostCheck: true
+        watchContentBase: true
     }
 });
