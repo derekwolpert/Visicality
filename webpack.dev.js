@@ -7,5 +7,7 @@ module.exports = merge(common, {
     devServer: {
         contentBase: "./",
         watchContentBase: true,
+        host: "0.0.0.0",
+        disableHostCheck: true
     }
 });
