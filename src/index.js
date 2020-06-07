@@ -679,7 +679,7 @@ window.onload = () => {
             createContext();
         }
         if (!audio.src.includes("01%20Keep%20on%20Mixing.m4a")) {
-            audio.src = "./dist/01 Keep on Mixing.m4a";
+            audio.src = "./01 Keep on Mixing.m4a";
             audio.load();
             playPause.classList.remove("fa-pause");
             playPause.classList.add("fa-play");

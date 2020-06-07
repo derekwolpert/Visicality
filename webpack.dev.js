@@ -5,7 +5,8 @@ module.exports = merge(common, {
     mode: "development",
     devtool: "inline-source-map",
     devServer: {
-        contentBase: "./",
-        watchContentBase: true
-    }
+        contentBase: "./dist",
+        watchContentBase: true,
+        writeToDisk: true,
+    },
 });
