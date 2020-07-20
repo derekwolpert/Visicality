@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/derekwolpert/Audio-Visualization#readme",
   "dependencies": {
-    "autoprefixer": "^9.8.4",
+    "autoprefixer": "^9.8.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
