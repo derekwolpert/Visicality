@@ -32,7 +32,7 @@
     "babel-preset-env": "^1.7.0",
     "css-loader": "^3.6.0",
     "fscreen": "^1.0.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.1.2",
