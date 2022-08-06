@@ -1,48 +1,65 @@
 {
-  "name": "audio_visualization",
+  "name": "visicality",
+  "private": true,
   "version": "1.0.0",
-  "description": "## Background & Overview",
-  "main": "index.js",
-  "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "maintained node versions",
-    "not dead"
-  ],
+  "description": "Music Visualizer built w/ JavaScript, D3.js and Web Audio API",
+  "type": "module",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "watch": "webpack --watch --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js  --optimize-minimize"
+    "dev": "vite",
+    "build": "vite build",
+    "eslint": "eslint . --ext .js --fix --ignore-path .gitignore",
+    "lint": "concurrently --raw npm:eslint npm:prettier",
+    "prettier": "prettier \"**/*.{html,json,md}\" --write --ignore-path .gitignore",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/derekwolpert/Audio-Visualization.git"
+    "url": "git+https://github.com/derekwolpert/Visicality.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Derek Wolpert <me@derekwolpert.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/derekwolpert/Audio-Visualization/issues"
+    "url": "https://github.com/derekwolpert/Visicality/issues"
   },
-  "homepage": "https://github.com/derekwolpert/Audio-Visualization#readme",
+  "homepage": "https://github.com/derekwolpert/Visicality#readme",
   "dependencies": {
-    "autoprefixer": "^9.8.5",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "css-loader": "^3.6.0",
-    "fscreen": "^1.0.2",
-    "node-sass": "^4.13.0",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.3.1",
-    "style-loader": "^1.1.2",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.10.3",
-    "webpack-merge": "^4.2.2"
+    "@fortawesome/fontawesome-free": "^6.1.2",
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
+    "@fortawesome/free-regular-svg-icons": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "d3": "^7.6.1",
+    "fscreen": "^1.2.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^6.0.3",
-    "mini-css-extract-plugin": "^0.8.2"
+    "autoprefixer": "^10.4.8",
+    "concurrently": "^7.3.0",
+    "eslint": "^8.21.0",
+    "eslint-config-standard": "^17.0.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.3",
+    "vite": "^3.0.4"
+  },
+  "browserslist": [
+    "> 2% in US and last 2 versions and supports es6-module",
+    "not dead"
+  ],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2022
+    },
+    "extends": [
+      "eslint:recommended",
+      "standard"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "arrowParens": "avoid"
   }
 }
