@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "description": "Music Visualizer built w/ JavaScript, D3.js and Web Audio API",
   "type": "module",
+  "engines": {
+    "node": ">= 16.0.0",
+    "npm": ">= 8.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
