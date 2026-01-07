@@ -4,10 +4,6 @@
   "version": "1.0.0",
   "description": "Music Visualizer built w/ JavaScript, D3.js and Web Audio API",
   "type": "module",
-  "engines": {
-    "node": ">= 16.0.0",
-    "npm": ">= 8.0.0"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -27,21 +23,21 @@
   },
   "homepage": "https://github.com/derekwolpert/Visicality#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.1.2",
-    "@fortawesome/free-brands-svg-icons": "^6.1.2",
-    "@fortawesome/free-regular-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "d3": "^7.6.1",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "d3": "^7.9.0",
     "fscreen": "^1.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "concurrently": "^7.3.0",
-    "eslint": "^8.21.0",
-    "eslint-config-standard": "^17.0.0",
-    "prettier": "^2.7.1",
-    "sass": "^1.54.3",
-    "vite": "^3.0.4"
+    "autoprefixer": "^10.4.23",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "prettier": "^2.8.8",
+    "sass": "^1.97.2",
+    "vite": "^3.2.11"
   },
   "browserslist": [
     "> 2% in US and last 2 versions and supports es6-module",
